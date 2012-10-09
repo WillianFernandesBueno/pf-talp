@@ -1,7 +1,5 @@
 package br.ucb.jogo.negocio;
 
-
-
 import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
@@ -12,9 +10,10 @@ import javax.faces.event.ActionEvent;
 
 import org.primefaces.event.FlowEvent;
 
-import br.ucb.jogo.HIB.HibernateUtil;
 import br.ucb.jogo.HIB.UsuarioHIB;
 import br.ucb.jogo.bean.Usuario;
+
+
 
 
 @ManagedBean(name="usuarioManagedBean")

@@ -3,6 +3,7 @@ package br.ucb.jogo.negocio;
 import java.io.Serializable;  
 
 import javax.faces.bean.ManagedBean;
+@SuppressWarnings("serial")
 @ManagedBean(name="pprBean")
 public class PPRBean implements Serializable {  
   
