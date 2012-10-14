@@ -8,7 +8,6 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Hello JSF!</title>
 <style type="text/css">
 	.teste{ 
 		width:298px;
@@ -40,11 +39,9 @@
 				<p:menuitem value="Suporte" outcome="/mobile/index" />
 			</p:submenu>
 
-			<p:menuitem value="Imagens" actionListener="#{menuBean.delete}"
-				ajax="false"/>
+			<p:menuitem value="Imagens" actionListener="#{menuBean.delete}" ajax="false"/>
 
-			<p:menuitem value="Videos" actionListener="#{menuBean.delete}"
-				ajax="false"/>
+			<p:menuitem value="Videos" actionListener="#{menuBean.delete}" ajax="false"/>
 
 		</p:slideMenu>
 

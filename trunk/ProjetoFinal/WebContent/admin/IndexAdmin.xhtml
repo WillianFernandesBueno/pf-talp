@@ -14,27 +14,20 @@
 
 	<p:layout fullPage="true">
 
-		<p:layoutUnit position="north" size="250" resizable="true" closable="true" collapsible="true">
-			<h:graphicImage url="imagens/topo.jpg" height="99%" width="99.70%" />
+		<p:layoutUnit position="north" size="250" resizable="true"
+			closable="true" collapsible="true">
+			<h:graphicImage url="../imagens/topo.jpg" height="99%" width="99.70%" />
 		</p:layoutUnit>
-
 
 		<p:layoutUnit position="west" size="320" header="OCULTAR" resizable="true" closable="true" collapsible="true">
 			<h:form>
-				<ui:include src="Menu.xhtml" />
+				<ui:include src="MenuAdmin.xhtml" />
 			</h:form>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="center"	header="Seja bem vindo ao Jogo War of the Worlds" style="background:#cbcbcb;">
-			<table align="center">
-				<tr>
-					<td>
-						<p:galleria value="#{galleriaBean.images}" var="image" rendered="true" panelHeight="550" panelWidth="1570" transitionInterval="10000" style="background:#cbcbcb;">
-							<p:graphicImage value="/images/#{image}" height="50"/>
-						</p:galleria>
-					</td>
-				</tr>
-			</table>
+		<p:layoutUnit position="center"
+			header="Seja bem vindo #{usuario.login}" style="background:#cbcbcb;">
+
 		</p:layoutUnit>
 
 	</p:layout>
