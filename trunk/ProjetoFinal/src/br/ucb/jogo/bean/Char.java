@@ -9,16 +9,14 @@ public class Char {
 	private int agilidade;
 	private int defesa;
 	
-	public Char(String classe, String detalhes, int forca, int mana, int hp,
-			int agilidade, int defesa) {
-		super();
-		this.classe = classe;
-		this.detalhes = detalhes;
-		this.forca = forca;
-		this.mana = mana;
-		this.hp = hp;
-		this.agilidade = agilidade;
-		this.defesa = defesa;
+	public Char(String classe, String detalhes, int forca, int mana, int hp,int agilidade, int defesa) {
+		setClasse(classe);
+		setDetalhes(detalhes);
+		setForca(forca);
+		setMana(mana);
+		setHp(hp);
+		setAgilidade(agilidade);
+		setDefesa(defesa);
 	}
 
 	public String getDetalhes() {
