@@ -8,43 +8,39 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-<style type="text/css">
-	.teste{ 
-		width:298px;
-		height:400px;
-	}
-
-</style>
+	<title>War of the Worlds</title>
 </h:head>
 <h:body>
-	<h:form>
+	<ui:define name="menu">
+		<h:form>
+				
+						<p:growl id="messages" />
+						<p:slideMenu styleClass="teste">
+							<p:menuitem value="Home" url="Index.xhtml"	update="messages"/>
+							<p:submenu label="Usuario">
+								<p:menuitem value="Cadastro" url="Cadastro.xhtml"	update="messages" icon="ui-icon-disk" />
+								<p:menuitem value="Login"    url="Login.xhtml" 	update="messages" icon="ui-icon-arrowrefresh-1-w" />
+							</p:submenu>
+				
+				
+							<p:submenu label="Tutorial">
+								<p:menuitem value="Item" outcome="/mobile/index" />
+								<p:menuitem value="Class" outcome="/mobile/index" />
+							</p:submenu>
+				
+				
+							<p:submenu label="Contato">
+								<p:menuitem value="Email" outcome="/Index" />
+								<p:menuitem value="Suporte" outcome="/mobile/index" />
+							</p:submenu>
+				
+							<p:menuitem value="Imagens" actionListener="#{menuBean.delete}" ajax="false"/>
+				
+							<p:menuitem value="Videos" actionListener="#{menuBean.delete}" ajax="false"/>
+				
+						</p:slideMenu>
+			</h:form>
+	 </ui:define>
 
-		<p:growl id="messages" />
-		<p:slideMenu styleClass="teste">
-			<p:menuitem value="Home" url="Index.xhtml"	update="messages"/>
-			<p:submenu label="Usuario">
-				<p:menuitem value="Cadastro" url="Cadastro.xhtml"	update="messages" icon="ui-icon-disk" />
-				<p:menuitem value="Login"    url="Login.xhtml" 	update="messages" icon="ui-icon-arrowrefresh-1-w" />
-			</p:submenu>
-
-
-			<p:submenu label="Tutorial">
-				<p:menuitem value="Item" outcome="/mobile/index" />
-				<p:menuitem value="Class" outcome="/mobile/index" />
-			</p:submenu>
-
-
-			<p:submenu label="Contato">
-				<p:menuitem value="Email" outcome="/Index" />
-				<p:menuitem value="Suporte" outcome="/mobile/index" />
-			</p:submenu>
-
-			<p:menuitem value="Imagens" actionListener="#{menuBean.delete}" ajax="false"/>
-
-			<p:menuitem value="Videos" actionListener="#{menuBean.delete}" ajax="false"/>
-
-		</p:slideMenu>
-
-	</h:form>
 </h:body>
 </html>

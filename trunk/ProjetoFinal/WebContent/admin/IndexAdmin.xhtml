@@ -20,9 +20,43 @@
 		</p:layoutUnit>
 
 		<p:layoutUnit position="west" size="320" header="OCULTAR" resizable="true" closable="true" collapsible="true">
-			<h:form>
-				<ui:include src="MenuAdmin.xhtml" />
-			</h:form>
+
+				<h:form>
+					<table align="left">
+						<tr>
+							<td>
+								<p:accordionPanel style="width:300px;">
+									<p:tab title="Classes">
+										<h:panelGrid columns="1">
+											<h:commandLink value="Cadastrar Classe" action="CadastroClasse.xhtml" />
+											<h:commandLink value="Editar Classes" />
+										</h:panelGrid>
+									</p:tab>
+									<p:tab title="Itens">
+										<h:panelGrid columns="2">
+		
+										</h:panelGrid>
+									</p:tab>
+									<p:tab title="Jogador">
+										<h:panelGrid columns="2">
+		
+										</h:panelGrid>
+									</p:tab>
+									<p:tab title="Treino">
+										<h:panelGrid columns="2">
+		
+										</h:panelGrid>
+									</p:tab>
+									<p:tab title="Aliança">
+										<h:panelGrid columns="2">
+		
+										</h:panelGrid>
+									</p:tab>
+								</p:accordionPanel>
+							</td>
+						</tr>
+					</table>
+				</h:form>
 		</p:layoutUnit>
 
 		<p:layoutUnit position="center"
