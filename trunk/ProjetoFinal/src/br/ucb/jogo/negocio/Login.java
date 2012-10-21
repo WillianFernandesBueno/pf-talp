@@ -3,24 +3,30 @@ package br.ucb.jogo.negocio;
 import java.io.Serializable;  
 
 import javax.faces.bean.ManagedBean;
+import javax.swing.JOptionPane;
 @SuppressWarnings("serial")
-@ManagedBean(name="pprBean")
-public class PPRBean implements Serializable {  
+@ManagedBean(name="login")
+public class Login implements Serializable {  
   
     private String login;  
-      
+    private String password;
     public String getLogin() {  
         return login;  
     }  
-  
     public void setLogin(String login) {  
         this.login = login;  
     }  
-    
-    public String encaminha()
+    public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String encaminha()
     {
-		System.out.println(login);
-		return "Cadastro.xhtml";
+		return "CriaPersonagem";
     	
     }
 }  
