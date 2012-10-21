@@ -29,14 +29,15 @@
 		</p:layoutUnit>
 
 		<p:layoutUnit position="center">
-				<h:form>  
-				                              
-				    <h:panelGrid columns="4" cellpadding="5">  
-				        <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>  
-				          
-				        <p:inputText id="name" value="#{pprBean.login}" />  
-				          
-				        <p:commandButton value="Login" actionListener="#{pprBean.encaminha}"/> 
+				<h:form>                       
+				    <h:panelGrid columns="2">  
+				        <h:outputLabel for="name" value="login"/>    
+				        <p:inputText id="name" value="#{login.login}" />  
+				        
+				 		<h:outputText value="Basic: " />  
+            			<p:password id="nonFeedback" value="#{login.password}" />  
+            			
+				        <p:commandButton value="Login" action="#{login.encaminha}"/> 
 				    </h:panelGrid>  
 				      
 				</h:form>  
