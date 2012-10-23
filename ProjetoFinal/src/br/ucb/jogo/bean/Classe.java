@@ -1,11 +1,17 @@
 package br.ucb.jogo.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Classe {
+import javax.faces.model.ListDataModel;
+
+public class Classe implements Serializable{
+	private static final long serialVersionUID = 1L;
+
 	private String nome;
 
-	
+	@SuppressWarnings("rawtypes")
+	ListDataModel model = null;
 	
 	public Classe(String nome) {
 		setNome(nome);
@@ -25,7 +31,8 @@ public class Classe {
 	
 	
 	public Classe getRowData(String rowKey) {  
-		List<Classe> classes = (List<Classe>) getWrappedData();  
+		@SuppressWarnings("unchecked")
+		List<Classe> classes = (List<Classe>) model.getWrappedData();  
 
 		for(Classe classe : classes) {  
 			if(classe.getNome().equals(rowKey))  

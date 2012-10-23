@@ -12,8 +12,6 @@ public class TableClasse {
 	private List<Classe> classes;
 	private Classe classeSelecionada;
 	
-	
-	
 	    public TableClasse() {
 	        classes = new ArrayList<Classe>();
 	        populaClasse(classes);
