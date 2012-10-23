@@ -15,5 +15,10 @@
 		<property name="show_sql">true</property>
 		<mapping class="br.ucb.jogo.bean.Usuario" />
 		<mapping class="br.ucb.jogo.bean.Treino" />
+		<mapping class="br.ucb.jogo.bean.Personagem" />
+		<mapping class="br.ucb.jogo.bean.Alianca" />
+		<mapping class="br.ucb.jogo.bean.Classe" />
+		<mapping class="br.ucb.jogo.bean.Desafio" />
+		<mapping class="br.ucb.jogo.bean.Item" />
 	</session-factory>
 </hibernate-configuration>
