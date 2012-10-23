@@ -10,38 +10,35 @@ import javax.faces.event.ActionEvent;
 
 import org.primefaces.event.FlowEvent;
 
-import br.ucb.jogo.HIB.UsuarioHIB;
-import br.ucb.jogo.bean.Usuario;
+import br.ucb.jogo.HIB.ClasseHIB;
+import br.ucb.jogo.bean.Classe;
 
 
 
-
-@ManagedBean(name="usuarioManagedBean")
+@ManagedBean (name = "classeManagedBean")
 @SessionScoped
-public class UsuarioManagedBean {
-	  
-    private Usuario user = new Usuario();  
-      
+public class ClasseManagedBean {
+	private Classe classe = new Classe();  
+    
     private boolean skip;  
       
-    private static Logger logger = Logger.getLogger(UsuarioManagedBean.class.getName());  
+    private static Logger logger = Logger.getLogger(ClasseManagedBean.class.getName());  
   
-    public Usuario getUser() {  
-        return user;  
+    public Classe getClasse() {  
+        return classe;  
     }  
   
-    public void setUser(Usuario user) {  
-        this.user = user;  
+    public void setClasse(Classe classe) {  
+        this.classe = classe;  
     }  
       
     public String save(ActionEvent actionEvent) {   
     	
-        FacesMessage msg = new FacesMessage("Sucesso", "Bem vindo :" + user.getNome());  
+        FacesMessage msg = new FacesMessage("Sucesso", "Classe "+classe.getNome()+" cadastrada com sucesso");  
         FacesContext.getCurrentInstance().addMessage(null, msg);  
-        getUser().setTipo(1);
-        UsuarioHIB u = new UsuarioHIB();
-        u.save(getUser());
-        return "Usuario.xhtml";
+        ClasseHIB c = new ClasseHIB();
+        c.save(getClasse());
+        return "IndexAdmin.xhtml";
     }  
       
     public boolean isSkip() {  
@@ -53,8 +50,8 @@ public class UsuarioManagedBean {
     }  
       
     public String onFlowProcess(FlowEvent event) {  
-        logger.info("Current wizard step:" + event.getOldStep());  
-        logger.info("Next step:" + event.getNewStep());  
+        logger.info("Passo atual: " + event.getOldStep());  
+        logger.info("Próximo passo: " + event.getNewStep());  
           
         if(skip) {  
             skip = false;   //reset in case user goes back  
@@ -63,5 +60,5 @@ public class UsuarioManagedBean {
         else {  
             return event.getNewStep();  
         }  
-    }  
-}  
+    }
+}

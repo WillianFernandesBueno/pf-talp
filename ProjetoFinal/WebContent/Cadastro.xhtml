@@ -7,11 +7,29 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="Index.xhtml">
-	
-	
-	<ui:define name="conteudo">	
-				<h:form>  
+<h:head>
+	<title>Hello JSF!</title>
+
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north" size="250" resizable="true"
+			closable="true" collapsible="true">
+			<h:graphicImage url="imagens/topo.jpg" height="99%"
+				width="99.70%" />
+		</p:layoutUnit>
+
+
+		<p:layoutUnit position="west" size="320" header="OCULTAR"
+			resizable="true" closable="true" collapsible="true">
+			<h:form>
+				<ui:include src="Menu.xhtml" />
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<h:form>  
 			  
 			    <p:growl id="growl" sticky="true" showDetail="true"/>  
 			  
@@ -95,7 +113,7 @@
 			           
 			                </h:panelGrid>  
 			                  
-			                <p:commandButton value="Submit" update="growl" actionListener="#{usuarioManagedBean.save}"/>  
+			                <p:commandButton value="Enviar" update="growl" actionListener="#{usuarioManagedBean.save}"/>  
 			              
 			            </p:panel>  
 			        </p:tab>  
@@ -103,8 +121,8 @@
 			    </p:wizard>  
 			      
 			</h:form> 
-	</ui:define>
+		</p:layoutUnit>
 
-	
-</ui:composition>
+	</p:layout>
+</h:body>
 </html>
