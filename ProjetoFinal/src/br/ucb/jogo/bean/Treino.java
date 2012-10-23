@@ -8,7 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="treino")
@@ -38,7 +41,8 @@ public class Treino {
 	public void setPontos(Integer pontos) {
 		this.pontos = pontos;
 	}
-	@Column
+	
+	@Temporal(TemporalType.DATE)
 	public Date getDataInicial() {
 		return dataInicial;
 	}
@@ -46,7 +50,8 @@ public class Treino {
 	public void setDataInicial(Date dataInicial) {
 		this.dataInicial = dataInicial;
 	}
-	@Column
+	
+	@Temporal(TemporalType.DATE)
 	public Date getDataSaida() {
 		return dataSaida;
 	}
@@ -55,8 +60,7 @@ public class Treino {
 		this.dataSaida = dataSaida;
 	}
 	
-	
-	@ManyToOne
+	@OneToMany
 	@JoinColumn(name="id_Personagens")
 	public Personagem getPersonagem() {
 		return personagem;
@@ -65,7 +69,8 @@ public class Treino {
 	public void setPersonagem(Personagem personagem) {
 		this.personagem = personagem;
 	}
-	@Column
+	
+	@Temporal(TemporalType.DATE)
 	public Date getTempoNecessario() {
 		return tempoNecessario;
 	}
