@@ -7,113 +7,47 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<title>Hello JSF!</title>
-
-</h:head>
-<h:body>
-	<p:layout fullPage="true">
-
-		<p:layoutUnit position="north" size="250" resizable="true"
-			closable="true" collapsible="true">
-			<h:graphicImage url="imagens/topo.jpg" height="99%"
-				width="99.70%" />
-		</p:layoutUnit>
 
 
-		<p:layoutUnit position="west" size="320" header="OCULTAR"
-			resizable="true" closable="true" collapsible="true">
-			<h:form>
-				<ui:include src="Menu.xhtml" />
-			</h:form>
-		</p:layoutUnit>
-
-		<p:layoutUnit position="center">
-			<h:form>  
-			  
+<ui:composition template="IndexAdmin.xhtml">
+	<ui:define name="conteudo">
+		<h:form>  
 			    <p:growl id="growl" sticky="true" showDetail="true"/>  
-			  
-			    <p:wizard widgetVar="wiz" flowListener="#{usuarioManagedBean.onFlowProcess}">  
+			    <p:wizard widgetVar="wiz" flowListener="#{itensManagedBean.onFlowProcess}">  
 			      
-			        <p:tab id="pessoal" title="pessoal">  
-			            <p:panel header="Dados Pessoais">  
+			        <p:tab id="itens" title="Itens">  
+			            <p:panel header="Cadastro Itens">  
 			              
 			                <h:messages errorClass="error"/>  
 			 
 			                <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">  
-			                    <h:outputText value="Nome" />  
-			                    	<p:inputText required="true" label="Nome" value="#{usuarioManagedBean.user.nome}" /> 
+			                    <h:outputText value="Nome: " />  
+			                    <p:inputText required="true" label="nome" value="#{itensManagedBean.itens.nome}" /> 
 			                     
-			                    <h:outputText value="Email" />  
-			                    	<p:inputText required="true" label="Email" value="#{usuarioManagedBean.user.email}" />  
-			                    	
-			                    	
-			                    <h:outputText value="Login " />  
-			                    <p:inputText required="true" label="Login" value="#{usuarioManagedBean.user.login}" /> 
-			                    	
-			                    <h:outputText value="Senha " />  
-			                    <p:inputText required="true" label="Senha" value="#{usuarioManagedBean.user.senha}" />  
-			                    <h:outputText value="pular para ultima" />  
-			                    <h:selectBooleanCheckbox value="#{usuarioManagedBean.skip}" />  
-			                </h:panelGrid>  
-			            </p:panel>  
-			        </p:tab>  
-			              
-			        <p:tab id="endereco" title="endereço">  
-			            <p:panel header="endereço">  
-			              
-			                <h:messages errorClass="error"/>  
-			 
-			                <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid"> 
-			                    <h:outputText value="Cidade " />  
-			                    <p:inputText required="false" label="cidade" value="#{usuarioManagedBean.user.cidade}" />  
-			                      
-			                    <h:outputText value="Estado " />  
-			                    <p:inputText required="false" label="estadi" value="#{usuarioManagedBean.user.estado}" />  
+			                    <h:outputText value="Preço: " />  
+			                    <p:inputText required="true" label="preco" value="#{itensManagedBean.itens.preco}" />
 			                    
-			                    <h:outputText value="Bairro " />  
-			                    <p:inputText required="false" label="bairro" value="#{usuarioManagedBean.user.bairro}" />  
-			                    
-			                    <h:outputText value="Rua " />  
-			                    <p:inputText required="false" label="rua" value="#{usuarioManagedBean.user.rua}" />  
-			                      
-			                    <h:outputText value="pular para ultima" />  
-			                    <h:selectBooleanCheckbox value="#{usuarioManagedBean.skip}" />  
+			                    <h:outputText value="Level Necessario: " />  
+			                    <p:inputText required="true" label="levelNecessario: " value="#{itensManagedBean.itens.levelNecessario}" />    
 			                </h:panelGrid>  
 			            </p:panel>  
 			        </p:tab>  
 			   
-			        <p:tab id="confirm" title="Confirmation">  
-			            <p:panel header="Confirmation">  
+			        <p:tab id="confirm" title="Confirmação">  
+			            <p:panel header="Confirmação">  
 			              
-			                <h:panelGrid id="confirmation" columns="6">  
-			                    <h:outputText value="nome " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.nome}" />  
-			           
-			                    <h:outputText value="email " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.email}" />  
-			           
-			                    <h:outputText value="login " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.login}" />  
-			           
-			                    <h:outputText value="senha " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.senha}" />  
-			           
-			                    <h:outputText value="cidade " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.cidade}" />  
-			           
-			                    <h:outputText value="estado " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.estado}" />
+			                <h:panelGrid id="confirmation" columns="2">  
+			                    <h:outputText value="Nome: " />  
+			                    <h:outputText styleClass="outputLabel" value="#{itensManagedBean.itens.nome}" />
 			                    
-			                    <h:outputText value="bairro " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.bairro}" />
+			                    <h:outputText value="Preço: " />  
+			                    <h:outputText styleClass="outputLabel" value="#{itensManagedBean.itens.preco}" />
 			                    
-			                    <h:outputText value="rua " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.rua}" />  
-			           
-			                </h:panelGrid>  
+			                    <h:outputText value="Level Necessario: " />
+			                    <h:outputText styleClass="outputLabel" value="#{itensManagedBean.itens.levelNecessario}" />
+			                </h:panelGrid>
 			                  
-			                <p:commandButton value="Submit" update="growl" actionListener="#{usuarioManagedBean.save}"/>  
+			                <p:commandButton value="Enviar" update="growl" actionListener="#{itensManagedBean.save}"/>  
 			              
 			            </p:panel>  
 			        </p:tab>  
@@ -121,8 +55,7 @@
 			    </p:wizard>  
 			      
 			</h:form> 
-		</p:layoutUnit>
+	</ui:define>
+</ui:composition>
 
-	</p:layout>
-</h:body>
 </html>

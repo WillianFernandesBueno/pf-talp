@@ -9,6 +9,7 @@
 
 <h:head>
 	<title>War of the Worlds</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
 </h:head>
 <h:body>
 
@@ -16,40 +17,44 @@
 
 		<p:layoutUnit position="north" size="250" resizable="true"
 			closable="true" collapsible="true">
-			<h:graphicImage url="../imagens/topo.jpg" height="99%" width="99.70%" />
+			<div id="menu">
+				<ui:insert name="topo">
+					<h:graphicImage url="../imagens/topo.jpg" height="99%" width="99%" />
+				</ui:insert>
+			</div>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="west" size="320" header="OCULTAR" resizable="true" closable="true" collapsible="true">
-
-				<h:form>
+		<p:layoutUnit position="west" size="320" header="OCULTAR"
+			resizable="true" closable="true" collapsible="true">
+			<div id="menu">
+				<ui:insert name="menu">
+					<h:form>
 					<table align="left">
 						<tr>
 							<td>
+								<center><font size="50px" style="font-style: inherit; "><h:commandLink value="Início" action="IndexAdmin.xhtml" /></font></center>
 								<p:accordionPanel style="width:300px;">
 									<p:tab title="Classes">
 										<h:panelGrid columns="1">
 											<h:commandLink value="Cadastrar Classe" action="CadastroClasse.xhtml" />
-											<h:commandLink value="Editar Classes" />
+											<h:commandLink value="Editar Classes" action="EditarClasse.xhtml"/>
 										</h:panelGrid>
 									</p:tab>
 									<p:tab title="Itens">
-										<h:panelGrid columns="2">
-		
-										</h:panelGrid>
-									</p:tab>
-									<p:tab title="Jogador">
-										<h:panelGrid columns="2">
-		
+										<h:panelGrid columns="1">
+											<h:commandLink value="Cadastrar Itens" action="CadastroItens.xhtml" />
+											<h:commandLink value="Editar Itens"  action="EditarItens.xhtml"/>
 										</h:panelGrid>
 									</p:tab>
 									<p:tab title="Treino">
-										<h:panelGrid columns="2">
-		
+										<h:panelGrid columns="1">
+											<h:commandLink value="Cadastrar Treino" action="CadastroTreino.xhtml" />
+											<h:commandLink value="Editar Treino" action="EditarTreino.xhtml" />
 										</h:panelGrid>
 									</p:tab>
 									<p:tab title="Aliança">
-										<h:panelGrid columns="2">
-		
+										<h:panelGrid columns="1">
+											<h:commandLink value="Editar Aliança" action="EditarAlianca.xhtml" />
 										</h:panelGrid>
 									</p:tab>
 								</p:accordionPanel>
@@ -57,11 +62,26 @@
 						</tr>
 					</table>
 				</h:form>
+				</ui:insert>
+			</div>
 		</p:layoutUnit>
 
 		<p:layoutUnit position="center"
-			header="Seja bem vindo #{usuario.login}" style="background:#cbcbcb;">
-
+			header="Seja bem vindo ao Jogo War of the Worlds"
+			style="background:#cbcbcb;">
+			<div id="conteudo">
+				<ui:insert name="conteudo">
+					<table align="center">
+						<tr>
+							<td><p:galleria value="#{galleriaBean.images}" var="image"
+									rendered="true" panelHeight="550" panelWidth="1570"
+									transitionInterval="10000" style="background:#cbcbcb;">
+									<p:graphicImage value="../images/#{image}" height="50" />
+								</p:galleria></td>
+						</tr>
+					</table>
+				</ui:insert>
+			</div>
 		</p:layoutUnit>
 
 	</p:layout>

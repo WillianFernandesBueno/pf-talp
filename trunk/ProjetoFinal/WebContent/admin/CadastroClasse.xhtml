@@ -7,123 +7,32 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<title>Cadastro</title>
 
-</h:head>
-<h:body>
-	<p:layout fullPage="true">
-
-		<p:layoutUnit position="north" size="250" resizable="true"
-			closable="true" collapsible="true">
-			<h:graphicImage url="../imagens/topo.jpg" height="99%"
-				width="99.70%" />
-		</p:layoutUnit>
-
-
-		<p:layoutUnit position="west" size="320" header="OCULTAR"
-			resizable="true" closable="true" collapsible="true">
-			<h:form>
-					<table align="left">
-						<tr>
-							<td>
-								<p:accordionPanel style="width:300px;">
-									<p:tab title="Classes">
-										<h:panelGrid columns="1">
-											<h:commandLink value="Cadastrar Classe" action="CadastroClasse.xhtml" />
-											<h:commandLink value="Editar Classes" />
-										</h:panelGrid>
-									</p:tab>
-									<p:tab title="Itens">
-										<h:panelGrid columns="2">
-		
-										</h:panelGrid>
-									</p:tab>
-									<p:tab title="Jogador">
-										<h:panelGrid columns="2">
-		
-										</h:panelGrid>
-									</p:tab>
-									<p:tab title="Treino">
-										<h:panelGrid columns="2">
-		
-										</h:panelGrid>
-									</p:tab>
-									<p:tab title="Aliança">
-										<h:panelGrid columns="2">
-		
-										</h:panelGrid>
-									</p:tab>
-								</p:accordionPanel>
-							</td>
-						</tr>
-					</table>
-				</h:form>
-		</p:layoutUnit>
-
-		<p:layoutUnit position="center">
-			<h:form>  
-			  
+<ui:composition template="IndexAdmin.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
 			    <p:growl id="growl" sticky="true" showDetail="true"/>  
-			  
-			    <p:wizard widgetVar="wiz" flowListener="#{usuarioManagedBean.onFlowProcess}">  
-			      
-			        <p:tab id="pessoal" title="pessoal">  
-			            <p:panel header="Dados Pessoais">  
-			              
-			                <h:messages errorClass="error"/>  
-			 
-			                <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">  
-			                    <h:outputText value="Nome" />  
-			                    	<p:inputText required="true" label="Nome" value="#{usuarioManagedBean.user.nome}" /> 
-			                     
-			                    <h:outputText value="Email" />  
-			                    	<p:inputText required="true" label="Email" value="#{usuarioManagedBean.user.email}" />  
-			                    	
-			                    	
-			                    <h:outputText value="Login " />  
-			                    <p:inputText required="true" label="Login" value="#{usuarioManagedBean.user.login}" /> 
-			                    	
-			                    <h:outputText value="Senha " />  
-			                    <p:inputText required="true" label="Senha" value="#{usuarioManagedBean.user.senha}" />  
-			                    <h:outputText value="pular para ultima" />  
-			                    <h:selectBooleanCheckbox value="#{usuarioManagedBean.skip}" />  
-			                </h:panelGrid>  
-			            </p:panel>  
-			        </p:tab>  
-			              
-			   
-			        <p:tab id="confirm" title="Confirmation">  
-			            <p:panel header="Confirmation">  
-			              
-			                <h:panelGrid id="confirmation" columns="6">  
-			                    <h:outputText value="nome " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.nome}" />  
-			           
-			                    <h:outputText value="email " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.email}" />  
-			           
-			                    <h:outputText value="login " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.login}" />  
-			           
-			                    <h:outputText value="senha " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.senha}" />  
-			           
-			                    <h:outputText value="cidade " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.cidade}" />  
-			           
-			                    <h:outputText value="estado " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.estado}" />
-			                    
-			                    <h:outputText value="bairro " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.bairro}" />
-			                    
-			                    <h:outputText value="rua " />  
-			                    <h:outputText styleClass="outputLabel" value="#{usuarioManagedBean.user.rua}" />  
-			           
+			    <p:wizard widgetVar="wiz" flowListener="#{classeManagedBean.onFlowProcess}">  
+			        <p:tab id="classe" title="Classe">
+			            <p:panel header="Dados da Classe">
+			                <h:messages errorClass="error"/> 
+			                <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">
+
+			                    <h:outputText value="Nome: " />  
+								<p:inputText required="true" label="Nome" value="#{classeManagedBean.classe.nome}" />   
+
+			                </h:panelGrid>
+			            </p:panel>
+			        </p:tab>
+			        <p:tab id="confirm" title="Confirmação">  
+			            <p:panel header="Confirmação">  
+
+			                <h:panelGrid id="confirmation" columns="2">  
+			                    <h:outputText value="Nome: " />  
+			                    <h:outputText styleClass="outputLabel" value="#{classeManagedBean.classe.nome}" />  			           
 			                </h:panelGrid>  
 			                  
-			                <p:commandButton value="Submit" update="growl" actionListener="#{usuarioManagedBean.save}"/>  
+			                <p:commandButton value="Enviar" update="growl" actionListener="#{classeManagedBean.save}"/>  
 			              
 			            </p:panel>  
 			        </p:tab>  
@@ -131,8 +40,6 @@
 			    </p:wizard>  
 			      
 			</h:form> 
-		</p:layoutUnit>
-
-	</p:layout>
-</h:body>
+	</ui:define>
+</ui:composition>
 </html>
