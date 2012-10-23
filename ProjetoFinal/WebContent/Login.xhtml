@@ -7,41 +7,24 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<title>Hello JSF!</title>
-
-</h:head>
-<h:body>
-	<p:layout fullPage="true">
-
-		<p:layoutUnit position="north" size="250" resizable="true"
-			closable="true" collapsible="true">
-			<h:graphicImage url="imagens/topo.jpg" height="99%"
-				width="99.70%" />
-		</p:layoutUnit>
-
-
-		<p:layoutUnit position="west" size="320" header="OCULTAR"
-			resizable="true" closable="true" collapsible="true">
-			<h:form>
-				<ui:include src="Menu.xhtml" />
-			</h:form>
-		</p:layoutUnit>
-
-		<p:layoutUnit position="center">
-				<h:form>  
-				                              
-				    <h:panelGrid columns="4" cellpadding="5">  
-				        <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>  
-				          
-				        <p:inputText id="name" value="#{pprBean.login}" />  
-				          
-				        <p:commandButton value="Login" actionListener="#{pprBean.encaminha}"/> 
+<ui:composition template="Index.xhtml">
+	
+	
+	<ui:define name="conteudo">	
+		<h:form>                       
+				    <h:panelGrid columns="2">  
+				        <h:outputLabel for="name" value="login"/>    
+				        <p:inputText id="name" value="#{login.login}" />  
+				        
+				 		<h:outputText value="Basic: " />  
+            			<p:password id="nonFeedback" value="#{login.password}" />  
+            			
+				        <p:commandButton value="Login" action="#{login.encaminha}"/> 
 				    </h:panelGrid>  
 				      
 				</h:form>  
-		</p:layoutUnit>
+	</ui:define>
 
-	</p:layout>
-</h:body>
+	
+</ui:composition>
 </html>

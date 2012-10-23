@@ -7,79 +7,51 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<title>Hello JSF!</title>
-</h:head>
-<h:body>
-
-	<p:layout fullPage="true">
-
-		<p:layoutUnit position="north" size="250" resizable="true"
-			closable="true" collapsible="true">
-			<h:graphicImage url="imagens/topo.jpg" height="99%"
-				width="99.70%" />
-		</p:layoutUnit>
+<ui:composition template="Index.xhtml">
 
 
-		<p:layoutUnit position="west" size="320" header="OCULTAR"
-			resizable="true" closable="true" collapsible="true">
-			<h:form>
+	<ui:define name="conteudo">
+		<center>
+			<h:panelGrid columns="2">
+				<p:galleria id="contentGalleria"
+					value="#{galleriaBeanPersonagem.players}" var="player"
+					frameWidth="64" frameHeight="87" panelWidth="710" panelHeight="500"
+					transitionInterval="0" styleClass="ui-widget-content ui-corner-all">
+					<p:graphicImage id="playerImage"
+						value="/images/personagem/#{player.classe}" />
+					<p:galleriaContent>
+						<h:panelGrid columns="2">
+							<p:panel>
+								<f:facet name="header">
+									<p:graphicImage value="/images/personagem/#{player.classe}" />
+								</f:facet>
+							</p:panel>
+							<h:panelGrid columns="2">
+								<h:outputText value="Classe: " />
+								<h:outputText id="classe" value="#{player.classe}" />
 
-				<ui:include src="Menu.xhtml" />
-			</h:form>
-		</p:layoutUnit>
+								<h:outputText value="detalhes " />
+								<h:outputText id="detalhes" value="#{player.detalhes}" />
 
-		<p:layoutUnit position="center"	header="Seja bem vindo ao Jogo War of the Worlds" style="background:#cbcbcb;">
-			<table align="center">
-				<tr>
-					<td>
-							<p:galleria id="contentGalleria" value="#{galleriaBeanPersonagem.players}"  
-							            var="player" frameWidth="64" frameHeight="87"  
-							            panelWidth="600" panelHeight="400" transitionInterval="0"  
-							            styleClass="ui-widget-content ui-corner-all">  
-								<p:graphicImage id="playerImage" value="/images/personagem/#{player.classe}"/>  
-							    <p:galleriaContent>  
-							    <table>
-							    	<tr>
-							    		<td>
-								    		<p:panel>
-									    		 <f:facet name="header">  
-									                <p:graphicImage value="/images/personagem/#{player.classe}"/>  
-									            </f:facet>	
-								            </p:panel>  
-							    		</td>
-							    		<td>
-							    			<h:panelGrid columns="2">
-							    			<h:outputText value="Classe: " />  
-								            <h:outputText id="classe" value="#{player.classe}" />  
-								  
-								            <h:outputText value="detalhes " />  
-								            <h:outputText id="detalhes" value="#{player.detalhes}"/>  
-								  
-								            <h:outputText value="forca " />  
-								            <h:outputText id="forca" value="#{player.forca}"/>  
-								            <h:outputText value="mana " />  
-								            <h:outputText id="mana" value="#{player.mana}"/>  
-								            <h:outputText value="hp " />  
-								            <h:outputText id="hp" value="#{player.hp}"/>  
-								            <h:outputText value="agilidade " />  
-								            <h:outputText id="agilidade" value="#{player.agilidade}"/>  
-								            <h:outputText value="defesa " />  
-								            <h:outputText id="defesa" value="#{player.defesa}"/> 
-								            </h:panelGrid> 
-							    		</td>
-							    	</tr>
-							    
-							    </table>
-							           
-								            
-							    </p:galleriaContent>  
-							</p:galleria> 
-					</td>
-				</tr>
-			</table>
-		</p:layoutUnit>
+								<h:outputText value="forca " />
+								<h:outputText id="forca" value="#{player.forca}" />
+								<h:outputText value="mana " />
+								<h:outputText id="mana" value="#{player.mana}" />
+								<h:outputText value="hp " />
+								<h:outputText id="hp" value="#{player.hp}" />
+								<h:outputText value="agilidade " />
+								<h:outputText id="agilidade" value="#{player.agilidade}" />
+								<h:outputText value="defesa " />
+								<h:outputText id="defesa" value="#{player.defesa}" />
+								<p:commandButton value="Criar" action="#{galleriaBeanPersonagem.encaminha}" />
+							</h:panelGrid>
+						</h:panelGrid>
+					</p:galleriaContent>
+				</p:galleria>
+			</h:panelGrid>
+		</center>
+	</ui:define>
 
-	</p:layout>
-</h:body>
+
+</ui:composition>
 </html>

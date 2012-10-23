@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>War of the Worlds</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</h:head>
+<h:body>
+
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north" size="250" resizable="true"
+			closable="true" collapsible="true">
+			<div id="topo">
+				<ui:insert name="topo">
+					<h:graphicImage url="../imagens/topo.jpg" height="99%"
+						width="99.70%" />
+				</ui:insert>
+			</div>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="west" size="320" header="OCULTAR"
+			resizable="true" closable="true" collapsible="true">
+			<div id="menu">
+				<ui:insert name="menu">
+					<h:form>
+						<p:growl id="messages" />
+						<p:slideMenu styleClass="teste">
+
+
+							<p:menuitem value="Perfil" url="IndexUsuario.xhtml" update="messages" />
+							<p:menuitem value="Aliança" url="usuario/Alianca.xhtml" update="messages" />
+							<p:menuitem value="Trabalho" url="Trabalho.xhtml" update="messages" />
+							<p:menuitem value="Ferreiro" url="Ferreiro.xhtml" update="messages" />
+							<p:menuitem value="Armeiro" url="Armeiro.xhtml" update="messages" />
+							<p:menuitem value="Acessorios" url="Acessorios.xhtml" update="messages" />
+							<p:menuitem value="Mercado" url="Mercado.xhtml" update="messages" />
+							<p:menuitem value="Duelo" url="Duelo.xhtml" update="messages" />
+							<p:menuitem value="Sair" url="../Index.xhtml" update="messages" />
+				
+
+						</p:slideMenu>
+					</h:form>
+				</ui:insert>
+			</div>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center"
+			header="Seja bem vindo ao Jogo War of the Worlds"
+			style="background:#cbcbcb;">
+			<div id="conteudo">
+				<ui:insert name="conteudo">
+					<h:panelGrid columns="2">
+						<p:galleria id="contentGalleria"
+							value="#{galleriaBeanPersonagem.players}" var="player"
+							frameWidth="64" frameHeight="87" panelWidth="710"
+							panelHeight="500" transitionInterval="0"
+							styleClass="ui-widget-content ui-corner-all">
+							<p:graphicImage id="playerImage"
+								value="/images/personagem/#{player.classe}" />
+							<p:galleriaContent>
+								<h:panelGrid columns="2">
+									<p:panel>
+										<f:facet name="header">
+											<p:graphicImage value="/images/personagem/#{player.classe}" />
+										</f:facet>
+									</p:panel>
+									<h:panelGrid columns="2">
+										<h:outputText value="Classe: " />
+										<h:outputText id="classe" value="#{player.classe}" />
+
+										<h:outputText value="detalhes " />
+										<h:outputText id="detalhes" value="#{player.detalhes}" />
+
+										<h:outputText value="forca " />
+										<h:outputText id="forca" value="#{player.forca}" />
+										<h:outputText value="mana " />
+										<h:outputText id="mana" value="#{player.mana}" />
+										<h:outputText value="hp " />
+										<h:outputText id="hp" value="#{player.hp}" />
+										<h:outputText value="agilidade " />
+										<h:outputText id="agilidade" value="#{player.agilidade}" />
+										<h:outputText value="defesa " />
+										<h:outputText id="defesa" value="#{player.defesa}" />
+										<p:commandButton value="Criar"
+											action="#{galleriaBeanPersonagem.encaminha}" />
+									</h:panelGrid>
+								</h:panelGrid>
+							</p:galleriaContent>
+						</p:galleria>
+					</h:panelGrid>
+				</ui:insert>
+			</div>
+		</p:layoutUnit>
+
+	</p:layout>
+</h:body>
+</html>

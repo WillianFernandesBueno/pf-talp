@@ -17,12 +17,19 @@ public class GalleriaBeanPersonagem {
     @PostConstruct  
     public void init() {  
         players = new ArrayList<Char>();  
-  
         players.add(new Char("warrior.jpg","construcao",500,100,1000,300,600));  
         players.add(new Char("scout.jpg","construcao",500,100,1000,300,600));    
+       
     }  
   
     public List<Char> getPlayers() {  
         return players;  
     }  
+    
+	public String encaminha()
+    {
+		System.out.println("teste2");
+		return "usuario/IndexUsuario.xhtml";
+    	
+    }
 }  
