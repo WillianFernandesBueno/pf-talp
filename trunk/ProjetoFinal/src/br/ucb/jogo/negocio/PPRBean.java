@@ -17,8 +17,7 @@ public class PPRBean implements Serializable {
         this.login = login;  
     }  
     
-    public String encaminha()
-    {
+    public String encaminha(){
 		System.out.println(login);
 		return "Cadastro.xhtml";
     	
