@@ -1,14 +1,15 @@
 package br.ucb.jogo.bean;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,7 +22,7 @@ public class Treino {
 	private Integer pontos;
 	private Date dataInicial;
 	private Date dataSaida;
-	private Personagem personagem;
+	private List<Personagem> personagens;
 	private Date tempoNecessario;
 
 	@Id
@@ -60,14 +61,14 @@ public class Treino {
 		this.dataSaida = dataSaida;
 	}
 	
-	@OneToMany
-	@JoinColumn(name="id_Personagens")
-	public Personagem getPersonagem() {
-		return personagem;
+	@ManyToMany
+	@JoinTable(name="Personagens_has_treino", joinColumns = {@JoinColumn(name="idTreino")}, inverseJoinColumns = {@JoinColumn (name="idPersonagens")})
+	public List<Personagem> getPersonagem() {
+		return personagens;
 	}
 
-	public void setPersonagem(Personagem personagem) {
-		this.personagem = personagem;
+	public void setPersonagem(List<Personagem> personagens) {
+		this.personagens = personagens;
 	}
 	
 	@Temporal(TemporalType.DATE)

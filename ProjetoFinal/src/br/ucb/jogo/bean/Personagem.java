@@ -1,5 +1,17 @@
 package br.ucb.jogo.bean;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="Personagens")
 public class Personagem {
 	
 	private Integer idPersonagens;
@@ -10,13 +22,20 @@ public class Personagem {
 	private Integer agilidade;
 	private Integer defesa;
 	private Double cash;
-	
 	private Usuario usuario;
 	//private Classe classe;
 	private Item item;
 	private Alianca alianca;
+	private List<Treino> trienos;
+	private List<Desafio> desafios;
 	
-	
+	@OneToMany(targetEntity = Desafio.class)
+	public List<Desafio> getDesafios() {
+		return desafios;
+	}
+	public void setDesafios(List<Desafio> desafios) {
+		this.desafios = desafios;
+	}
 	public Integer getIdPersonagens() {
 		return idPersonagens;
 	}
@@ -29,6 +48,9 @@ public class Personagem {
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
+	public void setItem(Item item) {
+		this.item = item;
+	}
 	public Integer getLevel() {
 		return level;
 	}
@@ -37,6 +59,15 @@ public class Personagem {
 	}
 	public Integer getMana() {
 		return mana;
+	}
+	
+	@JoinTable(name="Personagens_has_treino", joinColumns = {@JoinColumn(name="idPersonagens")}, inverseJoinColumns = {@JoinColumn (name="idTreino")})
+	public List<Treino> getTrienos() {
+		return trienos;
+	}
+	
+	public void setTrienos(List<Treino> trienos) {
+		this.trienos = trienos;
 	}
 	public void setMana(Integer mana) {
 		this.mana = mana;
@@ -77,6 +108,9 @@ public class Personagem {
 	public void setLoja(Item item) {
 		this.item = item;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name="Alianca_idAlianca")
 	public Alianca getAlianca() {
 		return alianca;
 	}
