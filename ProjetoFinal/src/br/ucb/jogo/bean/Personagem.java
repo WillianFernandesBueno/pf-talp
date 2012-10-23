@@ -13,8 +13,10 @@ public class Personagem {
 	
 	private Usuario usuario;
 	//private Classe classe;
-	private Loja loja;
+	private Item item;
 	private Alianca alianca;
+	
+	
 	public Integer getIdPersonagens() {
 		return idPersonagens;
 	}
@@ -69,11 +71,11 @@ public class Personagem {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	public Loja getLoja() {
-		return loja;
+	public Item getItem() {
+		return item;
 	}
-	public void setLoja(Loja loja) {
-		this.loja = loja;
+	public void setLoja(Item item) {
+		this.item = item;
 	}
 	public Alianca getAlianca() {
 		return alianca;
