@@ -55,7 +55,7 @@ public class Desafio {
 	}
 	
 	@ManyToOne
-	@JoinColumn(name="id_Personagens")
+	@JoinColumn(name="Personagens_idPersonagens")
 	public Personagem getPersonagem() {
 		return personagem;
 	}
