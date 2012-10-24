@@ -18,7 +18,7 @@
 	   <p:layoutUnit position="north" size="250" resizable="true" closable="true" collapsible="true">
 			<div id="topo">
 		  		<ui:insert name="topo">
-					<h:graphicImage url="imagens/topo.jpg" height="99%" width="99.70%" />
+					<h:graphicImage url="/imagens/topo.jpg" height="99%" width="99.70%" />
 				</ui:insert>
 			</div>	
 		</p:layoutUnit>
@@ -31,7 +31,7 @@
 						<p:slideMenu styleClass="teste">
 							<p:menuitem value="Home" url="Index.xhtml"	update="messages"/>
 							<p:submenu label="Usuario">
-								<p:menuitem value="Cadastro" url="Cadastro.xhtml"	update="messages" icon="ui-icon-disk" />
+								<p:menuitem value="Cadastro" url="/usuario/CadastroUsuario.jsf"	update="messages" icon="ui-icon-disk" />
 								<p:menuitem value="Login"    url="Login.xhtml" 	update="messages" icon="ui-icon-arrowrefresh-1-w" />
 							</p:submenu>
 				
