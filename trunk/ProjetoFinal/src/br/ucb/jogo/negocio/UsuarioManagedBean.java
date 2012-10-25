@@ -54,9 +54,6 @@ public class UsuarioManagedBean {
         FacesMessage msg = new FacesMessage("Successful", "Welcome :" + user.getNome());  
         FacesContext.getCurrentInstance().addMessage(null, msg);  
         getUser().setTipo(1);
-       
-        
-        System.out.println("Oi");
         getHib().save(getUser());
          
         return "/Index?faces-redirect=true";
