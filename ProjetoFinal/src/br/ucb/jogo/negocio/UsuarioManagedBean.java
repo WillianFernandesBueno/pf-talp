@@ -1,5 +1,6 @@
 package br.ucb.jogo.negocio;
 
+import java.io.IOException;
 import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
@@ -13,35 +14,53 @@ import org.primefaces.event.FlowEvent;
 import br.ucb.jogo.HIB.UsuarioHIB;
 import br.ucb.jogo.bean.Usuario;
 
-
-
-
 @ManagedBean(name="usuarioManagedBean")
 @SessionScoped
-public class UsuarioManagedBean {
+public class UsuarioManagedBean {  
 	  
-    private Usuario user = new Usuario();  
-      
+    private Usuario user;   
+    private UsuarioHIB hib; 
+    
+    
     private boolean skip;  
       
     private static Logger logger = Logger.getLogger(UsuarioManagedBean.class.getName());  
   
-    public Usuario getUser() {  
+    
+    public UsuarioManagedBean() {
+    	setUser(new Usuario());
+    	setHib( new UsuarioHIB());
+	}
+
+	public Usuario getUser() {  
         return user;  
     }  
   
     public void setUser(Usuario user) {  
         this.user = user;  
     }  
+    
       
-    public String save(ActionEvent actionEvent) {   
+    public UsuarioHIB getHib() {
+		return hib;
+	}
+
+	public void setHib(UsuarioHIB hib) {
+		this.hib = hib;
+	}
+
+	public String save() throws IOException {   
     	
-        FacesMessage msg = new FacesMessage("Sucesso", "Bem vindo :" + user.getNome());  
+        FacesMessage msg = new FacesMessage("Successful", "Welcome :" + user.getNome());  
         FacesContext.getCurrentInstance().addMessage(null, msg);  
         getUser().setTipo(1);
-        UsuarioHIB u = new UsuarioHIB();
-        u.save(getUser());
-        return "Usuario.xhtml";
+       
+        
+        System.out.println("Oi");
+        getHib().save(getUser());
+         
+        return "/Index?faces-redirect=true";
+        
     }  
       
     public boolean isSkip() {  
