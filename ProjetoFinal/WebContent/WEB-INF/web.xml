@@ -12,7 +12,6 @@
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
-		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>
@@ -36,8 +35,9 @@
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<form-login-config>
-			<form-login-page>/Login.jsf</form-login-page>
-			<form-error-page>/erro.jsf</form-error-page>
+		<form-login-page>/Login.jsf</form-login-page>
+		<form-error-page>/erro.jsf</form-error-page>
+		
 		</form-login-config>
 	</login-config>
 	
@@ -46,11 +46,13 @@
 		<location>/acessoNegado.jsf</location>
 	</error-page>
 	
-	<!--  Mapeamento Jaas-->
+	<error-page>
+		<error-code>401</error-code>
+		<location>/Index.jsf</location>
+	</error-page>
 	
-	<security-role>
-		<role-name>usuarios</role-name>
-	</security-role>
+	
+	<!--  Mapeamento Jaas-->
 	
 	<security-constraint>
 		<web-resource-collection>
