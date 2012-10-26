@@ -4,14 +4,14 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
-import br.ucb.jogo.HIB.PersonagemHIB;
-import br.ucb.jogo.bean.Personagem;
+import br.ucb.jogo.HIB.UsuarioHIB;
+import br.ucb.jogo.bean.Usuario;
 
-public class PersonConverter implements Converter{
+public class UsuarioConverter implements Converter{
 
 	@Override
 	public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
-		PersonagemHIB u = new PersonagemHIB();
+		UsuarioHIB u = new UsuarioHIB();
 		if (value != null){
 			return u.findTById(Integer.parseInt(value));
 		}
@@ -20,9 +20,9 @@ public class PersonConverter implements Converter{
 
 	@Override
 	public String getAsString(FacesContext fc, UIComponent uic, Object obj) {
-		if(obj != null && obj instanceof Personagem){
-			Personagem person = (Personagem) obj;
-			return person.getIdPersonagens().toString();
+		if(obj != null && obj instanceof Usuario){
+			Usuario user = (Usuario) obj;
+			return user.getEmail().toString();
 		}
 		return null;
 	}

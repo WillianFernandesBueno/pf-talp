@@ -31,8 +31,9 @@
 						<p:slideMenu styleClass="teste">
 							<p:menuitem value="Home" url="Index.xhtml"	update="messages"/>
 							<p:submenu label="Usuario">
-								<p:menuitem value="Cadastro" url="/usuario/CadastroUsuario.jsf"	update="messages" icon="ui-icon-disk" />
-								<p:menuitem value="Login"    url="Login.xhtml" 	update="messages" icon="ui-icon-arrowrefresh-1-w" />
+								<p:menuitem value="Cadastro" url="CadastroUsuario.jsf"	update="messages" icon="ui-icon-disk" />
+								<p:menuitem value="Login"    action="/usuario/IndexUsuario.jsf?faces-redirect=true" update="messages" icon="ui-icon-arrowrefresh-1-w" />
+								
 							</p:submenu>
 				
 				
@@ -72,7 +73,6 @@
 				</ui:insert>
 			</div>
 		</p:layoutUnit>
-
 	</p:layout>
 </h:body>
 </html>
