@@ -3,7 +3,12 @@ package br.ucb.jogo.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.model.ListDataModel;
+
+@ManagedBean (name = "classe")
+@SessionScoped
 
 public class Classe implements Serializable{
 	private static final long serialVersionUID = 1L;
