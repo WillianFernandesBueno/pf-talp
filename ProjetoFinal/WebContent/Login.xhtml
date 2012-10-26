@@ -11,18 +11,38 @@
 	
 	
 	<ui:define name="conteudo">	
-		<h:form>                       
-				    <h:panelGrid columns="2">  
-				        <h:outputLabel for="name" value="login"/>    
-				        <p:inputText id="name" value="#{login.login}" />  
-				        
-				 		<h:outputText value="Basic: " />  
-            			<p:password id="nonFeedback" value="#{login.password}" />  
-            			
-				        <p:commandButton value="Login" action="#{login.encaminha}"/> 
-				    </h:panelGrid>  
-				      
-				</h:form>  
+		<form action="j_security_check" method="post">
+			
+			<table border="1" cellspacing="1">
+				<tr>
+					<td>
+						<label>Email:</label><br />
+					</td>
+					<td>
+						<input type="text" name="j_username" /><p />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Senha:</label><br />			
+					</td>
+					<td>
+						<input type="password" name="j_password" /><p />
+					</td>
+				</tr>
+				
+				<tr>
+					<td colspan="2">
+						<input type="submit" value="Enviar" />
+					</td>
+				</tr>				
+			</table>
+			
+			
+			
+			
+			
+		</form>
 	</ui:define>
 
 	
