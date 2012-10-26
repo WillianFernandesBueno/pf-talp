@@ -9,7 +9,7 @@
 
 <h:head>
 	<title>War of the Worlds</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
 </h:head>
 <h:body>
 
@@ -32,7 +32,7 @@
 							<p:menuitem value="Home" url="Index.xhtml"	update="messages"/>
 							<p:submenu label="Usuario">
 								<p:menuitem value="Cadastro" url="CadastroUsuario.jsf"	update="messages" icon="ui-icon-disk" />
-								<p:menuitem value="Login"    action="/usuario/IndexUsuario.jsf?faces-redirect=true" update="messages" icon="ui-icon-arrowrefresh-1-w" />
+								<p:menuitem value="Login"    url="/usuario/IndexUsuario.jsf?faces-redirect=true" update="messages" icon="ui-icon-arrowrefresh-1-w" />
 								
 							</p:submenu>
 				
