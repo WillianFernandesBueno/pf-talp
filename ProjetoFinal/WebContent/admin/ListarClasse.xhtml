@@ -11,54 +11,19 @@
 <ui:composition template="IndexAdmin.xhtml">
 	<ui:define name="conteudo">
 		<h:form id="form">  
-		    <p:dataTable var="classe" value="#{tableBean.cars}" rowKey="#{car.model}" paginator="true" rows="10" selection="#{tableBean.selectedCar}" selectionMode="single" filteredValue="#{tableBean.filteredCars}" id="carsTable">  
+		    <p:dataTable var="classe" value="#{tableClasse.classes}" rowKey="#{classe.nome}" paginator="true" rows="10" selection="#{tableClasse.classeSelecionada}" selectionMode="single" filteredValue="#{tableClasse.filtroClasses}" id="TableClasses">  
 		  
-		        <p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" />  
+		        
 		  
 		        <f:facet name="header">  
-		        	<h:outputText value="Lista "/>  
+		        	<h:outputText value="Listagem de Classes"/>  
 		        </f:facet>  
 		  
-		        <p:column headerText="Model" sortBy="#{car.model}" filterBy="#{car.model}" id="model">  
-		            #{car.model}  
-		        </p:column>  
-		  
-		        <p:column headerText="Year" sortBy="#{car.year}" filterBy="#{car.year}" id="year">  
-		            #{car.year}  
-		        </p:column>  
-		  
-		        <p:column headerText="Manufacturer" sortBy="#{car.manufacturer}" filterBy="#{car.manufacturer}" id="manufacturer">  
-		            #{car.manufacturer}  
-		        </p:column>  
-		  
-		        <p:column headerText="Color" sortBy="#{car.color}" filterBy="#{car.color}" id="color">  
-		            #{car.color}"  
+		        <p:column headerText="Nome" sortBy="#{classe.nome}" filterBy="#{classe.nome}" id="nome">  
+		            <h:outputText value="#{classe.nome}"/>
 		        </p:column>  
 		  
 		    </p:dataTable>  
-		  
-		    <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"  
-		              width="200" showEffect="explode" hideEffect="explode">  
-		  
-		        <h:panelGrid id="display" columns="2" cellpadding="4">  
-		  
-		            <f:facet name="header">  
-		                <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>  
-		            </f:facet>  
-		  
-		            <h:outputText value="Model:" />  
-		            <h:outputText value="#{tableBean.selectedCar.model}" id="model"/>  
-		  
-		            <h:outputText value="Year:" />  
-		            <h:outputText value="#{tableBean.selectedCar.year}" id="year"/>  
-		  
-		            <h:outputText value="Manufacturer:" />  
-		            <h:outputText value="#{tableBean.selectedCar.manufacturer}" id="manufacturer"/>  
-		  
-		            <h:outputText value="Color:" />  
-		            <h:outputText value="#{tableBean.selectedCar.color}" id="color"/>  
-		        </h:panelGrid>  
-		    </p:dialog>  
 		  
 		</h:form>   
 	</ui:define>

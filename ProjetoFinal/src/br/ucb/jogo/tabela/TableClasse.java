@@ -1,13 +1,23 @@
 package br.ucb.jogo.tabela;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;  
 import java.util.List;  
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
   
 import br.ucb.jogo.HIB.ClasseHIB;
 import br.ucb.jogo.bean.Classe;
 
-public class TableClasse {  
+
+@SuppressWarnings("serial")
+@ViewScoped
+@SessionScoped
+@ManagedBean (name = "tableClasse")
+public class TableClasse implements Serializable{  
 	private List<Classe> filtroClasses;
 	private List<Classe> classes;
 	private Classe classeSelecionada;
@@ -22,25 +32,24 @@ public class TableClasse {
 	    	ClasseHIB c = new ClasseHIB();
 			classes = c.list();
 		}
-	    
+	     
+	    public List<Classe> getFiltroClasses() {
+			return filtroClasses;
+		}
 
-		public Classe getSelectedClasse() {  
-	        return classeSelecionada;  
-	    }  
-	  
-	    public void setSelectedClasse(Classe classeSelecionada) {  
-	        this.classeSelecionada = classeSelecionada;  
-	    }  
-	  
-	    public List<Classe> getFiltroClasses() {  
-	        return filtroClasses;  
-	    }  
-	  
-	    public void setFilteredCars(List<Classe> filtroClasses) {  
-	        this.filtroClasses = filtroClasses;  
-	    }  
-	  
-	    public List<Classe> getClasses() {  
+		public void setFiltroClasses(List<Classe> filtroClasses) {
+			this.filtroClasses = filtroClasses;
+		}
+
+		public Classe getClasseSelecionada() {
+			return classeSelecionada;
+		}
+
+		public void setClasseSelecionada(Classe classeSelecionada) {
+			this.classeSelecionada = classeSelecionada;
+		}
+
+		public List<Classe> getClasses() {  
 	        return classes;  
 	    }  	
 	
