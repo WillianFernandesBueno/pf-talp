@@ -4,21 +4,17 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name="usuarios")
 public class Usuario extends Pessoa{
 
-	private Integer id;
+	private Integer idUsuarios;
 	private String senha;
 	private Integer tipo;
 	private String login;		
@@ -27,11 +23,11 @@ public class Usuario extends Pessoa{
 	
 	@Id
 	@GeneratedValue
-	public Integer getId() {
-		return id;
+	public Integer getIdUsuarios() {
+		return idUsuarios;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdUsuarios(Integer idUsuarios) {
+		this.idUsuarios = idUsuarios;
 	}
 	@Column
 	public String getSenha() {
@@ -79,15 +75,12 @@ public class Usuario extends Pessoa{
 		return super.getEmail();
 	}
 	
-
-	@OneToMany(targetEntity = Autorizacao.class)
+	@OneToMany(mappedBy="usuario", fetch = FetchType.LAZY, targetEntity = Autorizacao.class)
 	public List<Autorizacao> getAutorizacao() {
 		return autorizacao;
 	}
 	public void setAutorizacao(List<Autorizacao> autorizacao) {
 		this.autorizacao = autorizacao;
 	}
-	
-	
 	
 }
