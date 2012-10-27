@@ -22,7 +22,7 @@ public class UsuarioConverter implements Converter{
 	public String getAsString(FacesContext fc, UIComponent uic, Object obj) {
 		if(obj != null && obj instanceof Usuario){
 			Usuario user = (Usuario) obj;
-			return user.getEmail().toString();
+			return user.getId().toString();
 		}
 		return null;
 	}
