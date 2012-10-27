@@ -21,7 +21,7 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Usuarios` (
   `cidade` VARCHAR(45) NULL ,
   `rua` VARCHAR(45) NULL ,
   `bairro` VARCHAR(45) NULL ,
-  PRIMARY KEY (`idUsuarios`) )
+  PRIMARY KEY (`idUsuarios`, `login`) )
 ENGINE = InnoDB;
 
 
@@ -64,19 +64,14 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Personagens` (
   `forca` INT(11) NOT NULL ,
   `agilidade` INT(11) NOT NULL ,
   `defesa` INT(11) NOT NULL ,
-  `Usuarios_idUsuarios` INT NOT NULL ,
   `Classe_idClasse` INT NOT NULL ,
   `Loja_idLoja` INT NOT NULL ,
   `Alianca_idAlianca` INT NOT NULL ,
-  PRIMARY KEY (`idPersonagens`, `Usuarios_idUsuarios`, `Classe_idClasse`, `Loja_idLoja`, `Alianca_idAlianca`) ,
-  INDEX `fk_Personagens_Usuarios` (`Usuarios_idUsuarios` ASC) ,
+  `Usuarios_idUsuarios` INT NOT NULL ,
+  PRIMARY KEY (`idPersonagens`, `Classe_idClasse`, `Loja_idLoja`, `Alianca_idAlianca`, `Usuarios_idUsuarios`) ,
   INDEX `fk_Personagens_Classe1` (`Classe_idClasse` ASC) ,
   INDEX `fk_Personagens_Alianca1` (`Alianca_idAlianca` ASC) ,
-  CONSTRAINT `fk_Personagens_Usuarios`
-    FOREIGN KEY (`Usuarios_idUsuarios` )
-    REFERENCES `jogo`.`Usuarios` (`idUsuarios` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  INDEX `fk_Personagens_Usuarios1` (`Usuarios_idUsuarios` ASC) ,
   CONSTRAINT `fk_Personagens_Classe1`
     FOREIGN KEY (`Classe_idClasse` )
     REFERENCES `jogo`.`Classe` (`idClasse` )
@@ -85,6 +80,11 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Personagens` (
   CONSTRAINT `fk_Personagens_Alianca1`
     FOREIGN KEY (`Alianca_idAlianca` )
     REFERENCES `jogo`.`Alianca` (`idAlianca` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Personagens_Usuarios1`
+    FOREIGN KEY (`Usuarios_idUsuarios` )
+    REFERENCES `jogo`.`Usuarios` (`idUsuarios` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -238,13 +238,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `jogo`.`Autorizacao` ;
 
 CREATE  TABLE IF NOT EXISTS `jogo`.`Autorizacao` (
-  `Papel` VARCHAR(45) NOT NULL ,
+  `papel` VARCHAR(45) NOT NULL ,
   `idUsuarios` INT NOT NULL ,
-  PRIMARY KEY (`Papel`, `idUsuarios`) ,
-  INDEX `fk_Autorizacao_Usuarios1` (`idUsuarios` ASC) ,
+  `login` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`papel`, `idUsuarios`, `login`) ,
+  INDEX `fk_Autorizacao_Usuarios1` (`idUsuarios` ASC, `login` ASC) ,
   CONSTRAINT `fk_Autorizacao_Usuarios1`
-    FOREIGN KEY (`idUsuarios` )
-    REFERENCES `jogo`.`Usuarios` (`idUsuarios` )
+    FOREIGN KEY (`idUsuarios` , `login` )
+    REFERENCES `jogo`.`Usuarios` (`idUsuarios` , `login` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
