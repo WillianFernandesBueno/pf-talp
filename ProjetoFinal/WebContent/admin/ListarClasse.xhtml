@@ -11,15 +11,15 @@
 <ui:composition template="IndexAdmin.xhtml">
 	<ui:define name="conteudo">
 		<h:form id="form">  
-		    <p:dataTable var="classe" value="#{tableClasse.classes}" rowKey="#{classe.nome}" paginator="true" rows="10" selection="#{tableClasse.classeSelecionada}" selectionMode="single" filteredValue="#{tableClasse.filtroClasses}" id="TableClasses">  
-		  
+		    <!--  <p:dataTable emptyMessage="Nenhum registro encontrado!" var="classe" value="#{tableClasse.classes}" rowKey="#{classe.nome}" paginator="true" rows="10" selection="#{tableClasse.classeSelecionada}" selectionMode="single" filteredValue="#{tableClasse.filtroClasses}" id="TableClasses">-->  
+		  	<p:dataTable var="classe" value="#{classeManagedBean.classes}">
 		        
 		  
 		        <f:facet name="header">  
 		        	<h:outputText value="Listagem de Classes"/>  
 		        </f:facet>  
 		  
-		        <p:column headerText="Nome" sortBy="#{classe.nome}" filterBy="#{classe.nome}" id="nome">  
+		        <p:column headerText="Nome" id="nome">  
 		            <h:outputText value="#{classe.nome}"/>
 		        </p:column>  
 		  
