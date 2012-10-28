@@ -20,10 +20,21 @@ public class ClasseHIB implements HIB<Classe>{
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Classe> list() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = HibernateUtil.getSession();
+		try {
+			System.out.println("Entrou no listar!");
+			
+			List<Classe> classes = session.createCriteria(Classe.class).list();
+			System.out.println("Antes do retorno!!!!");
+			return classes;
+			
+			//return session.createCriteria(Classe.class).list();
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override

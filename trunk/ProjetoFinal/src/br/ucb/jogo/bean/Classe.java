@@ -2,19 +2,22 @@ package br.ucb.jogo.bean;
 
 import java.io.Serializable;
 import java.util.List;
-
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.model.ListDataModel;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@ManagedBean (name = "classe")
-@SessionScoped
-
+@Entity
+@Table (name = "classe")
 public class Classe implements Serializable{
 	private static final long serialVersionUID = 1L;
 
+	private Integer idClasse;
 	private String nome;
 
+	
 	@SuppressWarnings("rawtypes")
 	ListDataModel model = null;
 	
@@ -26,6 +29,17 @@ public class Classe implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
+	@Id
+	@GeneratedValue
+	public Integer getIdClasse() {
+		return idClasse;
+	}
+
+	public void setIdClasse(Integer idClasse) {
+		this.idClasse = idClasse;
+	}
+	
+	@Column
 	public String getNome() {
 		return nome;
 	}
@@ -49,6 +63,6 @@ public class Classe implements Serializable{
 
 	public String getRowKey(Classe classe) {  
 		return classe.getNome();  
-	}  
+	}
 	
 }
