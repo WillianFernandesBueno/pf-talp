@@ -2,6 +2,7 @@ package br.ucb.jogo.bean;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.faces.model.ListDataModel;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,36 +11,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "classe")
-public class Classe implements Serializable{
+@Table(name="classe")
+public class Classe  implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Integer idClasse;
 	private String nome;
-
+	private Integer idClasse;
 	
 	@SuppressWarnings("rawtypes")
 	ListDataModel model = null;
 	
-	public Classe(String nome) {
-		setNome(nome);
-	}
-
-	public Classe() {
-		// TODO Auto-generated constructor stub
-	}
-
-	@Id
-	@GeneratedValue
-	public Integer getIdClasse() {
-		return idClasse;
-	}
-
-	public void setIdClasse(Integer idClasse) {
-		this.idClasse = idClasse;
-	}
-	
-	@Column
+	@Column(name="descricao")
 	public String getNome() {
 		return nome;
 	}
@@ -64,5 +46,17 @@ public class Classe implements Serializable{
 	public String getRowKey(Classe classe) {  
 		return classe.getNome();  
 	}
+	
+	@Id
+	@GeneratedValue
+	public Integer getIdClasse() {
+		return idClasse;
+	}
+
+	public void setIdClasse(Integer id) {
+		this.idClasse = id;
+	}  
+	
+	
 	
 }
