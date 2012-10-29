@@ -10,6 +10,7 @@ import br.ucb.jogo.interfaces.HIB;
 
 public class ClasseHIB implements HIB<Classe>{
 
+	
 	@Override
 	public boolean save(Classe t) {
 		Session session = HibernateUtil.getSession();
@@ -25,13 +26,7 @@ public class ClasseHIB implements HIB<Classe>{
 	public List<Classe> list() {
 		Session session = HibernateUtil.getSession();
 		try {
-			System.out.println("Entrou no listar!");
-			
-			List<Classe> classes = session.createCriteria(Classe.class).list();
-			System.out.println("Antes do retorno!!!!");
-			return classes;
-			
-			//return session.createCriteria(Classe.class).list();
+			return session.createCriteria(Classe.class).list();
 		} finally {
 			session.close();
 		}
@@ -39,14 +34,22 @@ public class ClasseHIB implements HIB<Classe>{
 
 	@Override
 	public boolean excluir(Classe t) {
-		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSession();
+		Transaction transaction = session.beginTransaction();
+		session.delete(t);
+		transaction.commit();
+		session.close();
 		return false;
 	}
 
 	@Override
 	public Classe findTById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = HibernateUtil.getSession();
+		try {
+			Classe u = (Classe) session.get(Classe.class, id);
+			return u;
+		} finally {
+			session.close();
+		}
 	}
-	
 }
