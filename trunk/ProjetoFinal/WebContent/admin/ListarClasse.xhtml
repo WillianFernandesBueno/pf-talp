@@ -10,21 +10,34 @@
 
 <ui:composition template="IndexAdmin.xhtml">
 	<ui:define name="conteudo">
-		<h:form id="form">  
-		    <p:dataTable var="classe" value="#{tableClasse.classes}" rowKey="#{classe.nome}" paginator="true" rows="10" selection="#{tableClasse.classeSelecionada}" selectionMode="single" filteredValue="#{tableClasse.filtroClasses}" id="TableClasses">  
-		  
-		        
-		  
-		        <f:facet name="header">  
-		        	<h:outputText value="Listagem de Classes"/>  
-		        </f:facet>  
-		  
-		        <p:column headerText="Nome" sortBy="#{classe.nome}" filterBy="#{classe.nome}" id="nome">  
-		            <h:outputText value="#{classe.nome}"/>
-		        </p:column>  
-		  
-		    </p:dataTable>  
-		  
+		<h:form id="form">
+			<center>  
+			    <p:dataTable emptyMessage="Nenhuma classe encontrada..." var="classe" value="#{tableClasse.classes}" rowKey="#{classe.nome}" paginator="true" rows="10" filteredValue="#{tableClasse.filtroClasses}" id="TableClasses">  
+			  
+			        <f:facet name="header">  
+			        	<h:outputText value="Listagem de Classes"/>  
+			        </f:facet>  
+			  
+			        <p:column headerText="Nome" sortBy="#{classe.nome}" filterBy="#{classe.nome}" id="nome" width="550">  
+			            <h:outputText value="#{classe.nome}"/>
+			        </p:column>  
+			  		
+			  		<p:column headerText="Alterar" id="alterar">
+			  			<h:commandLink action="CadastroClasse.xhtml">
+				  			<f:setPropertyActionListener target="#{classeManagedBean.classe}" value="#{classe}"/>
+				  			<h:graphicImage url="/imagens/editar.png" title="editar" alt="editar"/>
+			  			</h:commandLink>
+			        </p:column>
+			        
+			        <p:column headerText="Excluir" id="excluir">
+			  			<h:commandLink actionListener="#{classeManagedBean.excluir}">
+				  			<f:attribute name="classe" value="#{classe}"/>
+				  			<h:graphicImage url="/imagens/excluir.png" title="excluir" alt="excluir"/>
+			  			</h:commandLink>
+			        </p:column>
+			        			        
+			    </p:dataTable>  
+			</center>  
 		</h:form>   
 	</ui:define>
 </ui:composition>

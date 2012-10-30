@@ -1,5 +1,7 @@
 package br.ucb.jogo.negocio;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
@@ -32,14 +34,30 @@ public class ClasseManagedBean {
         this.classe = classe;  
     }  
       
-    public String save(ActionEvent actionEvent) {   
+    public String save() throws IOException {   
     	
         FacesMessage msg = new FacesMessage("Sucesso", "Classe "+classe.getNome()+" cadastrada com sucesso");  
-        FacesContext.getCurrentInstance().addMessage(null, msg);  
+        FacesContext.getCurrentInstance().addMessage(null, msg); 
+        
         ClasseHIB c = new ClasseHIB();
         c.save(getClasse());
-        return "IndexAdmin.xhtml";
-    }  
+        
+        return "IndexAdmin?faces-redirect=true";
+    }
+    
+    public String excluir(ActionEvent evento) throws SQLException{
+    	FacesMessage msg = new FacesMessage("Sucesso", "Classe "+getClasse().getNome()+" excluida com sucesso");  
+        FacesContext.getCurrentInstance().addMessage(null, msg); 
+        
+        this.classe = (Classe) evento.getComponent().getAttributes().get("classe");
+    	ClasseHIB c = new ClasseHIB();
+
+    	c.excluir(getClasse());
+    	
+    	System.out.println("Classe "+getClasse().getNome()+" excluida com sucesso");
+    	
+    	return "ListarClasse.xhtml";
+	}
       
     public boolean isSkip() {  
         return skip;  
