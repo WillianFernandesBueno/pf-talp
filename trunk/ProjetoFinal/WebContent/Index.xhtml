@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
 </h:head>
 <h:body>
-
+	<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 	<p:layout fullPage="true">
 	
 	   <p:layoutUnit position="north" size="250" resizable="true" closable="true" collapsible="true">
@@ -32,7 +32,7 @@
 							<p:menuitem value="Home" url="Index.xhtml"	update="messages"/>
 							<p:submenu label="Usuario">
 								<p:menuitem value="Cadastro" url="CadastroUsuario.jsf"	update="messages" icon="ui-icon-disk" />
-								<p:menuitem value="Login"    url="/usuario/IndexUsuario.jsf?faces-redirect=true" update="messages" icon="ui-icon-arrowrefresh-1-w" />
+								<p:menuitem value="#{msg.login}"    url="/usuario/IndexUsuario.jsf?faces-redirect=true" update="messages" icon="ui-icon-arrowrefresh-1-w" />
 								
 							</p:submenu>
 				
