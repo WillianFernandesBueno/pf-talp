@@ -12,7 +12,7 @@
 	<ui:define name="conteudo">
 		<h:form id="form">
 			<center>  
-			    <p:dataTable emptyMessage="Nenhuma classe encontrada..." var="classe" value="#{tableClasse.classes}" rowKey="#{classe.nome}" paginator="true" rows="10" filteredValue="#{tableClasse.filtroClasses}" id="TableClasses">  
+			    <p:dataTable emptyMessage="Nenhuma classe encontrada..." var="classe" value="#{classeManagedBean.classes}" rowKey="#{classe.nome}" paginator="true" rows="10" filteredValue="#{classeManagedBean.filtroClasses}" id="TableClasses">  
 			  
 			        <f:facet name="header">  
 			        	<h:outputText value="Listagem de Classes"/>  
