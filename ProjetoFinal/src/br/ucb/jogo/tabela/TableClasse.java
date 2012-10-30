@@ -3,14 +3,19 @@ package br.ucb.jogo.tabela;
 
 import java.io.Serializable;
 import java.util.List;  
+
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
 import br.ucb.jogo.HIB.ClasseHIB;
 import br.ucb.jogo.bean.Classe;
 
 
 @SuppressWarnings("serial")
-@SessionScoped
+@RequestScoped
 @ManagedBean (name = "tableClasse")
 public class TableClasse implements Serializable{  
 	private List<Classe> filtroClasses;
@@ -19,14 +24,13 @@ public class TableClasse implements Serializable{
 
 	public TableClasse() {
 		populaClasse();
-
 	}  
 
 	private void populaClasse() {
 		ClasseHIB c = new ClasseHIB();
 		setClasses(c.list());
 	}
-
+	
 	public List<Classe> getFiltroClasses() {
 		return filtroClasses;
 	}
