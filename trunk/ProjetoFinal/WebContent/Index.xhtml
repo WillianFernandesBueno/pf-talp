@@ -9,7 +9,7 @@
 
 <h:head>
 	<title>War of the Worlds</title>
-	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+	 <h:outputStylesheet name="style.css" library="css" /> 
 </h:head>
 <h:body>
 	<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
@@ -24,11 +24,10 @@
 		</p:layoutUnit>
 
 		<p:layoutUnit position="west" size="320" header="#{msg.ocultar}" resizable="true" closable="true" collapsible="true">
-			<div id="menu">
 	  			<ui:insert name="menu">
 					<h:form>
 						<p:growl id="messages" />
-						<p:slideMenu styleClass="menu">
+						<p:slideMenu styleClass="menuUsuario" style="width:300px;">
 							<p:menuitem value="Home" url="Index.xhtml"	update="messages"/>
 							<p:submenu label="Usuario">
 								<p:menuitem value="Cadastro" url="CadastroUsuario.jsf"	update="messages" icon="ui-icon-disk" />
@@ -55,7 +54,6 @@
 						</p:slideMenu>
 					</h:form>
 				</ui:insert>
-			</div>
 		</p:layoutUnit>
 
 		<p:layoutUnit position="center"	header="#{msg.jogo}" style="background:#cbcbcb;">
