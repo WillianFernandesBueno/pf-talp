@@ -5,20 +5,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+
 import org.primefaces.event.FlowEvent;
+
 import br.ucb.jogo.HIB.ClasseHIB;
 import br.ucb.jogo.bean.Classe;
 
 
 
 @ManagedBean (name = "classeManagedBean")
-@RequestScoped
+@SessionScoped
 public class ClasseManagedBean {
 	private Classe classe;
 	private List<Classe> classes;
@@ -39,6 +41,11 @@ public class ClasseManagedBean {
     	ClasseHIB c = new ClasseHIB();
     	setClasses(c.list());
     }
+    
+    public String incluir() {
+		this.classe = new Classe();
+		return "CadastroClasse.xhtml";
+	}
     
     public Classe getClasse() {  
         return classe;  
@@ -64,18 +71,16 @@ public class ClasseManagedBean {
 		this.filtroClasses = filtroClasses;
 	}
     public String save() throws IOException {
-    	System.out.println(this.classe.getNome());
     	ClasseHIB c = new ClasseHIB();
-    	if (this.classe.getIdClasse() == 0) {
-    		c.save(getClasse());
-    		FacesMessage msg = new FacesMessage("Sucesso", "Classe "+classe.getNome()+" cadastrada com sucesso");  
-            FacesContext.getCurrentInstance().addMessage(null, msg);
+    	FacesMessage msg;
+    	if (this.classe.getIdClasse() == null || this.classe.getIdClasse() == 0) {
+    		msg = new FacesMessage("Sucesso", "Classe "+classe.getNome()+" cadastrada com sucesso");  
 		}else {
-			c.save(getClasse());
-			FacesMessage msg = new FacesMessage("Sucesso", "Classe "+classe.getNome()+" alterada com sucesso");  
-            FacesContext.getCurrentInstance().addMessage(null, msg);
+			msg = new FacesMessage("Sucesso", "Classe "+classe.getNome()+" alterada com sucesso");  
 		}
-		
+    	FacesContext.getCurrentInstance().addMessage(null, msg);
+		c.save(getClasse());
+		this.classes = c.list();
         return "IndexAdmin?faces-redirect=true";
     }
     
