@@ -1,5 +1,6 @@
 package br.ucb.jogo.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,8 +13,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="usuarios")
-public class Usuario extends Pessoa{
+public class Usuario extends Pessoa implements Serializable{
 
+	
+	private static final long serialVersionUID = 1L;
 	private Integer idUsuarios;
 	private String senha;
 	private Integer tipo;
