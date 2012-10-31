@@ -8,11 +8,54 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="IndexUsuario.xhtml">
-	
-	
-	<ui:define name="conteudo">	
+
+	<ui:define name="conteudo">
+		<h:form id="form">
+			<p:panel styleClass="FundoPaginaUsuario">
+				<br />
+				<br />
+				<br />
+				<center>
+					<p:panel styleClass="PainelTrabalho">
+						<h:outputText
+							value="Magistratus, o laboratório, situa-se na sombra do edifício vizinho. Pode escolher diferentes trabalhos aqui - nenhum deles é 
+					particularmente divertido, mas não são tão perigosos como a arena. 
+					Alguns dos trabalhos não pagam muito mas, pelo menos você recebe o que restou no fim do dia de trocas." />
+
+					</p:panel>
+					<p:dataTable id="cars" var="trabalho"
+						value="#{trabalhoBean.trabalhos}" rowKey="#{trabalho.titulo}"
+						selection="#{trabalhoBean.selectTrabalho}" selectionMode="single"
+						style="width:700px;">
+
+						<p:column headerText="trabalho" style="background:#dbcba5;">
+							<h:outputText value="#{trabalho.titulo}" />
+						</p:column>
+
+						<p:column headerText="Salário por hora"
+							style="background:#dbcba5;">
+							<h:outputText value="#{trabalho.salarioHora}" />
+						</p:column>
+
+						<p:column headerText="Horas	" style="background:#dbcba5;">
+							<h:outputText value="#{trabalho.horas}" />
+						</p:column>
+
+						<p:column headerText="experiencia" style="background:#dbcba5;">
+							<h:outputText value="#{trabalho.exp}" />
+						</p:column>
+					</p:dataTable>
+					<p:panel style="width:690px;background:#dbcba5;">
+						<p:commandButton value="enviar" action="#{trabalhoBean.teste}"
+							style="background:#dbcba5;" />
+					</p:panel>
+
+				</center>
+			</p:panel>
+		</h:form>
 	</ui:define>
 
-	
+
 </ui:composition>
 </html>
+

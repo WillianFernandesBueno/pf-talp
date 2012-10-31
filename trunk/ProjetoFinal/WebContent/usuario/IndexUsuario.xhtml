@@ -25,21 +25,22 @@
 			</div>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="west" size="320" header="OCULTAR"
-			resizable="true" closable="true" collapsible="true">
+		<p:layoutUnit position="west" size="320" header="MENU"
+			resizable="true" closable="false" collapsible="false">
 			<div id="menu">
 				<ui:insert name="menu">
 					<h:form>
 						<p:growl id="messages" />
-						<p:slideMenu styleClass="teste">
-
-
-							<p:menuitem value="Perfil" url="IndexUsuario.xhtml" update="messages" />
-							<p:menuitem value="Aliança" url="usuario/Alianca.xhtml" update="messages" />
-							<p:menuitem value="Trabalho" url="Trabalho.xhtml" update="messages" />
-							<p:menuitem value="Ferreiro" url="Ferreiro.xhtml" update="messages" />
+						<p:slideMenu styleClass="menuUsuario">
+							<p:menuitem value="Perfil" url="IndexUsuario.jsf"
+								update="messages" />
+							<p:menuitem value="Aliança" url="Alianca.jsf" update="messages" />
+							<p:menuitem value="Trabalho" url="Trabalho.jsf" update="messages" />
+							<p:menuitem value="Ferreiro" url="Ferreiro.xhtml"
+								update="messages" />
 							<p:menuitem value="Armeiro" url="Armeiro.xhtml" update="messages" />
-							<p:menuitem value="Acessorios" url="Acessorios.xhtml" update="messages" />
+							<p:menuitem value="Acessorios" url="Acessorios.xhtml"
+								update="messages" />
 							<p:menuitem value="Mercado" url="Mercado.xhtml" update="messages" />
 							<p:menuitem value="Duelo" url="Duelo.xhtml" update="messages" />
 							<p:menuitem value="Sair" action="#{loginManagedBean.logOut}" update="messages" />
@@ -55,45 +56,47 @@
 			style="background:#cbcbcb;">
 			<div id="conteudo">
 				<ui:insert name="conteudo">
-					<h:panelGrid columns="2">
-						<p:galleria id="contentGalleria"
-							value="#{galleriaBeanPersonagem.players}" var="player"
-							frameWidth="64" frameHeight="87" panelWidth="710"
-							panelHeight="500" transitionInterval="0"
-							styleClass="ui-widget-content ui-corner-all">
-							<p:graphicImage id="playerImage"
-								value="/images/personagem/#{player.classe}" />
-							<p:galleriaContent>
-								<h:panelGrid columns="2">
-									<p:panel>
-										<f:facet name="header">
-											<p:graphicImage value="/images/personagem/#{player.classe}" />
-										</f:facet>
-									</p:panel>
-									<h:panelGrid columns="2">
-										<h:outputText value="Classe: " />
-										<h:outputText id="classe" value="#{player.classe}" />
+					<p:panel styleClass="FundoPaginaUsuario">
+						<center>
+							<h:panelGrid columns="2">
+								<p:galleria id="contentGalleria"
+									value="#{galleriaBeanPersonagem.players}" var="player"
+									frameWidth="300" frameHeight="500" panelWidth="700"
+									panelHeight="500" transitionInterval="0" styleClass="">
+									<p:graphicImage id="playerImage"
+										value="/images/personagem/#{player.classe}" />
+									<p:galleriaContent>
+										<!-- 
+										<h:panelGrid columns="2">
+									
+											<h:panelGrid columns="2">
+												<h:outputText value="Classe: " />
+												<h:outputText id="classe" value="#{player.classe}" />
 
-										<h:outputText value="detalhes " />
-										<h:outputText id="detalhes" value="#{player.detalhes}" />
+												<h:outputText value="detalhes " />
+												<h:outputText id="detalhes" value="#{player.detalhes}" />
 
-										<h:outputText value="forca " />
-										<h:outputText id="forca" value="#{player.forca}" />
-										<h:outputText value="mana " />
-										<h:outputText id="mana" value="#{player.mana}" />
-										<h:outputText value="hp " />
-										<h:outputText id="hp" value="#{player.hp}" />
-										<h:outputText value="agilidade " />
-										<h:outputText id="agilidade" value="#{player.agilidade}" />
-										<h:outputText value="defesa " />
-										<h:outputText id="defesa" value="#{player.defesa}" />
-										<p:commandButton value="Criar"
-											action="#{galleriaBeanPersonagem.encaminha}" />
-									</h:panelGrid>
-								</h:panelGrid>
-							</p:galleriaContent>
-						</p:galleria>
-					</h:panelGrid>
+												<h:outputText value="forca " />
+												<h:outputText id="forca" value="#{player.forca}" />
+												<h:outputText value="mana " />
+												<h:outputText id="mana" value="#{player.mana}" />
+												<h:outputText value="hp " />
+												<h:outputText id="hp" value="#{player.hp}" />
+												<h:outputText value="agilidade " />
+												<h:outputText id="agilidade" value="#{player.agilidade}" />
+												<h:outputText value="defesa " />
+												<h:outputText id="defesa" value="#{player.defesa}" />
+											
+											</h:panelGrid>
+										</h:panelGrid>
+										 -->
+										 	<p:commandButton value="Criar"
+													action="#{galleriaBeanPersonagem.encaminha}" />
+									</p:galleriaContent>
+								</p:galleria>
+							</h:panelGrid>
+						</center>
+					</p:panel>
 				</ui:insert>
 			</div>
 		</p:layoutUnit>
