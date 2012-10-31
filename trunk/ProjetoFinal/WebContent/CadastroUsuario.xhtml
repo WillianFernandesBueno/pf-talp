@@ -16,8 +16,6 @@
 
 			<p:growl id="growl" sticky="true" showDetail="true" />
 
-			<p:wizard widgetVar="wiz"
-				flowListener="#{usuarioManagedBean.onFlowProcess}">
 
 				<p:tab id="pessoal" title="pessoal">
 					<p:panel header="Dados Pessoais">
@@ -34,7 +32,6 @@
 							<p:inputText required="true" label="Email"
 								value="#{usuarioManagedBean.user.email}" />
 
-
 							<h:outputText value="Login " />
 							<p:inputText required="true" label="Login"
 								value="#{usuarioManagedBean.user.login}" />
@@ -42,25 +39,13 @@
 							<h:outputText value="Senha " />
 							<p:inputText required="true" label="Senha"
 								value="#{usuarioManagedBean.user.senha}" />
-							<h:outputText value="pular para ultima" />
-							<h:selectBooleanCheckbox value="#{usuarioManagedBean.skip}" />
-						</h:panelGrid>
-					</p:panel>
-				</p:tab>
 
-				<p:tab id="endereco" title="endereço">
-					<p:panel header="endereço">
-
-						<h:messages errorClass="error" />
-
-						<h:panelGrid columns="2" columnClasses="label, value"
-							styleClass="grid">
 							<h:outputText value="Cidade " />
 							<p:inputText required="false" label="cidade"
 								value="#{usuarioManagedBean.user.cidade}" />
 
 							<h:outputText value="Estado " />
-							<p:inputText required="false" label="estadi"
+							<p:inputText required="false" label="estado"
 								value="#{usuarioManagedBean.user.estado}" />
 
 							<h:outputText value="Bairro " />
@@ -71,60 +56,17 @@
 							<p:inputText required="false" label="rua"
 								value="#{usuarioManagedBean.user.rua}" />
 
-							<h:outputText value="pular para ultima" />
-							<h:selectBooleanCheckbox value="#{usuarioManagedBean.skip}" />
-						</h:panelGrid>
-					</p:panel>
-				</p:tab>
-
-				<p:tab id="confirm" title="Confirmation">
-					<p:panel header="Confirmation">
-
-						<h:panelGrid id="confirmation" columns="6">
-							<h:outputText value="nome " />
-							<h:outputText styleClass="outputLabel"
-								value="#{usuarioManagedBean.user.nome}" />
-
-							<h:outputText value="email " />
-							<h:outputText styleClass="outputLabel"
-								value="#{usuarioManagedBean.user.email}" />
-
-							<h:outputText value="login " />
-							<h:outputText styleClass="outputLabel"
-								value="#{usuarioManagedBean.user.login}" />
-
-							<h:outputText value="senha " />
-							<h:outputText styleClass="outputLabel"
-								value="#{usuarioManagedBean.user.senha}" />
-
-							<h:outputText value="cidade " />
-							<h:outputText styleClass="outputLabel"
-								value="#{usuarioManagedBean.user.cidade}" />
-
-							<h:outputText value="estado " />
-							<h:outputText styleClass="outputLabel"
-								value="#{usuarioManagedBean.user.estado}" />
-
-							<h:outputText value="bairro " />
-							<h:outputText styleClass="outputLabel"
-								value="#{usuarioManagedBean.user.bairro}" />
-
-							<h:outputText value="rua " />
-							<h:outputText styleClass="outputLabel"
-								value="#{usuarioManagedBean.user.rua}" />
+							<p:commandButton value="Enviar" update="growl"
+								action="#{usuarioManagedBean.save}" />
 
 						</h:panelGrid>
-
-						<p:commandButton value="Enviar" update="growl" action="#{usuarioManagedBean.save}"/>
 
 					</p:panel>
 				</p:tab>
 
-			</p:wizard>
 
 		</h:form>
 	</ui:define>
-
 
 </ui:composition>
 </html>

@@ -30,8 +30,9 @@
 						<p:slideMenu styleClass="menuUsuario" style="width:300px;">
 							<p:menuitem value="Home" url="Index.xhtml"	update="messages"/>
 							<p:submenu label="Usuario">
-								<p:menuitem value="Cadastro" url="/CadastroUsuario.jsf?faces-redirect=true"	update="messages" icon="ui-icon-disk" />
-								<p:menuitem value="#{msg.login}" url="/usuario/IndexUsuario.jsf?faces-redirect=true" update="messages" icon="ui-icon-arrowrefresh-1-w" />
+								
+								<p:menuitem value="Cadastro" action="#{usuarioManagedBean.cadastro}"	update="messages" icon="ui-icon-disk" />
+								<p:menuitem value="#{msg.login}" url="/usuario/IndexUsuario.jsf" update="messages" icon="ui-icon-arrowrefresh-1-w" />
 								
 							</p:submenu>
 				
