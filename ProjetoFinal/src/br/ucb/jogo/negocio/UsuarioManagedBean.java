@@ -39,10 +39,8 @@ public class UsuarioManagedBean implements Serializable {
 	}
 	
 	public String cadastro(){
-		
 		setUser(new Usuario());
 		return "/CadastroUsuario";
-		
 	}
 
 	public Usuario getUser() {  

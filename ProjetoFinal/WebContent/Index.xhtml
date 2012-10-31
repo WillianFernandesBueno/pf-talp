@@ -9,69 +9,83 @@
 
 <h:head>
 	<title>War of the Worlds</title>
-	 <h:outputStylesheet name="style.css" library="css" /> 
+	<h:outputStylesheet name="style.css" library="css" />
 </h:head>
 <h:body>
 	<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 	<p:layout fullPage="true">
-	
-	   <p:layoutUnit position="north" size="250" resizable="true" closable="true" collapsible="true">
+
+		<p:layoutUnit position="north" size="250" resizable="true"
+			closable="true" collapsible="true">
 			<div id="topo">
-		  		<ui:insert name="topo">
+				<ui:insert name="topo">
 					<h:graphicImage url="/imagens/topo.jpg" height="99%" width="99.70%" />
 				</ui:insert>
-			</div>	
+			</div>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="west" size="320" header="#{msg.ocultar}" resizable="true" closable="true" collapsible="true">
-	  			<ui:insert name="menu">
-					<h:form>
-						<p:growl id="messages" />
-						<p:slideMenu styleClass="menuUsuario" style="width:300px;">
-							<p:menuitem value="Home" url="Index.xhtml"	update="messages"/>
-							<p:submenu label="Usuario">
+		<p:layoutUnit position="west" size="320" header="#{msg.ocultar}"
+			resizable="true" closable="true" collapsible="true">
+			<ui:insert name="menu">
+				<h:form>
+					<p:growl id="messages" />
+					<p:slideMenu styleClass="menuUsuario" style="width:300px;">
+						<p:menuitem value="Home" url="Index.xhtml" update="messages" />
+						<p:submenu label="Usuario">
+
+							<p:menuitem value="Cadastro"
+								action="#{usuarioManagedBean.cadastro}" update="messages"
+								icon="ui-icon-disk" />
+							<p:menuitem value="#{msg.login}" url="/usuario/IndexUsuario.jsf"
+								update="messages" icon="ui-icon-arrowrefresh-1-w" />
 								
-								<p:menuitem value="Cadastro" action="#{usuarioManagedBean.cadastro}"	update="messages" icon="ui-icon-disk" />
-								<p:menuitem value="#{msg.login}" url="/usuario/IndexUsuario.jsf" update="messages" icon="ui-icon-arrowrefresh-1-w" />
-								
-							</p:submenu>
-				
-				
-							<p:submenu label="Tutorial">
-								<p:menuitem value="Item" outcome="/mobile/index" />
-								<p:menuitem value="Class" outcome="/mobile/index" />
-							</p:submenu>
-				
-				
-							<p:submenu label="Contato">
-								<p:menuitem value="Email" outcome="/Index" />
-								<p:menuitem value="Suporte" outcome="/mobile/index" />
-							</p:submenu>
-				
-							<p:menuitem value="Imagens" actionListener="#{menuBean.delete}" ajax="false"/>
-				
-							<p:menuitem value="Videos" actionListener="#{menuBean.delete}" ajax="false"/>
-				
-						</p:slideMenu>
-					</h:form>
-				</ui:insert>
+						</p:submenu>
+						<p:submenu label="Administrador">
+							<p:menuitem value="#{msg.login}" url="/admin/IndexAdmin.jsf"
+								update="messages" icon="ui-icon-arrowrefresh-1-w" />
+
+						</p:submenu>
+
+						<p:submenu label="Tutorial">
+							<p:menuitem value="Item" outcome="/mobile/index" />
+							<p:menuitem value="Class" outcome="/mobile/index" />
+						</p:submenu>
+
+
+						<p:submenu label="Contato">
+							<p:menuitem value="Email" outcome="/Index" />
+							<p:menuitem value="Suporte" outcome="/mobile/index" />
+						</p:submenu>
+
+						<p:menuitem value="Imagens" actionListener="#{menuBean.delete}"
+							ajax="false" />
+
+						<p:menuitem value="Videos" actionListener="#{menuBean.delete}"
+							ajax="false" />
+
+					</p:slideMenu>
+				</h:form>
+			</ui:insert>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="center"	header="#{msg.jogo}" style="background:#cbcbcb;">
+		<p:layoutUnit position="center" header="#{msg.jogo}"
+			style="background:#cbcbcb;">
 			<div id="conteudo">
-	  			<ui:insert name="conteudo">
-	  			<p:panel styleClass="FundoPagina">
-	  				<br/><br/><br/>
-					<table align="center">
-						<tr>
-							<td>
-								<p:galleria value="#{galleriaBean.images}" var="image" rendered="true" panelHeight="550" panelWidth="1400" transitionInterval="10000" style="background:#cbcbcb;">
-									<p:graphicImage value="/images/#{image}" height="50"/>
-								</p:galleria>
-							</td>
-						</tr>
-					</table>
-				</p:panel>
+				<ui:insert name="conteudo">
+					<p:panel styleClass="FundoPagina">
+						<br />
+						<br />
+						<br />
+						<table align="center">
+							<tr>
+								<td><p:galleria value="#{galleriaBean.images}" var="image"
+										rendered="true" panelHeight="550" panelWidth="1400"
+										transitionInterval="10000" style="background:#cbcbcb;">
+										<p:graphicImage value="/images/#{image}" height="50" />
+									</p:galleria></td>
+							</tr>
+						</table>
+					</p:panel>
 				</ui:insert>
 			</div>
 		</p:layoutUnit>
