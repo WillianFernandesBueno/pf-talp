@@ -1,5 +1,6 @@
 package br.ucb.jogo.HIB;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -8,9 +9,10 @@ import org.hibernate.Transaction;
 import br.ucb.jogo.bean.Autorizacao;
 import br.ucb.jogo.interfaces.HIB;
 
-public class LoginHib implements HIB<Autorizacao>{
+public class LoginHib implements HIB<Autorizacao>, Serializable{
 
-	
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public boolean save(Autorizacao t) {
 		Session session = HibernateUtil.getSession();
