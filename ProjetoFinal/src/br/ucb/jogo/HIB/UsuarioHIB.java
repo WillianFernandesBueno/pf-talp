@@ -1,5 +1,6 @@
 package br.ucb.jogo.HIB;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -10,7 +11,9 @@ import br.ucb.jogo.bean.Usuario;
 import br.ucb.jogo.interfaces.HIB;
 
 @SuppressWarnings("unused")
-public class UsuarioHIB implements HIB<Usuario> {
+public class UsuarioHIB implements HIB<Usuario>, Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public boolean save(Usuario t) {
