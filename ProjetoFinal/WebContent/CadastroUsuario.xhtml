@@ -37,8 +37,8 @@
 								value="#{usuarioManagedBean.user.login}" />
 
 							<h:outputText value="Senha " />
-							<p:inputText required="true" label="Senha"
-								value="#{usuarioManagedBean.user.senha}" />
+							<p:password required="true"	
+								value="#{usuarioManagedBean.user.senha}" feedback="true" minLength="4" promptLabel="Digite uma senha segura" goodLabel="Boa" weakLabel="Razoável" strongLabel="Excelente"/>
 
 							<h:outputText value="Cidade " />
 							<p:inputText required="false" label="cidade"

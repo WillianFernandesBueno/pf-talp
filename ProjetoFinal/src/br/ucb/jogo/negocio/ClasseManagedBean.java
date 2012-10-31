@@ -2,10 +2,12 @@ package br.ucb.jogo.negocio;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -16,7 +18,7 @@ import br.ucb.jogo.bean.Classe;
 
 
 @ManagedBean (name = "classeManagedBean")
-@SessionScoped
+@RequestScoped
 public class ClasseManagedBean {
 	private Classe classe;
 	private List<Classe> classes;
@@ -30,6 +32,7 @@ public class ClasseManagedBean {
     public ClasseManagedBean() {
     	populaClasse();
     	classe = new Classe();
+    	filtroClasses = new ArrayList<Classe>();
     }  
 
     private void populaClasse() {
@@ -61,6 +64,7 @@ public class ClasseManagedBean {
 		this.filtroClasses = filtroClasses;
 	}
     public String save() throws IOException {
+    	System.out.println(this.classe.getNome());
     	ClasseHIB c = new ClasseHIB();
     	if (this.classe.getIdClasse() == 0) {
     		c.save(getClasse());

@@ -11,35 +11,15 @@
 <ui:composition template="IndexAdmin.xhtml">
 	<ui:define name="conteudo">
 		<h:form>
-			    <p:growl id="growl" sticky="true" showDetail="true"/>  
-			    <p:wizard widgetVar="wiz" flowListener="#{classeManagedBean.onFlowProcess}">  
-			        <p:tab id="classe" title="Classe">
-			            <p:panel header="Dados da Classe">
-			                <h:messages errorClass="error"/> 
-			                <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">
-
-			                    <h:outputText value="Nome: " />  
-								<p:inputText required="true" label="Nome" value="#{classeManagedBean.classe.nome}" />   
-
-			                </h:panelGrid>
-			            </p:panel>
-			        </p:tab>
-			        <p:tab id="confirm" title="Confirmação">  
-			            <p:panel header="Confirmação">  
-
-			                <h:panelGrid id="confirmation" columns="2">  
-			                    <h:outputText value="Nome: " />  
-			                    <h:outputText styleClass="outputLabel" value="#{classeManagedBean.classe.nome}" />  			           
-			                </h:panelGrid>  
-			                  
-			                <p:commandButton value="Enviar" update="growl" action="#{classeManagedBean.save}"/>  
-			              
-			            </p:panel>  
-			        </p:tab>  
-			          
-			    </p:wizard>  
-			      
-			</h:form> 
+			<center>
+				<p:panel header="Cadastro de Classes">
+					<p:panelGrid columns="2" id="painelCadastroClasse" style="width:500px">
+						<h:outputLabel value="Nome: "/><p:inputText id="descricao" value="#{classeManagedBean.classe.nome}" style="width:500px"/>
+					</p:panelGrid>
+					<p:commandButton value="Enviar" action="#{classeManagedBean.save}"/>
+				</p:panel>		      
+			</center>
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>
