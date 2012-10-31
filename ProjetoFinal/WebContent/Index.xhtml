@@ -9,7 +9,7 @@
 
 <h:head>
 	<title>War of the Worlds</title>
-	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </h:head>
 <h:body>
 	<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
@@ -28,7 +28,7 @@
 	  			<ui:insert name="menu">
 					<h:form>
 						<p:growl id="messages" />
-						<p:slideMenu styleClass="teste">
+						<p:slideMenu styleClass="menu">
 							<p:menuitem value="Home" url="Index.xhtml"	update="messages"/>
 							<p:submenu label="Usuario">
 								<p:menuitem value="Cadastro" url="CadastroUsuario.jsf"	update="messages" icon="ui-icon-disk" />
@@ -61,15 +61,18 @@
 		<p:layoutUnit position="center"	header="#{msg.jogo}" style="background:#cbcbcb;">
 			<div id="conteudo">
 	  			<ui:insert name="conteudo">
+	  			<p:panel styleClass="FundoPagina">
+	  				<br/><br/><br/>
 					<table align="center">
 						<tr>
 							<td>
-								<p:galleria value="#{galleriaBean.images}" var="image" rendered="true" panelHeight="550" panelWidth="1570" transitionInterval="10000" style="background:#cbcbcb;">
+								<p:galleria value="#{galleriaBean.images}" var="image" rendered="true" panelHeight="550" panelWidth="1400" transitionInterval="10000" style="background:#cbcbcb;">
 									<p:graphicImage value="/images/#{image}" height="50"/>
 								</p:galleria>
 							</td>
 						</tr>
 					</table>
+				</p:panel>
 				</ui:insert>
 			</div>
 		</p:layoutUnit>
