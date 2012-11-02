@@ -26,11 +26,6 @@ public class ClasseManagedBean {
 	private List<Classe> classes;
 	private List<Classe> filtroClasses;
 	
-	private boolean skip;  
-      
-    private static Logger logger = Logger.getLogger(ClasseManagedBean.class.getName());  
-  
-    
     public ClasseManagedBean() {
     	populaClasse();
     	classe = new Classe();
@@ -80,6 +75,7 @@ public class ClasseManagedBean {
 		}
     	FacesContext.getCurrentInstance().addMessage(null, msg);
 		c.save(getClasse());
+		this.classe = new Classe();
 		this.classes = c.list();
         return "IndexAdmin?faces-redirect=true";
     }
@@ -92,25 +88,4 @@ public class ClasseManagedBean {
     	c.excluir(getClasse());
     	this.classes = c.list();
 	}
-      
-    public boolean isSkip() {  
-        return skip;  
-    }  
-  
-    public void setSkip(boolean skip) {  
-        this.skip = skip;  
-    }  
-      
-    public String onFlowProcess(FlowEvent event) {  
-        logger.info("Passo atual: " + event.getOldStep());  
-        logger.info("Próximo passo: " + event.getNewStep());  
-          
-        if(skip) {  
-            skip = false;   //reset in case user goes back  
-            return "confirm";  
-        }  
-        else {  
-            return event.getNewStep();  
-        }  
-    }
 }
