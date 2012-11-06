@@ -45,6 +45,13 @@ public class Autorizacao implements Serializable{
 		this.papel = papel;
 	}
 
+	@Override
+	public String toString() {
+		return "Autorizacao [usuario=" + usuario.getIdUsuarios() + ", papel=" + papel + "]";
+	}
+	
+	
+
 
 }
 
