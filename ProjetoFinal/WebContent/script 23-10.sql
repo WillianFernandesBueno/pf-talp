@@ -250,7 +250,24 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Autorizacao` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `jogo`.`Loggers`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `jogo`.`Loggers` ;
 
+CREATE  TABLE IF NOT EXISTS `jogo`.`Loggers` (
+  `idLoggers` INT NOT NULL ,
+  `mensagem` VARCHAR(255) NOT NULL ,
+  `data` DATETIME NULL ,
+  `Usuarios_idUsuarios` INT NOT NULL ,
+  PRIMARY KEY (`idLoggers`) ,
+  INDEX `fk_Loggers_Usuarios1` (`Usuarios_idUsuarios` ASC) ,
+  CONSTRAINT `fk_Loggers_Usuarios1`
+    FOREIGN KEY (`Usuarios_idUsuarios` )
+    REFERENCES `jogo`.`Usuarios` (`idUsuarios` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
