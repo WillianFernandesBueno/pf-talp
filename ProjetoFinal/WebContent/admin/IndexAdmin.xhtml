@@ -59,7 +59,12 @@
 									</p:tab>
 									<p:tab title="Usuarios">
 										<h:panelGrid columns="1">
-											<h:commandLink value="Editar Usuarios" action="CadastroClasse.xhtml" />
+											<h:commandLink value="Editar Usuarios" action="ListarUsuario.xhtml" />
+										</h:panelGrid>
+									</p:tab>
+									<p:tab title="Sair">
+										<h:panelGrid columns="1">
+											<h:commandLink value="Sair" action="#{loginManagedBean.logOut}" />
 										</h:panelGrid>
 									</p:tab>
 								</p:accordionPanel>
