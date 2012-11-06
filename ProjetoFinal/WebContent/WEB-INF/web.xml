@@ -36,8 +36,7 @@
 		<auth-method>FORM</auth-method>
 		<form-login-config>
 		<form-login-page>/Login.jsf</form-login-page>
-		<form-error-page>/erro.jsf</form-error-page>
-		
+		<form-error-page>/erro.jsf</form-error-page>	
 		</form-login-config>
 	</login-config>
 	
@@ -54,6 +53,14 @@
 	
 	<!--  Mapeamento Jaas-->
 	
+	<security-role>
+		<role-name>Usuario</role-name>
+	</security-role>
+	
+	<security-role>
+		<role-name>admin</role-name>
+	</security-role>
+	
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Usuario</web-resource-name>
@@ -61,6 +68,16 @@
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>usuario</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>admin</web-resource-name>
+			<url-pattern>/admin/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
 		</auth-constraint>
 	</security-constraint>
 	
