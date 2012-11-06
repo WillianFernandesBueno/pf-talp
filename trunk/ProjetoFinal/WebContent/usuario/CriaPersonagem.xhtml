@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="IndexUsuario.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel styleClass="FundoPaginaUsuario" >
+				<br/><br/><br/><br/>
+				<center>
+					<h:form>
+						<p:panel styleClass="FundoConteudo"  >
+							<br/><br/>
+							<p:panel style="width:500px;">
+								<p:selectOneButton value="#{criaPersonagemManagedBean.imagem}" onchange="true">
+									<f:selectItem itemLabel="Arqueiro" itemValue="Arqueiro.png" />
+									<f:selectItem itemLabel="espadachin" itemValue="Espadachim.png" />
+									<f:selectItem itemLabel="Mago" itemValue="Mago.png" />
+									<f:selectItem itemLabel="Mercador" itemValue="Mercador.png" />
+									<p:ajax update="teste" listener="#{criaPersonagemManagedBean.escolheClass}" />
+								</p:selectOneButton>
+							</p:panel>
+							<p:graphicImage id="teste" value="/images/personagem/#{criaPersonagemManagedBean.imagem}"/>
+							
+							<p:panel style="width:500px;">
+								<h:outputText value="Nome" />
+								<p:inputText required="true" label="Nome" value="#{criaPersonagemManagedBean.nome}" />
+							</p:panel>
+							
+							<p:panel style="width:500px;">
+								<p:commandButton value="Enviar" action="#{criaPersonagemManagedBean.save}" />
+							</p:panel>
+						</p:panel>
+					</h:form>
+				</center>
+		</p:panel>
+	</ui:define>
+
+
+</ui:composition>
+</html>
