@@ -3,6 +3,7 @@ package br.ucb.jogo.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,7 +18,7 @@ public class Usuario extends Pessoa implements Serializable{
 
 	
 	private static final long serialVersionUID = 1L;
-	private Integer idUsuarios;
+	private int idUsuarios;
 	private String senha;
 	private Integer tipo;
 	private String login;		
@@ -78,7 +79,7 @@ public class Usuario extends Pessoa implements Serializable{
 		return super.getEmail();
 	}
 	
-	@OneToMany(mappedBy="usuario", fetch = FetchType.LAZY, targetEntity = Autorizacao.class)
+	@OneToMany(mappedBy="usuario", fetch = FetchType.LAZY, targetEntity = Autorizacao.class, cascade = CascadeType.ALL)
 	public List<Autorizacao> getAutorizacao() {
 		return autorizacao;
 	}
