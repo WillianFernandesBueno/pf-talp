@@ -47,7 +47,7 @@ public class UsuarioHIB implements HIB<Usuario>, Serializable {
 	}
 
 	@Override
-	public Usuario findTById(long id) {
+	public Usuario findTById(Integer id) {
 		Session session = HibernateUtil.getSession();
 		try {
 			Usuario u = (Usuario) session.get(Usuario.class, id);
