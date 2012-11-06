@@ -8,6 +8,8 @@ import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import br.ucb.jogo.service.Util;
+
 @ManagedBean(name="loginManagedBean")
 @SessionScoped
 public class LoginManagedBean {
@@ -19,5 +21,10 @@ public class LoginManagedBean {
 		session.invalidate();
 		return "/Index";
 	}
+	
+	public boolean isUserInRole(String role){
+		return Util.isUser(role);
+	}
 
+	
 }
