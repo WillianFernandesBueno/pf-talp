@@ -1,10 +1,15 @@
 package br.ucb.jogo.HIB;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.Query;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import br.ucb.jogo.bean.Autorizacao;
 import br.ucb.jogo.interfaces.HIB;
@@ -22,7 +27,7 @@ public class LoginHib implements HIB<Autorizacao>, Serializable{
 		session.close();
 		return false;
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Autorizacao> list() {
@@ -45,13 +50,22 @@ public class LoginHib implements HIB<Autorizacao>, Serializable{
 	}
 
 	@Override
-	public Autorizacao findTById(long id) {
+	public Autorizacao findTById(Integer id) {
 		Session session = HibernateUtil.getSession();
+		Criteria criteria;
 		try {
-			Autorizacao u = (Autorizacao) session.get(Autorizacao.class, id);
-			return u;
+			criteria = session.createCriteria(Autorizacao.class);
+			criteria.add(Restrictions.eq("usuario.idUsuarios",id));			
+			@SuppressWarnings("unchecked")
+			ArrayList<Autorizacao> a = (ArrayList<Autorizacao>) criteria.list();
+			for (Autorizacao auto : a ) {
+				return auto;
+			}
+			 
 		} finally {
 			session.close();
 		}
+		return null;
 	}
+		
 }

@@ -45,7 +45,7 @@ public class PersonagemHIB implements HIB<Personagem> {
 	}
 
 	@Override
-	public Personagem findTById(long id) {
+	public Personagem findTById(Integer id) {
 		Session session = HibernateUtil.getSession();
 		try {
 			Personagem u = (Personagem) session.get(Personagem.class, id);

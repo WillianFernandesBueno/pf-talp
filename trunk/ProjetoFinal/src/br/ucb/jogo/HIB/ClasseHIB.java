@@ -43,7 +43,7 @@ public class ClasseHIB implements HIB<Classe>{
 	}
 
 	@Override
-	public Classe findTById(long id) {
+	public Classe findTById(Integer id) {
 		Session session = HibernateUtil.getSession();
 		try {
 			Classe u = (Classe) session.get(Classe.class, id);

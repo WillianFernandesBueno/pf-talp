@@ -44,7 +44,7 @@ public class ItemHIB implements HIB<Item> {
 	}
 
 	@Override
-	public Item findTById(long id) {
+	public Item findTById(Integer id) {
 		Session session = HibernateUtil.getSession();
 		try {
 			Item u = (Item) session.get(Item.class, id);
