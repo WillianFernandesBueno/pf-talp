@@ -13,6 +13,13 @@
 		height:1000px;
 }
 
+.FundoConteudo{
+		background-image: url("../imagens/fundoConteudo.png");
+		background-repeat: no-repeat;
+		width:650px;
+		height:800px;
+}
+
 .FundoPagina{ 
 		background-image: url("../imagens/fundoPaginaUsuario.jpg");
 		background-repeat: no-repeat;
