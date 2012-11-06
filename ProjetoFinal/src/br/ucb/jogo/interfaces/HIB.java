@@ -7,6 +7,6 @@ public interface HIB<T> {
 	public boolean save(T t);
 	public List<T> list();
 	public boolean excluir(T t);
-	public T findTById(long id);
+	public T findTById(Integer id);
 
 }
