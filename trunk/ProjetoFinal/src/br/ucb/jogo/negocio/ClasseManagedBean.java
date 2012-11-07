@@ -77,7 +77,7 @@ public class ClasseManagedBean {
 		c.save(getClasse());
 		this.classe = new Classe();
 		this.classes = c.list();
-        return "IndexAdmin?faces-redirect=true";
+        return "ListarClasse?faces-redirect=true";
     }
     
     public void excluir(ActionEvent evento) throws SQLException{

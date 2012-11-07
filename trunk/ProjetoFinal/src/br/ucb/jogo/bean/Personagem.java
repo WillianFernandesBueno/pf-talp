@@ -110,6 +110,7 @@ public class Personagem {
 	}
 	
 	@OneToOne
+	@JoinColumn(name="Usuarios_idUsuarios", referencedColumnName="idUsuarios")
 	public Usuario getUsuario() {
 		return usuario;
 	}

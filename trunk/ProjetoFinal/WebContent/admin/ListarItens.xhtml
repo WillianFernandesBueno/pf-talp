@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="IndexAdmin.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="form">
+			<center>  
+			    <p:dataTable emptyMessage="Nenhum item encontrado..." var="item" value="#{itensManagedBean.itens}" rowKey="#{item.nome}" paginator="true" rows="10" filteredValue="#{itensManagedBean.filtroItens}" id="TableItens">  
+			  
+			        <f:facet name="header">  
+			        	<h:outputText value="Listagem de Itens"/>  
+			        </f:facet>  
+					
+			        <p:column headerText="Nome" sortBy="#{item.nome}" filterBy="#{item.nome}" id="nome" width="400">  
+			            <h:outputText value="#{item.nome}"/>
+			        </p:column>  
+			  		
+			  		<p:column headerText="Preço" sortBy="#{item.preco}" id="preco" width="100">  
+			            <h:outputText value="#{item.preco}"/>
+			        </p:column>
+			        
+			        <p:column headerText="Level Necessário" sortBy="#{item.levelNecessario}" id="levelNecessario" width="200">  
+			            <h:outputText value="#{item.levelNecessario}"/>
+			        </p:column>
+			        
+			        <p:column headerText="Força" sortBy="#{item.forca}" id="forca" width="100">  
+			            <h:outputText value="#{item.forca}"/>
+			        </p:column>
+			        
+			        <p:column headerText="Agilidade" sortBy="#{item.agilidade}" id="agilidade" width="100">  
+			            <h:outputText value="#{item.agilidade}"/>
+			        </p:column>
+			        
+			        <p:column headerText="Defesa" sortBy="#{item.defesa}" id="defesa" width="100">  
+			            <h:outputText value="#{item.defesa}"/>
+			        </p:column>
+			        
+			        <p:column headerText="Mana" sortBy="#{item.mana}" id="mana" width="100">  
+			            <h:outputText value="#{item.mana}"/>
+			        </p:column>
+			  		
+			  		<p:column headerText="Alterar" id="alterar">
+			  			<h:commandLink action="CadastroItens.xhtml">
+				  			<f:setPropertyActionListener target="#{itensManagedBean.item}" value="#{item}"/>
+				  			<h:graphicImage url="/imagens/editar.png" title="editar" alt="editar"/>
+			  			</h:commandLink>
+			        </p:column>
+			        
+			        <p:column headerText="Excluir" id="excluir">
+			  			<h:commandLink actionListener="#{itensManagedBean.excluir}">
+				  			<f:attribute name="item" value="#{item}"/>
+				  			<h:graphicImage url="/imagens/excluir.png" title="excluir" alt="excluir"/>
+			  			</h:commandLink>
+			        </p:column>
+			        			        
+			    </p:dataTable>  
+			</center>  
+		</h:form>   
+	</ui:define>
+</ui:composition>
+</html>

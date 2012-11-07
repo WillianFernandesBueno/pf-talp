@@ -33,6 +33,10 @@ DROP TABLE IF EXISTS `jogo`.`Classe` ;
 CREATE  TABLE IF NOT EXISTS `jogo`.`Classe` (
   `idClasse` INT NOT NULL AUTO_INCREMENT ,
   `descricao` CHAR(35) NOT NULL ,
+  `forca` INT(11) NOT NULL ,
+  `agilidade` INT(11) NOT NULL ,
+  `defesa` INT(11) NOT NULL ,
+  `mana` INT(11) NOT NULL ,
   PRIMARY KEY (`idClasse`) )
 ENGINE = InnoDB;
 
@@ -89,29 +93,6 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Personagens` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `jogo`.`Atributos`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `jogo`.`Atributos` ;
-
-CREATE  TABLE IF NOT EXISTS `jogo`.`Atributos` (
-  `idAtributos` INT NOT NULL AUTO_INCREMENT ,
-  `forca` INT(11) NULL ,
-  `agilidade` INT(11) NULL ,
-  `defesa` INT(11) NULL ,
-  `mana` INT(11) NULL ,
-  `Classe_idClasse` INT NOT NULL ,
-  PRIMARY KEY (`idAtributos`, `Classe_idClasse`) ,
-  INDEX `fk_Atributos_Classe1` (`Classe_idClasse` ASC) ,
-  CONSTRAINT `fk_Atributos_Classe1`
-    FOREIGN KEY (`Classe_idClasse` )
-    REFERENCES `jogo`.`Classe` (`idClasse` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
 -- -----------------------------------------------------
 -- Table `jogo`.`Item`
 -- -----------------------------------------------------
@@ -122,6 +103,10 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Item` (
   `item` VARCHAR(45) NOT NULL ,
   `preco` FLOAT NOT NULL ,
   `levelNecessario` INT(11) NOT NULL ,
+  `forca` INT(11) NOT NULL ,
+  `agilidade` INT(11) NOT NULL ,
+  `defesa` INT(11) NOT NULL ,
+  `mana` INT(11) NOT NULL ,
   PRIMARY KEY (`idItem`) )
 ENGINE = InnoDB;
 
