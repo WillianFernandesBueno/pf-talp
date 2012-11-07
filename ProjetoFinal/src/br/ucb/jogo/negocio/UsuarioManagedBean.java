@@ -117,14 +117,6 @@ public class UsuarioManagedBean implements Serializable {
 		getLhib().save(auto);
 	}
 
-	public boolean isSkip() {  
-		return skip;  
-	}  
-
-	public void setSkip(boolean skip) {  
-		this.skip = skip;  
-	}  
-
 	public LoginHib getLhib() {
 		return lhib;
 	}

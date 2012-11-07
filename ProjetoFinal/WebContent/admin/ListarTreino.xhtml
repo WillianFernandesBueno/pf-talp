@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="IndexAdmin.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="form">
+			<center>  
+			    <p:dataTable emptyMessage="Nenhum treino encontrado..." var="treino" value="#{treinoManagedBean.treinos}" rowKey="#{treino.pontos}" paginator="true" rows="10" filteredValue="#{treinoManagedBean.filtroTreinos}" id="TableTreinos">  
+			  
+			        <f:facet name="header">  
+			        	<h:outputText value="Listagem de Treinos"/>  
+			        </f:facet>  
+			  
+			        <p:column headerText="Pontos" sortBy="#{treino.pontos}" filterBy="#{treino.pontos}" id="pontos" width="550">  
+			            <h:outputText value="#{treino.pontos}"/>
+			        </p:column>  
+			  		
+			  		<p:column headerText="Tempo Necessário" sortBy="#{treino.tempoNecessario}" filterBy="#{treino.tempoNecessario}" id="tempoNecessario" width="550">  
+			            <h:outputText value="#{treino.tempoNecessario}"/>
+			        </p:column>
+			  		
+			  		<p:column headerText="Alterar" id="alterar">
+			  			<h:commandLink action="CadastroTreino.xhtml">
+				  			<f:setPropertyActionListener target="#{treinoManagedBean.treino}" value="#{treino}"/>
+				  			<h:graphicImage url="/imagens/editar.png" title="editar" alt="editar"/>
+			  			</h:commandLink>
+			        </p:column>
+			        
+			        <p:column headerText="Excluir" id="excluir">
+			  			<h:commandLink actionListener="#{treinoManagedBean.excluir}">
+				  			<f:attribute name="classe" value="#{treino}"/>
+				  			<h:graphicImage url="/imagens/excluir.png" title="excluir" alt="excluir"/>
+			  			</h:commandLink>
+			        </p:column>
+			        			        
+			    </p:dataTable>  
+			</center>  
+		</h:form>   
+	</ui:define>
+</ui:composition>
+</html>

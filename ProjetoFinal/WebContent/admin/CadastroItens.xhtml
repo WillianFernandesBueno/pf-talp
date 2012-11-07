@@ -10,52 +10,26 @@
 
 
 <ui:composition template="IndexAdmin.xhtml">
+
 	<ui:define name="conteudo">
-		<h:form>  
-			    <p:growl id="growl" sticky="true" showDetail="true"/>  
-			    <p:wizard widgetVar="wiz" flowListener="#{itensManagedBean.onFlowProcess}">  
-			      
-			        <p:tab id="itens" title="Itens">  
-			            <p:panel header="Cadastro Itens">  
-			              
-			                <h:messages errorClass="error"/>  
-			 
-			                <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">  
-			                    <h:outputText value="Nome: " />  
-			                    <p:inputText required="true" label="nome" value="#{itensManagedBean.itens.nome}" /> 
-			                     
-			                    <h:outputText value="Preço: " />  
-			                    <p:inputText required="true" label="preco" value="#{itensManagedBean.itens.preco}" />
-			                    
-			                    <h:outputText value="Level Necessario: " />  
-			                    <p:inputText required="true" label="levelNecessario: " value="#{itensManagedBean.itens.levelNecessario}" />    
-			                </h:panelGrid>  
-			            </p:panel>  
-			        </p:tab>  
-			   
-			        <p:tab id="confirm" title="Confirmação">  
-			            <p:panel header="Confirmação">  
-			              
-			                <h:panelGrid id="confirmation" columns="2">  
-			                    <h:outputText value="Nome: " />  
-			                    <h:outputText styleClass="outputLabel" value="#{itensManagedBean.itens.nome}" />
-			                    
-			                    <h:outputText value="Preço: " />  
-			                    <h:outputText styleClass="outputLabel" value="#{itensManagedBean.itens.preco}" />
-			                    
-			                    <h:outputText value="Level Necessario: " />
-			                    <h:outputText styleClass="outputLabel" value="#{itensManagedBean.itens.levelNecessario}" />
-			                </h:panelGrid>
-			                  
-			                <p:commandButton value="Enviar" update="growl" actionListener="#{itensManagedBean.save}"/>  
-			              
-			            </p:panel>  
-			        </p:tab>  
-			          
-			    </p:wizard>  
-			      
-			</h:form> 
+		<h:form>
+			<center>
+				<p:panel header="Cadastro de Itens">
+					<p:panelGrid columns="2" id="painelCadastroItens" style="width:500px">
+						<h:outputLabel value="Nome: "/><p:inputText id="nome" required="true" value="#{itensManagedBean.item.nome}" style="width:500px"/>
+						<h:outputLabel value="Preço: "/><p:inputText id="preco" required="true" value="#{itensManagedBean.item.preco}" style="width:500px"/>
+						<h:outputLabel value="Level Necessário: "/><p:inputText id="levelNecessario" required="true" value="#{itensManagedBean.item.levelNecessario}" style="width:500px"/>
+						<h:outputLabel value="Força: "/><p:inputText id="forca" value="#{itensManagedBean.item.forca}" style="width:500px"/>
+						<h:outputLabel value="Agilidade: "/><p:inputText id="agilidade" value="#{itensManagedBean.item.agilidade}" style="width:500px"/>
+						<h:outputLabel value="Defesa: "/><p:inputText id="defesa" value="#{itensManagedBean.item.defesa}" style="width:500px"/>
+						<h:outputLabel value="Mana: "/><p:inputText id="mana" value="#{itensManagedBean.item.mana}" style="width:500px"/>
+					</p:panelGrid>
+					<p:commandButton value="Enviar" action="#{itensManagedBean.save}"/> 
+				</p:panel>		      
+			</center>
+		</h:form>
 	</ui:define>
+	
 </ui:composition>
 
 </html>

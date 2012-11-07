@@ -16,20 +16,11 @@ public class Classe  implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String nome;
+	private Integer forca, agilidade, defesa, mana;
 	private Integer idClasse;
 	
 	@SuppressWarnings("rawtypes")
 	ListDataModel model = null;
-	
-	@Column(name="descricao")
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
 	
 	public Classe getRowData(String rowKey) {  
 		@SuppressWarnings("unchecked")
@@ -55,6 +46,48 @@ public class Classe  implements Serializable {
 
 	public void setIdClasse(Integer id) {
 		this.idClasse = id;
+	}
+	
+	@Column(name="descricao")
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	@Column(name="forca")
+	public Integer getForca() {
+		return forca;
+	}
+
+	public void setForca(Integer forca) {
+		this.forca = forca;
+	}
+	@Column(name="agilidade")
+	public Integer getAgilidade() {
+		return agilidade;
+	}
+
+	public void setAgilidade(Integer agilidade) {
+		this.agilidade = agilidade;
+	}
+	@Column(name="defesa")
+	public Integer getDefesa() {
+		return defesa;
+	}
+
+	public void setDefesa(Integer defesa) {
+		this.defesa = defesa;
+	}
+	@Column(name="mana")
+	public Integer getMana() {
+		return mana;
+	}
+
+	public void setMana(Integer mana) {
+		this.mana = mana;
 	}  
 	
 	

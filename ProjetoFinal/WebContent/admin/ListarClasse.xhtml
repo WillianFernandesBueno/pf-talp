@@ -20,7 +20,23 @@
 			  
 			        <p:column headerText="Nome" sortBy="#{classe.nome}" filterBy="#{classe.nome}" id="nome" width="550">  
 			            <h:outputText value="#{classe.nome}"/>
-			        </p:column>  
+			        </p:column>
+			        
+			        <p:column headerText="Força" sortBy="#{classe.forca}" id="forca" width="150">  
+			            <h:outputText value="#{classe.forca}"/>
+			        </p:column>
+			        
+			        <p:column headerText="Agilidade" sortBy="#{classe.agilidade}" id="agilidade" width="150">  
+			            <h:outputText value="#{classe.agilidade}"/>
+			        </p:column>
+			        
+			        <p:column headerText="Defesa" sortBy="#{classe.defesa}" id="defesa" width="150">  
+			            <h:outputText value="#{classe.defesa}"/>
+			        </p:column>
+			        
+			        <p:column headerText="Mana" sortBy="#{classe.mana}" id="mana" width="150">  
+			            <h:outputText value="#{classe.mana}"/>
+			        </p:column>
 			  		
 			  		<p:column headerText="Alterar" id="alterar">
 			  			<h:commandLink action="CadastroClasse.xhtml">
