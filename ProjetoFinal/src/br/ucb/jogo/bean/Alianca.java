@@ -17,6 +17,7 @@ import javax.persistence.TemporalType;
 public class Alianca {
 	
 	private Integer idAlianca;
+	private String nome;
 	private Date dataCriacao;
 	private String mensagem;
 	
@@ -31,6 +32,15 @@ public class Alianca {
 	public void setIdAlianca(Integer idAlianca) {
 		this.idAlianca = idAlianca;
 	}
+	@Column
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	@Temporal(TemporalType.DATE)
 	public Date getDataCriacao() {
 		return dataCriacao;
