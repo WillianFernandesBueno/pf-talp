@@ -94,10 +94,12 @@ public class TreinoManagedBean {
     }
     
     public void excluir(ActionEvent evento) throws SQLException{
+    	System.out.println("ENTROU NO EXCLUIR!!!");
     	FacesMessage msg = new FacesMessage("Sucesso", "Treino excluido com sucesso");  
         FacesContext.getCurrentInstance().addMessage(null, msg); 
         this.treino = (Treino) evento.getComponent().getAttributes().get("treino");
-    	TreinoHIB c = new TreinoHIB();
+        System.out.println("TREINO = "+this.treino.getNome());
+        TreinoHIB c = new TreinoHIB();
     	c.excluir(getTreino());
     	this.treinos = c.list();
 	}
