@@ -120,6 +120,8 @@ DROP TABLE IF EXISTS `jogo`.`Treino` ;
 
 CREATE  TABLE IF NOT EXISTS `jogo`.`Treino` (
   `idTreino` INT NOT NULL AUTO_INCREMENT ,
+  `nome` VARCHAR(45) NOT NULL ,
+  `cash` float NOT NULL ,
   `pontos` INT NOT NULL ,
   `tempoNecessario` TIME NOT NULL ,
   PRIMARY KEY (`idTreino`) )
