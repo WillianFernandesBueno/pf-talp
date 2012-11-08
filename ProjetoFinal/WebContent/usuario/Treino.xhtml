@@ -23,30 +23,30 @@
 					Alguns dos trabalhos não pagam muito mas, pelo menos você recebe o que restou no fim do dia de trocas." />
 
 					</p:panel>
-					<p:dataTable id="cars" var="trabalho"
-						value="#{trabalhoBean.trabalhos}" rowKey="#{trabalho.titulo}"
-						selection="#{trabalhoBean.selectTrabalho}" selectionMode="single"
+					<p:dataTable id="cars" var="treino"
+						value="#{treinoBean.treinos}" rowKey="#{treino.titulo}"
+						selection="#{treinoBean.selectTrabalho}" selectionMode="single"
 						style="width:700px;">
 
-						<p:column headerText="trabalho" style="background:#dbcba5;">
-							<h:outputText value="#{trabalho.titulo}" />
+						<p:column headerText="Treino" style="background:#dbcba5;">
+							<h:outputText value="#{treino.titulo}" />
 						</p:column>
 
-						<p:column headerText="Salário por hora"
+						<p:column headerText="Reconpensa em dinheiro"
 							style="background:#dbcba5;">
-							<h:outputText value="#{trabalho.salarioHora}" />
+							<h:outputText value="#{treino.salarioHora}" />
 						</p:column>
 
-						<p:column headerText="Horas	" style="background:#dbcba5;">
-							<h:outputText value="#{trabalho.horas}" />
+						<p:column headerText="Horas" style="background:#dbcba5;">
+							<h:outputText value="#{treino.horas}" />
 						</p:column>
 
 						<p:column headerText="experiencia" style="background:#dbcba5;">
-							<h:outputText value="#{trabalho.exp}" />
+							<h:outputText value="#{treino.exp}" />
 						</p:column>
 					</p:dataTable>
 					<p:panel style="width:690px;background:#dbcba5;">
-						<p:commandButton value="enviar" action="#{trabalhoBean.teste}"
+						<p:commandButton value="enviar" action="#{treinoBean.teste}"
 							style="background:#dbcba5;" />
 					</p:panel>
 
