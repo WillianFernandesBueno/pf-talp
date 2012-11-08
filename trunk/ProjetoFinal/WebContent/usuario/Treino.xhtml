@@ -24,29 +24,29 @@
 
 					</p:panel>
 					<p:dataTable id="cars" var="treino"
-						value="#{treinoBean.treinos}" rowKey="#{treino.titulo}"
-						selection="#{treinoBean.selectTrabalho}" selectionMode="single"
+						value="#{treinoManagedBean.treinos}" rowKey="#{treino.nome}"
+						selection="#{treinoManagedBean.selectTreino}" selectionMode="single"
 						style="width:700px;">
 
 						<p:column headerText="Treino" style="background:#dbcba5;">
-							<h:outputText value="#{treino.titulo}" />
+							<h:outputText value="#{treino.nome}" />
 						</p:column>
 
 						<p:column headerText="Reconpensa em dinheiro"
 							style="background:#dbcba5;">
-							<h:outputText value="#{treino.salarioHora}" />
+							<h:outputText value="#{treino.cash}" />
 						</p:column>
 
 						<p:column headerText="Horas" style="background:#dbcba5;">
-							<h:outputText value="#{treino.horas}" />
+							<h:outputText value="#{treino.tempoNecessario}" />
 						</p:column>
 
 						<p:column headerText="experiencia" style="background:#dbcba5;">
-							<h:outputText value="#{treino.exp}" />
+							<h:outputText value="#{treino.pontos}" />
 						</p:column>
 					</p:dataTable>
 					<p:panel style="width:690px;background:#dbcba5;">
-						<p:commandButton value="enviar" action="#{treinoBean.teste}"
+						<p:commandButton value="enviar" action="#{treinoManagedBean.teste}"
 							style="background:#dbcba5;" />
 					</p:panel>
 
