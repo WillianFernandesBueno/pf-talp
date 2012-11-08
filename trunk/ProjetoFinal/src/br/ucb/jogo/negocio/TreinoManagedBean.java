@@ -21,6 +21,8 @@ public class TreinoManagedBean {
 	private Treino treino;
 	private List<Treino> treinos;
 	private List<Treino> filtroTreinos;
+	private List<Treino> treinos2;
+	private Treino selectTreino; 
 	
     public TreinoManagedBean() {
     	populaTreino();
@@ -31,6 +33,8 @@ public class TreinoManagedBean {
     private void populaTreino() {
     	TreinoHIB c = new TreinoHIB();
     	setTreinos(c.list());
+    	treinos2 = new ArrayList<Treino>();
+		popula(treinos2);
     }
     
     public Treino getTreino() {  
@@ -56,6 +60,37 @@ public class TreinoManagedBean {
 	public void setFiltroTreinos(List<Treino> filtroTreinos) {
 		this.filtroTreinos = filtroTreinos;
 	}
+	
+	public List<Treino> getTreinos2() {
+		return treinos2;
+	}
+
+	public void setTreinos2(List<Treino> treinos2) {
+		this.treinos2 = treinos2;
+	}
+
+	public Treino getSelectTreino() {
+		return selectTreino;
+	}
+
+	public void setSelectTreino(Treino selectTreino) {
+		this.selectTreino = selectTreino;
+	}
+
+	private void popula(List<Treino> trabs) {
+		
+		for (int i = 0; i < 10; i++) {
+			trabs.add(new Treino(1+i,"treino"+i,1000+i,));
+		}
+		
+	}
+
+	public String teste() {
+		System.out.println(selectTreino.getNome());
+		return "IndexAdmin";
+		
+	}
+	
 	
     public String incluir() {
 		this.treino = new Treino();
