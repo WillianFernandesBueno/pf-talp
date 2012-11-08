@@ -11,46 +11,19 @@
 
 <ui:composition template="IndexAdmin.xhtml">
 	<ui:define name="conteudo">
-		<h:form>  
-			    <p:growl id="growl" sticky="true" showDetail="true"/>  
-			    <p:wizard widgetVar="wiz" flowListener="#{treinoManagedBean.onFlowProcess}">  
-			      
-			        <p:tab id="treino" title="Treino">  
-			            <p:panel header="Cadastro treino">  
-			              
-			                <h:messages errorClass="error"/>  
-			 
-			                <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">  
-			                    <h:outputText value="Pontos: " />  
-			                    <p:inputText required="true" label="pontos" value="#{treinoManagedBean.treino.pontos}" /> 
-			                     
-			                    <h:outputText value="Tempo Necessário " />  
-			                    <p:inputText required="true" label="tempoNecessario" value="#{treinoManagedBean.treino.tempoNecessario}" />    
-			                </h:panelGrid>  
-			            </p:panel>  
-			        </p:tab>  
-			   
-			        <p:tab id="confirm" title="Confirmação">  
-			            <p:panel header="Confirmação">  
-			              
-			                <h:panelGrid id="confirmation" columns="2">
-			                	<h:outputText value="Pontos: " />  
-			                    <h:outputText styleClass="outputLabel" value="#{treinoManagedBean.treino.pontos}" /> 
-			                    
-			                    <h:outputText value="Tempo Necessário " />  
-			                    
-			                    <h:outputText styleClass="outputLabel" value="#{treinoManagedBean.treino.tempoNecessario}" />
-			                    
-			                </h:panelGrid>
-			                  
-			                <p:commandButton value="Enviar" update="growl" actionListener="#{treinoManagedBean.save}"/>  
-			              
-			            </p:panel>  
-			        </p:tab>  
-			          
-			    </p:wizard>  
-			      
-			</h:form> 
+		<h:form>
+			<center>
+				<p:panel header="Cadastro de Treinos">
+					<p:panelGrid columns="2" id="painelCadastroTreino" style="width:500px">
+						<h:outputLabel value="Nome: "/><p:inputText id="nome" required="true" value="#{treinoManagedBean.treino.nome}" style="width:500px"/>
+						<h:outputLabel value="Pontos: "/><p:inputText id="pontos" required="true" value="#{treinoManagedBean.treino.pontos}" style="width:500px"/>
+						<h:outputLabel value="Tempo Necessário: "/><p:inputText id="tempoNecessario" required="true" value="#{treinoManagedBean.treino.tempoNecessario}" style="width:500px"/>
+						<h:outputLabel value="Cash: "/><p:inputText id="cash" required="true" value="#{treinoManagedBean.treino.cash}" style="width:500px"/>
+					</p:panelGrid>
+					<p:commandButton value="Enviar" action="#{treinoManagedBean.save}"/> 
+				</p:panel>		      
+			</center>
+		</h:form>
 	</ui:define>
 </ui:composition>
 

@@ -1,11 +1,8 @@
 package br.ucb.jogo.bean;
 
 import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -56,7 +53,7 @@ public class Item {
 		this.levelNecessario = levelNecessario;
 	}
 	
-	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany
 	@JoinTable(name="Personagens_has_Item", 
 	joinColumns = {@JoinColumn(name = "Item_idItem", referencedColumnName="idItem")}, 
 	inverseJoinColumns = {@JoinColumn(name = "Personagens_idPersonagens", referencedColumnName="idPersonagens")} )
