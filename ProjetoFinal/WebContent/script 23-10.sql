@@ -11,7 +11,7 @@ USE `jogo` ;
 DROP TABLE IF EXISTS `jogo`.`Usuarios` ;
 
 CREATE  TABLE IF NOT EXISTS `jogo`.`Usuarios` (
-  `idUsuarios` INT NOT NULL AUTO_INCREMENT ,
+  `idUsuarios` INT NOT NULL AUTO_INCREMENT , 
   `nome` VARCHAR(255) NOT NULL ,
   `email` VARCHAR(255) NOT NULL ,
   `senha` VARCHAR(255) NOT NULL ,
