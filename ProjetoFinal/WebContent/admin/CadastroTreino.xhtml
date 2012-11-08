@@ -20,8 +20,9 @@
 						<h:outputLabel value="Tempo Necessário: "/><p:inputText id="tempoNecessario" required="true" value="#{treinoManagedBean.treino.tempoNecessario}" style="width:500px"/>
 						<h:outputLabel value="Cash: "/><p:inputText id="cash" required="true" value="#{treinoManagedBean.treino.cash}" style="width:500px"/>
 					</p:panelGrid>
-					<p:commandButton value="Enviar" action="#{treinoManagedBean.save}"/> 
-				</p:panel>		      
+					<p:commandButton value="Enviar" action="#{treinoManagedBean.save}" ajax="false" />	 
+				</p:panel>	
+				     
 			</center>
 		</h:form>
 	</ui:define>

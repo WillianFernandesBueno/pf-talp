@@ -18,14 +18,22 @@
 			        	<h:outputText value="Listagem de Treinos"/>  
 			        </f:facet>  
 			  
-			        <p:column headerText="Pontos" sortBy="#{treino.pontos}" filterBy="#{treino.pontos}" id="pontos" width="550">  
+			  		<p:column headerText="Nome" sortBy="#{treino.nome}" filterBy="#{treino.nome}" id="nome" width="550">  
+			            <h:outputText value="#{treino.nome}"/>
+			        </p:column>  
+			  		
+			        <p:column headerText="Pontos" sortBy="#{treino.pontos}" id="pontos" width="100">  
 			            <h:outputText value="#{treino.pontos}"/>
 			        </p:column>  
 			  		
-			  		<p:column headerText="Tempo Necessário" sortBy="#{treino.tempoNecessario}" filterBy="#{treino.tempoNecessario}" id="tempoNecessario" width="550">  
-			            <h:outputText value="#{treino.tempoNecessario}"/>
+			  		<p:column headerText="Cash" sortBy="#{treino.cash}" id="cash" width="100">  
+			            <h:outputText value="#{treino.cash}"/>
 			        </p:column>
 			  		
+			  		<p:column headerText="Tempo Necessário" sortBy="#{treino.tempoNecessario}" id="tempoNecessario" width="200">  
+			            <h:outputText value="#{treino.tempoNecessario}"/>
+			        </p:column>
+	
 			  		<p:column headerText="Alterar" id="alterar">
 			  			<h:commandLink action="CadastroTreino.xhtml">
 				  			<f:setPropertyActionListener target="#{treinoManagedBean.treino}" value="#{treino}"/>

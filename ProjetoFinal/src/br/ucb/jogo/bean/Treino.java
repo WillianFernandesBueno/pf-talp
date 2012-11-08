@@ -1,6 +1,5 @@
 package br.ucb.jogo.bean;
 
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="treino")
@@ -21,7 +18,7 @@ public class Treino {
 	private String nome;
 	private Float cash;
 	private Integer pontos;
-	private Date tempoNecessario;
+	private Integer tempoNecessario;
 	private List<Personagem> personagens;
 	
 	@Id
@@ -58,16 +55,15 @@ public class Treino {
 	public void setPontos(Integer pontos) {
 		this.pontos = pontos;
 	}
-	
-	@Temporal(TemporalType.DATE)
-	public Date getTempoNecessario() {
+	@Column
+	public Integer getTempoNecessario() {
 		return tempoNecessario;
 	}
 
-	public void setTempoNecessario(Date tempoNecessario) {
+	public void setTempoNecessario(Integer tempoNecessario) {
 		this.tempoNecessario = tempoNecessario;
 	}
-	
+
 	@ManyToMany
 	@JoinTable(name="Personagens_has_treino", 
 	joinColumns = {@JoinColumn(name="Treino_idTreino",referencedColumnName="idTreino")}, 
