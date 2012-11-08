@@ -81,7 +81,6 @@ public class UsuarioManagedBean implements Serializable {
 
 		
 		if(Util.isUser("admin")){
-			System.out.println("oi");
 			return "/admin/ListarUsuario?faces-redirect=true";
 		}
 		if(Util.isUser("usuario")){

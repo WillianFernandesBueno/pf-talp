@@ -10,41 +10,51 @@
 
 <ui:composition template="IndexAdmin.xhtml">
 	<ui:define name="conteudo">
-		<h:form>
-			    <p:growl id="growl" sticky="true" showDetail="true"/>  
-			    <p:wizard widgetVar="wiz" flowListener="#{aliancaManagedBean.onFlowProcess}">  
-			        <p:tab id="alianca" title="Aliança">
-			            <p:panel header="Dados da Aliança">
-			                <h:messages errorClass="error"/> 
-			                <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">
-
-			                    <h:outputText value="Data de Criação: " />  
-								<p:inputText required="true" label="dataCriacao" value="#{aliancaManagedBean.alianca.dataCriacao}" />
-								
-								<h:outputText value="Mensagem: " />  
-								<p:inputText required="true" label="mensagem" value="#{aliancaManagedBean.alianca.mensagem}" />   
-			                </h:panelGrid>
-			            </p:panel>
-			        </p:tab>
-			        <p:tab id="confirm" title="Confirmação">  
-			            <p:panel header="Confirmação">  
-
-			                <h:panelGrid id="confirmation" columns="2">  
-			                    <h:outputText value="Data de Criação: " />  
-								<h:outputText styleClass="outputLabel" value="#{aliancaManagedBean.alianca.dataCriacao}" />
-								
-								<h:outputText value="Mensagem: " />  
-								<h:outputText styleClass="outputLabel" value="#{aliancaManagedBean.alianca.mensagem}" />   
-			                </h:panelGrid>
-			                  
-			                <p:commandButton value="Enviar" update="growl" actionListener="#{aliancaManagedBean.save}"/>  
-			              
-			            </p:panel>  
-			        </p:tab>  
-			          
-			    </p:wizard>  
-			      
-			</h:form> 
+		<h:form id="form">
+			<center>  
+			    <p:dataTable emptyMessage="Nenhuma aliança encontrada..." var="classe" value="#{alianManagedBean.classes}" rowKey="#{classe.nome}" paginator="true" rows="10" filteredValue="#{classeManagedBean.filtroClasses}" id="TableClasses">  
+			  
+			        <f:facet name="header">  
+			        	<h:outputText value="Listagem de Classes"/>  
+			        </f:facet>  
+			  
+			        <p:column headerText="Nome" sortBy="#{classe.nome}" filterBy="#{classe.nome}" id="nome" width="550">  
+			            <h:outputText value="#{classe.nome}"/>
+			        </p:column>
+			        
+			        <p:column headerText="Força" sortBy="#{classe.forca}" id="forca" width="150">  
+			            <h:outputText value="#{classe.forca}"/>
+			        </p:column>
+			        
+			        <p:column headerText="Agilidade" sortBy="#{classe.agilidade}" id="agilidade" width="150">  
+			            <h:outputText value="#{classe.agilidade}"/>
+			        </p:column>
+			        
+			        <p:column headerText="Defesa" sortBy="#{classe.defesa}" id="defesa" width="150">  
+			            <h:outputText value="#{classe.defesa}"/>
+			        </p:column>
+			        
+			        <p:column headerText="Mana" sortBy="#{classe.mana}" id="mana" width="150">  
+			            <h:outputText value="#{classe.mana}"/>
+			        </p:column>
+			  		
+			  		<p:column headerText="Alterar" id="alterar">
+			  			<h:commandLink action="CadastroClasse.xhtml">
+				  			<f:setPropertyActionListener target="#{classeManagedBean.classe}" value="#{classe}"/>
+				  			<h:graphicImage url="/imagens/editar.png" title="editar" alt="editar"/>
+			  			</h:commandLink>
+			        </p:column>
+			        
+			        <p:column headerText="Excluir" id="excluir">
+			  			<h:commandLink actionListener="#{classeManagedBean.excluir}">
+				  			<f:attribute name="classe" value="#{classe}"/>
+				  			<h:graphicImage url="/imagens/excluir.png" title="excluir" alt="excluir"/>
+			  			</h:commandLink>
+			        </p:column>
+			        			        
+			    </p:dataTable>  
+			</center>  
+		</h:form>   
 	</ui:define>
 </ui:composition>
 </html>

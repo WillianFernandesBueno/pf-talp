@@ -24,6 +24,7 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Usuarios` (
   PRIMARY KEY (`idUsuarios`, `login`) )
 ENGINE = InnoDB;
 
+INSERT INTO Usuarios VALUES (null,'admin','admin','admin',2,'admin','estado','cidade','rua','bairro');
 
 -- -----------------------------------------------------
 -- Table `jogo`.`Classe`
@@ -235,6 +236,7 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Autorizacao` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+INSERT INTO Autorizacao VALUES ('admin',1,'admin');
 -- -----------------------------------------------------
 -- Table `jogo`.`Loggers`
 -- -----------------------------------------------------
