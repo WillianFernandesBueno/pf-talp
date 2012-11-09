@@ -10,8 +10,19 @@
 <ui:composition template="IndexUsuario.xhtml">
 	
 	<ui:define name="conteudo">	
+	<p:panel styleClass="FundoPaginaUsuario">
+		<h:form>
+			<center>
+				<br/><br/><br/>
+					<p:panelGrid columns="2" styleClass="PainelAlianca">
+						<h:outputLabel value="Nome: "/><p:inputText id="nome" required="true" value="#{aliancaManagedBean.alianca.nome}" style="width:500px"/>
+						<h:outputLabel value="Data de criação: "/><p:inputText id="dataCriacao" required="true" value="#{aliancaManagedBean.alianca.dataCriacao}" style="width:500px"/>
+						<h:outputLabel value="Mensagem: "/><p:inputTextarea id="mensagem" required="true" value="#{aliancaManagedBean.alianca.mensagem}" style="width:500px"/>
+					</p:panelGrid>
+					<p:commandButton value="Criar Aliança" action="#{aliancaManagedBean.save}" ajax="false"/> 
+			</center>
+		</h:form>
+	</p:panel>
 	</ui:define>
-
-	
 </ui:composition>
 </html>
