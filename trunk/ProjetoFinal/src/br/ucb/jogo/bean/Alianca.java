@@ -41,7 +41,7 @@ public class Alianca {
 		this.nome = nome;
 	}
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getDataCriacao() {
 		return dataCriacao;
 	}
