@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="IndexUsuario.xhtml">
+	
+	<ui:define name="conteudo">	
+	<p:panel styleClass="FundoPaginaUsuario">
+<h:form id="form">
+			<center>  
+			    <p:dataTable emptyMessage="Nenhuma aliança encontrada..." var="alianca" value="#{aliancaManagedBean.aliancas}" rowKey="#{alianca.nome}" paginator="true" rows="10" filteredValue="#{aliancaManagedBean.filtroAliancas}" id="TableAliancas">  
+			  
+			        <f:facet name="header">  
+			        	<h:outputText value="Listagem de Aliancas"/>  
+			        </f:facet>  
+			  
+			        <p:column headerText="Nome" sortBy="#{alianca.nome}" filterBy="#{alianca.nome}" id="nome" width="550">  
+			            <h:outputText value="#{alianca.nome}"/>
+			        </p:column>
+			        
+			        <p:column headerText="Data de Criação" sortBy="#{alianca.dataCriacao}" id="dataCriacao" width="250">  
+			            <h:outputText value="#{alianca.dataCriacao}"/>
+			        </p:column>
+			        
+			        <p:column headerText="Mensagem" id="agilidade" width="150">  
+			            <h:outputText value="#{alianca.mensagem}"/>
+			        </p:column>
+			        
+			  		<p:column headerText="Alterar" id="alterar">
+			  			<h:commandLink action="CadastroAlianca.xhtml">
+				  			<f:setPropertyActionListener target="#{aliancaManagedBean.alianca}" value="#{alianca}"/>
+				  			<h:graphicImage url="/imagens/editar.png" title="editar" alt="editar"/>
+			  			</h:commandLink>
+			        </p:column>
+			        
+			        <p:column headerText="Excluir" id="excluir">
+			  			<h:commandLink actionListener="#{aliancaManagedBean.excluir}">
+				  			<f:attribute name="alianca" value="#{alianca}"/>
+				  			<h:graphicImage url="/imagens/excluir.png" title="excluir" alt="excluir"/>
+			  			</h:commandLink>
+			        </p:column>
+			        			        
+			    </p:dataTable>  
+			</center>  
+		</h:form>   
+	</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
