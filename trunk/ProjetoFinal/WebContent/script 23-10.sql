@@ -123,7 +123,7 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Treino` (
   `nome` VARCHAR(45) NOT NULL ,
   `cash` float NOT NULL ,
   `pontos` INT NOT NULL ,
-  `tempoNecessario` TIME NOT NULL ,
+  `tempoNecessario` int NOT NULL ,
   PRIMARY KEY (`idTreino`) )
 ENGINE = InnoDB;
 

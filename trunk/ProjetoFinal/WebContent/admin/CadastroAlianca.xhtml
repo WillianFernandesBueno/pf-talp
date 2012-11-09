@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<ui:composition template="IndexAdmin.xhtml">
+
+	<ui:define name="conteudo">
+		<h:form>
+			<center>
+				<p:panel header="Cadastro de Aliancas">
+					<p:panelGrid columns="2" id="painelCadastroAliancas" style="width:500px">
+						<h:outputLabel value="Nome: "/><p:inputText id="nome" required="true" value="#{aliancaManagedBean.alianca.nome}" style="width:500px"/>
+						<h:outputLabel value="Data de criação: "/><p:inputText id="dataCriacao" required="true" value="#{aliancaManagedBean.alianca.dataCriacao}" style="width:500px"/>
+						<h:outputLabel value="Mensagem: "/><p:inputTextarea id="mensagem" required="true" value="#{aliancaManagedBean.alianca.mensagem}" style="width:500px"/>
+					</p:panelGrid>
+					<p:commandButton value="Enviar" action="#{aliancaManagedBean.save}" ajax="false"/> 
+				</p:panel>		      
+			</center>
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
+
+</html>
