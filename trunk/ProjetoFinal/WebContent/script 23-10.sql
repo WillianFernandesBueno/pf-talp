@@ -70,6 +70,8 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Personagens` (
   `forca` INT(11) NOT NULL ,
   `agilidade` INT(11) NOT NULL ,
   `defesa` INT(11) NOT NULL ,
+  `ativo` boolean not null,
+  `experiencia` int(11) not null , 
   `Classe_idClasse` INT ,
   `Alianca_idAlianca` INT  ,
   `Usuarios_idUsuarios` INT NOT NULL ,
