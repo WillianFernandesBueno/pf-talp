@@ -24,7 +24,6 @@ public class Personagem {
 	
 	private Integer idPersonagens;
 	private String nick;
-	private String imagem;
 	private Integer level;
 	private Integer mana;
 	private Integer forca;
@@ -32,7 +31,7 @@ public class Personagem {
 	private Integer defesa;
 	private Double cash;
 	private Usuario usuario;
-	//private Classe classe;
+	private Classe classe;
 	private List<Item> itens;
 	private Alianca alianca;
 	private List<Treino> trienos;
@@ -48,19 +47,22 @@ public class Personagem {
 	public void setIdPersonagens(Integer idPersonagens) {
 		this.idPersonagens = idPersonagens;
 	}
-	
-	/*
-	public String getImagem() {
-		return imagem;
-	}
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
-	}*/
+	@Column
 	public String getNick() {
 		return nick;
 	}
 	public void setNick(String nick) {
 		this.nick = nick;
+	}
+	
+	
+	@OneToOne
+	@JoinColumn(name="Classe_idClasse", referencedColumnName="idClasse")
+	public Classe getClasse() {
+		return classe;
+	}
+	public void setClasse(Classe classe) {
+		this.classe = classe;
 	}
 	
 	@Column

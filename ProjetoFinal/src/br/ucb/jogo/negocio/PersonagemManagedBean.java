@@ -17,14 +17,28 @@ import br.ucb.jogo.bean.Personagem;
 import br.ucb.jogo.service.Util;
 
 
-@ManagedBean (name="criaPersonagemManagedBean")
+@ManagedBean (name="personagemManagedBean")
 @SessionScoped
 public class PersonagemManagedBean {  
 
 	private Personagem personagem;
     private String imagem;
     private String nome;
+    private Classe classe;
     
+    public PersonagemManagedBean() {
+		this.personagem = new Personagem();
+		this.classe = new Classe();
+	}
+
+	public Classe getClasse() {
+		return classe;
+	}
+
+	public void setClasse(Classe classe) {
+		this.classe = classe;
+	}
+
 	public Personagem getPersonagem() {
 		return personagem;
 	}
@@ -57,16 +71,23 @@ public class PersonagemManagedBean {
 	
 	public String saveClass()
     {
-		List<Personagem> personagem = new ArrayList<Personagem>();
-		populaPersonagem(personagem);
+		personagem.setClasse(classe);
+		System.out.println(personagem.getNick());
+		return "CriaPersonagem2?faces-redirect=true";
+    	
+    }
+	
+	public String savePersonagem()
+    {
+		
+		PersonagemHIB persHIB = new PersonagemHIB();
+		persHIB.save(personagem);
+		
+		
 		return "IndexUsuario?faces-redirect=true";
     	
     }
 	
-	private void populaPersonagem(List<Personagem> personagem) {
-		
-		
-	}
 
 	public String encaminha()
     {

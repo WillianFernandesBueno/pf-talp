@@ -47,14 +47,15 @@
 			        <p:column headerText="Mana" sortBy="#{classe.mana}" id="mana">  
 			            <h:outputText value="#{classe.mana}"/>
 			        </p:column>
-
-			        
-			        <p:column headerText="">
-			            <p:commandButton value="escolher" action="salvaClass"/>	  			
+			        <p:column headerText="escolher" id="escolher">
+			  			<h:commandLink action="#{personagemManagedBean.saveClass}">
+				  			<f:setPropertyActionListener target="#{personagemManagedBean.classe}" value="#{classe}"/>
+				  			<h:graphicImage url="/imagens/comprar.png" title="excluir" alt="excluir"/>
+			  			</h:commandLink>
 			        </p:column>
 			        			        
 			    </p:dataTable>  
-	
+			        
 				</center>
 			</p:panel>
 		</h:form>
