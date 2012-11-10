@@ -81,7 +81,7 @@ public class UsuarioManagedBean implements Serializable {
 		if(Util.isUser("usuario")){
 			return "/usuario/IndexUsuario?faces-redirect=true";
 		}
-		log.info("Salvo com sucesso");
+		log.info("Usuario cadastrado com sucesso");
 		return "/Index?faces-redirect=true";
 
 	}  

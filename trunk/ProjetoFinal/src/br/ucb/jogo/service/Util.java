@@ -15,7 +15,8 @@ public class Util {
 	}
 	
 	public static String getMsgLogger(String msg){
-		return msg+" "+new Date()+" ";
+		
+		return getUserSession() == null ? "Mensagem: "+msg : "Mensagem: "+msg+" | Usuario: "+ getUserSession();
 	}
 	
 }
