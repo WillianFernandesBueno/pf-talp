@@ -7,37 +7,47 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<!-- WILLIAN NOOB -->
 <ui:composition template="IndexUsuario.xhtml">
 
 	<ui:define name="conteudo">
 		<p:panel styleClass="FundoPaginaUsuario" >
 				<br/><br/><br/><br/>
 				<center>
-					<h:form>
-						<p:panel styleClass="FundoConteudo"  >
-							<br/><br/>
-							<p:panel style="width:500px;">
-								<p:selectOneButton value="#{criaPersonagemManagedBean.imagem}" onchange="true">
-									<f:selectItem itemLabel="Arqueiro" itemValue="Arqueiro.png" />
-									<f:selectItem itemLabel="espadachin" itemValue="Espadachim.png" />
-									<f:selectItem itemLabel="Mago" itemValue="Mago.png" />
-									<f:selectItem itemLabel="Mercador" itemValue="Mercador.png" />
-									<p:ajax update="teste" listener="#{criaPersonagemManagedBean.escolheClass}" />
-								</p:selectOneButton>
-							</p:panel>
-							<p:graphicImage id="teste" value="/images/personagem/#{criaPersonagemManagedBean.imagem}"/>
-							
-							<p:panel style="width:500px;">
-								<h:outputText value="Nome" />
-								<p:inputText required="true" label="Nome" value="#{criaPersonagemManagedBean.nome}" />
-							</p:panel>
-							
-							<p:panel style="width:500px;">
-								<p:commandButton value="Enviar" action="#{criaPersonagemManagedBean.save}" />
-							</p:panel>
-						</p:panel>
-					</h:form>
+					<h:form id="form">
+						<center>  
+						    <p:dataTable emptyMessage="Nenhuma classe encontrada..." var="classe" value="#{classeManagedBean.classes}" rowKey="#{classe.nome}" paginator="true" rows="10" filteredValue="#{classeManagedBean.filtroClasses}" id="TableClasses">  
+						  
+						        <f:facet name="header">  
+						        	<h:outputText value="Listagem de Classes"/>  
+						        </f:facet>  
+						  
+						        <p:column headerText="Nome" sortBy="#{classe.nome}" filterBy="#{classe.nome}" id="nome" width="550">  
+						            <h:outputText value="#{classe.nome}"/>
+						        </p:column>
+						        
+						        <p:column headerText="Força" sortBy="#{classe.forca}" id="forca" width="150">  
+						            <h:outputText value="#{classe.forca}"/>
+						        </p:column>
+						        
+						        <p:column headerText="Agilidade" sortBy="#{classe.agilidade}" id="agilidade" width="150">  
+						            <h:outputText value="#{classe.agilidade}"/>
+						        </p:column>
+						        
+						        <p:column headerText="Defesa" sortBy="#{classe.defesa}" id="defesa" width="150">  
+						            <h:outputText value="#{classe.defesa}"/>
+						        </p:column>
+						        
+						        <p:column headerText="Mana" sortBy="#{classe.mana}" id="mana" width="150">  
+						            <h:outputText value="#{classe.mana}"/>
+						        </p:column>
+						        
+						        <p:column headerText="escolha" id="escolha">
+						  			<p:commandButton value="..." action="CriaPersonagemManage.save"/>
+						        </p:column>
+						        			        
+						    </p:dataTable>  
+						</center>  
+					</h:form>   
 				</center>
 		</p:panel>
 	</ui:define>
