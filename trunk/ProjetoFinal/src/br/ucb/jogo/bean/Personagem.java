@@ -120,7 +120,8 @@ public class Personagem {
 	}
 	
 	@ManyToMany
-	@JoinTable(name="Personagens_has_Item", joinColumns = {@JoinColumn(name = "idPersonagens")}, inverseJoinColumns = {@JoinColumn(name = "idItem" )} )
+	@JoinTable(name="Personagens_has_Item", 
+	  joinColumns = {@JoinColumn(name = "Personagens_idPersonagens", referencedColumnName="idPersonagens") }, inverseJoinColumns = {@JoinColumn(name = "Item_idItem", referencedColumnName="idItem" )} )
 	public List<Item> getItens() {
 		return itens;
 	}
