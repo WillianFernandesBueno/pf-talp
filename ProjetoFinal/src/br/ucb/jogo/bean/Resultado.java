@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -14,55 +14,54 @@ import javax.persistence.Table;
 public class Resultado {
 	
 	
-	private Integer idDesafios;
-	private Integer idDesafiante;
-	private Integer idDesafiado;
-	private Float aposta;
-	private Personagem personagem;
+	private Integer idResultado;
+	private Integer idGanhador;
+	private Integer idPerdedor;
+	private Integer pontosGanhos;
+	private Desafio desafio;
 	
 	@Id
 	@GeneratedValue
-	public Integer getIdDesafios() {
-		return idDesafios;
+	public Integer getIdResultado() {
+		return idResultado;
 	}
 	
-	public void setIdDesafios(Integer idDesafios) {
-		this.idDesafios = idDesafios;
+	public void setIdResultado(Integer idResultado) {
+		this.idResultado = idResultado;
 	}
 	@Column
-	public Integer getIdDesafiante() {
-		return idDesafiante;
+	public Integer getIdGanhador() {
+		return idGanhador;
 	}
-	
-	public void setIdDesafiante(Integer idDesafiante) {
-		this.idDesafiante = idDesafiante;
-	}
-	@Column
-	public Integer getIdDesafiado() {
-		return idDesafiado;
-	}
-	
-	public void setIdDesafiado(Integer idDesafiado) {
-		this.idDesafiado = idDesafiado;
+
+	public void setIdGanhador(Integer idGanhador) {
+		this.idGanhador = idGanhador;
 	}
 	@Column
-	public Float getAposta() {
-		return aposta;
+	public Integer getIdPerdedor() {
+		return idPerdedor;
+	}
+
+	public void setIdPerdedor(Integer idPerdedor) {
+		this.idPerdedor = idPerdedor;
+	}
+	@Column
+	public Integer getPontosGanhos() {
+		return pontosGanhos;
+	}
+
+	public void setPontosGanhos(Integer pontosGanhos) {
+		this.pontosGanhos = pontosGanhos;
 	}
 	
-	public void setAposta(Float aposta) {
-		this.aposta = aposta;
+	@OneToOne
+	@JoinColumn(name="Desafios_idDesafios", referencedColumnName="idDesafios")
+	public Desafio getDesafio() {
+		return desafio;
 	}
-	
-	@ManyToOne
-	@JoinColumn(name="Personagens_idPersonagens")
-	public Personagem getPersonagem() {
-		return personagem;
+
+	public void setDesafio(Desafio desafio) {
+		this.desafio = desafio;
 	}
-	public void setPersonagem(Personagem personagem) {
-		this.personagem = personagem;
-	}
-	
-	
 
 }

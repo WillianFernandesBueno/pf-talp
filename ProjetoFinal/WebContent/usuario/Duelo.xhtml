@@ -31,8 +31,8 @@
 				        </p:column>
 				        
 				  		<p:column headerText="Selecionar" id="selecionar">
-				  			<h:commandLink action="IndexUsuario.xhtml">
-					  			<f:setPropertyActionListener target="#{classeManagedBean.classe}" value="#{classe}"/>
+				  			<h:commandLink action="#{dueloManagedBean.saveDuelo}">
+					  			<f:setPropertyActionListener target="#{personagemManagedBean.personagem}" value="#{personagem}"/>
 					  			<h:graphicImage url="/imagens/select.png" title="Selecionar" alt="Selecionar"/>
 				  			</h:commandLink>
 				        </p:column>
