@@ -42,7 +42,7 @@ public class Alianca {
 	}
 
 	@Column
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	public Date getDataCriacao() {
 		return dataCriacao;
 	}

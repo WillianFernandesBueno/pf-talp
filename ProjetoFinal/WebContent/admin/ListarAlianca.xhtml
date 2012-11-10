@@ -23,7 +23,9 @@
 			        </p:column>
 			        
 			        <p:column headerText="Data de Criação" sortBy="#{alianca.dataCriacao}" id="dataCriacao" width="250">  
-			            <h:outputText value="#{alianca.dataCriacao}"/>
+			            <h:outputText value="#{alianca.dataCriacao}">
+			            	<f:convertDateTime pattern="dd/MM/yyyy"/>
+			            </h:outputText>
 			        </p:column>
 			        
 			        <p:column headerText="Mensagem" id="agilidade" width="150">  
@@ -31,7 +33,7 @@
 			        </p:column>
 			        
 			  		<p:column headerText="Alterar" id="alterar">
-			  			<h:commandLink action="CadastroAlianca.xhtml">
+			  			<h:commandLink action="#{aliancaManagedBean.encaminhar}">
 				  			<f:setPropertyActionListener target="#{aliancaManagedBean.alianca}" value="#{alianca}"/>
 				  			<h:graphicImage url="/imagens/editar.png" title="editar" alt="editar"/>
 			  			</h:commandLink>

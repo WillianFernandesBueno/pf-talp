@@ -3,6 +3,7 @@ package br.ucb.jogo.negocio;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -21,14 +22,22 @@ public class AliancaManagedBean {
 	private Alianca alianca;
 	private List<Alianca> aliancas;
 	private List<Alianca> filtroAliancas;
-	
+    private boolean disable;	
     public AliancaManagedBean() {
     	populaAlianca();
     	alianca = new Alianca();
     	filtroAliancas = new ArrayList<Alianca>();
     }  
 
-    public Alianca getAlianca() {
+    public boolean getDisable() {
+		return disable;
+	}
+
+	public void setDisable(boolean disable) {
+		this.disable = disable;
+	}
+
+	public Alianca getAlianca() {
 		return alianca;
 	}
 
@@ -61,15 +70,26 @@ public class AliancaManagedBean {
     	AliancaHIB c = new AliancaHIB();
     	FacesMessage msg;
     	if (this.alianca.getIdAlianca() == null || this.alianca.getIdAlianca() == 0) {
+    		//getAlianca().setDataCriacao(new Date());
     		msg = new FacesMessage("Sucesso", "Alianca "+alianca.getNome()+" cadastrada com sucesso");  
 		}else {
 			msg = new FacesMessage("Sucesso", "Alianca "+alianca.getNome()+" alterada com sucesso");  
 		}
     	FacesContext.getCurrentInstance().addMessage(null, msg);
+    	
 		c.save(getAlianca());
 		this.alianca = new Alianca();
 		this.aliancas = c.list();
-        return "EditarAlianca?faces-redirect=true";
+        return "ListarAlianca?faces-redirect=true";
+    }
+    
+    public String encaminhar(){
+    	if (this.alianca.getIdAlianca() == null || this.alianca.getIdAlianca() == 0) {
+    	    disable = true;
+    	    alianca.setDataCriacao(new Date());
+    	}
+    	disable = true;
+    	return "CadastroAlianca";
     }
     
     public void excluir(ActionEvent evento) throws SQLException{

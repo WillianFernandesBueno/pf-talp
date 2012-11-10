@@ -50,7 +50,7 @@ DROP TABLE IF EXISTS `jogo`.`Alianca` ;
 CREATE  TABLE IF NOT EXISTS `jogo`.`Alianca` (
   `idAlianca` INT NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(45) NOT NULL ,
-  `dataCriacao` DATETIME NOT NULL ,
+  `dataCriacao` DATE NOT NULL ,
   `mensagem` VARCHAR(255) NOT NULL ,
   PRIMARY KEY (`idAlianca`) )
 ENGINE = InnoDB;
