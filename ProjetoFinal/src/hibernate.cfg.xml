@@ -22,6 +22,14 @@
 		<mapping class="br.ucb.jogo.bean.Desafio" />
 		<mapping class="br.ucb.jogo.bean.Item" />
 		<mapping class="br.ucb.jogo.bean.Autorizacao" />
+		<mapping class="br.ucb.jogo.bean.Loggers" />
+		
 	
 	</session-factory>
+	
+	
+	
+	
+	
+	
 </hibernate-configuration>
