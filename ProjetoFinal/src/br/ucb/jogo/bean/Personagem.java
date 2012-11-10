@@ -24,6 +24,7 @@ public class Personagem {
 	
 	private Integer idPersonagens;
 	private String nick;
+	private String imagem;
 	private Integer level;
 	private Integer mana;
 	private Integer forca;
@@ -37,6 +38,8 @@ public class Personagem {
 	private List<Treino> trienos;
 	private List<Desafio> desafios;
 	
+	
+	
 	@Id
 	@GeneratedValue
 	public Integer getIdPersonagens() {
@@ -45,7 +48,14 @@ public class Personagem {
 	public void setIdPersonagens(Integer idPersonagens) {
 		this.idPersonagens = idPersonagens;
 	}
-	@Column
+	
+	/*
+	public String getImagem() {
+		return imagem;
+	}
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}*/
 	public String getNick() {
 		return nick;
 	}

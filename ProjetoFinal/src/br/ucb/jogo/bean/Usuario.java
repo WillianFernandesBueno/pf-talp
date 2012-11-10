@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +26,7 @@ public class Usuario extends Pessoa implements Serializable{
 	
 	private List<Autorizacao> autorizacao;
 	private List<Loggers> logs;
+	private Personagem personagem;
 	
 	@Id
 	@GeneratedValue
@@ -96,6 +98,15 @@ public class Usuario extends Pessoa implements Serializable{
 	public void setLogs(List<Loggers> logs) {
 		this.logs = logs;
 	}
+	
+	@OneToOne(mappedBy="usuario", fetch = FetchType.LAZY, targetEntity = Personagem.class, cascade = CascadeType.ALL)
+	public Personagem getPersonagem() {
+		return personagem;
+	}
+	public void setPersonagem(Personagem personagem) {
+		this.personagem = personagem;
+	}
+	
 	
 	
 }
