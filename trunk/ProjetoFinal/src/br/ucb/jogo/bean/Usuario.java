@@ -29,7 +29,6 @@ public class Usuario extends Pessoa implements Serializable{
 	
 	@Id
 	@GeneratedValue
-	
 	public Integer getIdUsuarios() {
 		return idUsuarios;
 	}

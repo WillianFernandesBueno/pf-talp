@@ -11,6 +11,7 @@ import br.ucb.jogo.HIB.PersonagemHIB;
 import br.ucb.jogo.HIB.UsuarioHIB;
 import br.ucb.jogo.bean.Classe;
 import br.ucb.jogo.bean.Personagem;
+import br.ucb.jogo.bean.Usuario;
 import br.ucb.jogo.service.Util;
 
 
@@ -83,7 +84,6 @@ public class PersonagemManagedBean {
 	public String saveClass()
     {
 		personagem.setClasse(classe);
-		System.out.println(personagem.getNick());
 		return "CriaPersonagem2?faces-redirect=true";
     	
     }
@@ -91,13 +91,26 @@ public class PersonagemManagedBean {
 	public String savePersonagem()
     {
 		
-		PersonagemHIB persHIB = new PersonagemHIB();
-		persHIB.save(personagem);
+		UsuarioHIB userHib = new UsuarioHIB();
+		PersonagemHIB person = new PersonagemHIB();
 		
+		personagem.setLevel(1);
+		personagem.setMana(getClasse().getMana());
+		personagem.setForca(getClasse().getForca());
+		personagem.setAgilidade(getClasse().getAgilidade());
+		personagem.setDefesa(getClasse().getDefesa());
+		personagem.setCash(1000.00);
+		personagem.setUsuario(userHib.findTByLogin(Util.getUserSession()));
+		personagem.setClasse(getClasse());
+		personagem.setAgilidade(getClasse().getAgilidade());
+		personagem.setAtivo(true);
+		personagem.setExperiencia(1);
+		person.save(personagem);
 		
 		return "IndexUsuario?faces-redirect=true";
     	
     }
+	
 	
 
 	public String encaminha()

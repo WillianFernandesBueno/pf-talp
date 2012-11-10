@@ -22,11 +22,11 @@
 
 						<h:panelGrid columns="2" columnClasses="label, value"
 							styleClass="grid">
-							<h:outputText value="nick" disabled = "#{loginManagedBean.isUserInRole('admin')}"/>
-							<p:inputText required="true" label="Nome" value="#{usuarioManagedBean.user.nome}" disabled = "#{loginManagedBean.isUserInRole('admin')}"/>
+							<h:outputText value="nick"/>
+							<p:inputText required="true" label="nick" value="#{personagemManagedBean.personagem.nick}"/>
 
 							<p:commandButton value="Enviar" update="growl"
-								action="#{usuarioManagedBean.save}" />
+								action="#{personagemManagedBean.savePersonagem}" />
 
 						</h:panelGrid>
 

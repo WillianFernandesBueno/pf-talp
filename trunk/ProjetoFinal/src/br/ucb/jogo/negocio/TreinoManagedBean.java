@@ -11,8 +11,12 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import br.ucb.jogo.HIB.PersonagemHIB;
 import br.ucb.jogo.HIB.TreinoHIB;
+import br.ucb.jogo.HIB.UsuarioHIB;
+import br.ucb.jogo.bean.Personagem;
 import br.ucb.jogo.bean.Treino;
+import br.ucb.jogo.service.Util;
 
 
 @ManagedBean (name = "treinoManagedBean")
@@ -22,10 +26,13 @@ public class TreinoManagedBean {
 	private List<Treino> treinos;
 	private List<Treino> filtroTreinos;
 	private Treino selectTreino; 
+	private Personagem personagem;
+	private PersonagemHIB personHib;
 	
     public TreinoManagedBean() {
     	populaTreino();
     	treino = new Treino();
+    	personHib = new PersonagemHIB();
     	filtroTreinos = new ArrayList<Treino>();
     }  
 
@@ -67,8 +74,16 @@ public class TreinoManagedBean {
 	}
 
 	public String teste() {
-		System.out.println(selectTreino.getNome());
-		return "IndexAdmin";
+		
+		UsuarioHIB userHib = new UsuarioHIB();
+		
+		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
+		
+		
+		
+		personagem.setAtivo(true);
+		personHib.save(personagem);
+		return "Trabalhando?faces-redirect=true";
 		
 	}
 	

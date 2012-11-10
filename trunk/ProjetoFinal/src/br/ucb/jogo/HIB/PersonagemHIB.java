@@ -1,7 +1,9 @@
 package br.ucb.jogo.HIB;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.List;
+
+import javax.persistence.Query;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -9,7 +11,6 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.exception.ConstraintViolationException;
 
-import br.ucb.jogo.bean.Personagem;
 import br.ucb.jogo.bean.Personagem;
 import br.ucb.jogo.bean.Usuario;
 import br.ucb.jogo.interfaces.HIB;
@@ -59,12 +60,12 @@ public class PersonagemHIB implements HIB<Personagem> {
 		}
 	}
 
-	public Personagem findTByIdUser(Integer idUsuarios) {
+	public Personagem findTByIdUser(Integer idUsuario) {
 		Session session = HibernateUtil.getSession();
 		Criteria criteria;
 		try {
 			criteria = session.createCriteria(Personagem.class);
-			criteria.add(Restrictions.eq("Usuarios_idUsuarios",idUsuarios));			
+			criteria.add(Restrictions.eq("usuario.idUsuarios",idUsuario));
 			@SuppressWarnings("unchecked")
 			ArrayList<Personagem> p = (ArrayList<Personagem>) criteria.list();
 			for (Personagem personagem : p) {
