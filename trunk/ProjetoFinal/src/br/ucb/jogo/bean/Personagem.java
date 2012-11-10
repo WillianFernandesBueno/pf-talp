@@ -36,6 +36,8 @@ public class Personagem {
 	private Alianca alianca;
 	private List<Treino> trienos;
 	private List<Desafio> desafios;
+	private Boolean ativo;
+	private Integer experiencia;
 	
 	
 	
@@ -54,8 +56,21 @@ public class Personagem {
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
-	
-	
+
+	@Column
+	public Integer getExperiencia() {
+		return experiencia;
+	}
+	public void setExperiencia(Integer experiencia) {
+		this.experiencia = experiencia;
+	}
+	@Column
+	public Boolean getAtivo() {
+		return ativo;
+	}
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
 	@OneToOne
 	@JoinColumn(name="Classe_idClasse", referencedColumnName="idClasse")
 	public Classe getClasse() {
