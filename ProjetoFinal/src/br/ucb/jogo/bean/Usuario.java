@@ -24,9 +24,11 @@ public class Usuario extends Pessoa implements Serializable{
 	private String login;		
 	
 	private List<Autorizacao> autorizacao;
+	private List<Loggers> logs;
 	
 	@Id
 	@GeneratedValue
+	
 	public Integer getIdUsuarios() {
 		return idUsuarios;
 	}
@@ -86,5 +88,14 @@ public class Usuario extends Pessoa implements Serializable{
 	public void setAutorizacao(List<Autorizacao> autorizacao) {
 		this.autorizacao = autorizacao;
 	}
+	
+	@OneToMany(mappedBy="usuario", fetch = FetchType.LAZY, targetEntity = Loggers.class, cascade = CascadeType.ALL)
+	public List<Loggers> getLogs() {
+		return logs;
+	}
+	public void setLogs(List<Loggers> logs) {
+		this.logs = logs;
+	}
+	
 	
 }

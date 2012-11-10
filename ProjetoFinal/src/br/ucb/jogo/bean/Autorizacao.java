@@ -21,11 +21,10 @@ public class Autorizacao implements Serializable{
 	private String papel;
 
 	@Id
-	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)    
-
+	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)    			
 	@JoinColumns({  
-		@JoinColumn(name="idUsuarios", referencedColumnName = "idUsuarios"),  
-		@JoinColumn(name="login", referencedColumnName = "login")  
+		@JoinColumn(name="Usuarios_idUsuarios", referencedColumnName = "idUsuarios"),  
+		@JoinColumn(name="Usuarios_login", referencedColumnName = "login")  
 	})  
 
 	public Usuario getUsuario() {
