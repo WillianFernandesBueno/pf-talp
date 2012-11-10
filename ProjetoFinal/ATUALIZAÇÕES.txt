@@ -1,7 +1,0 @@
-Everton = Visão admin
-
-
-Andrei = Parte de códificação, páginas .JAVA
-
-
-Willian = visão usuario

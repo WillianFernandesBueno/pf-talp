@@ -22,13 +22,27 @@ import br.ucb.jogo.service.Util;
 public class PersonagemManagedBean {  
 
 	private Personagem personagem;
-    private String imagem;
+	private List<Personagem> personagens;
+	private List<Personagem> filtroPersonagens;
+	private String imagem;
     private String nome;
     private Classe classe;
     
+    
     public PersonagemManagedBean() {
-		this.personagem = new Personagem();
-		this.classe = new Classe();
+    	setPersonagem(new Personagem());
+    	setFiltroPersonagens(new ArrayList<Personagem>());
+    	PersonagemHIB p = new PersonagemHIB();
+    	setPersonagens(p.list());
+    	this.classe = new Classe();
+	}
+    
+    public List<Personagem> getFiltroPersonagens() {
+		return filtroPersonagens;
+	}
+
+	public void setFiltroPersonagens(List<Personagem> filtroPersonagens) {
+		this.filtroPersonagens = filtroPersonagens;
 	}
 
 	public Classe getClasse() {
@@ -38,7 +52,7 @@ public class PersonagemManagedBean {
 	public void setClasse(Classe classe) {
 		this.classe = classe;
 	}
-
+	
 	public Personagem getPersonagem() {
 		return personagem;
 	}
@@ -95,4 +109,13 @@ public class PersonagemManagedBean {
 		
 		return userHib.findTByLogin(Util.getUserSession()).getPersonagem() == null ? "/usuario/CriaPersonagem?faces-redirect=true": "/usuario/IndexUsuario?faces-redirect=true";
     }
+	public List<Personagem> getPersonagens() {
+		return personagens;
+	}
+
+	public void setPersonagens(List<Personagem> personagens) {
+		this.personagens = personagens;
+	}
+
+	
 }  
