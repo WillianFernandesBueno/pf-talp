@@ -5,10 +5,12 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
+
+import org.apache.log4j.Logger;
+
 import br.ucb.jogo.HIB.LoginHib;
 import br.ucb.jogo.HIB.UsuarioHIB;
 import br.ucb.jogo.bean.Autorizacao;
@@ -24,12 +26,11 @@ public class UsuarioManagedBean implements Serializable {
 	private Usuario user;   
 	private UsuarioHIB hib;
 	private LoginHib lhib; 
-	private boolean skip;    
 	private List<Usuario> usuarios;
 	private List<Usuario> filtroUsers;
 	
 	
-	private static Logger logger = Logger.getLogger(UsuarioManagedBean.class.getName());
+	private static final Logger log = Logger.getLogger(UsuarioManagedBean.class.getName());
 
 	public UsuarioManagedBean() {
 		setUser(null);
@@ -80,6 +81,7 @@ public class UsuarioManagedBean implements Serializable {
 		if(Util.isUser("usuario")){
 			return "/usuario/IndexUsuario?faces-redirect=true";
 		}
+		log.info("Salvo com sucesso");
 		return "/Index?faces-redirect=true";
 
 	}  
@@ -89,9 +91,7 @@ public class UsuarioManagedBean implements Serializable {
 		if(Util.isUser("admin")){
 			return "/admin/CadastroUsuario?faces-redirect=true";
 		}
-		
-		Usuario usuario = getHib().findTById(1);
-		
+		setUser(getHib().findTByLogin(Util.getUserSession()));
 		return "/usuario/CadastroUsuario?faces-redirect=true";
 	}
 	
