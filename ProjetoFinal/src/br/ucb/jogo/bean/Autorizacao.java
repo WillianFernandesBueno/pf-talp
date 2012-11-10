@@ -49,9 +49,6 @@ public class Autorizacao implements Serializable{
 		return "Autorizacao [usuario=" + usuario.getIdUsuarios() + ", papel=" + papel + "]";
 	}
 	
-	
-
-
 }
 
 
