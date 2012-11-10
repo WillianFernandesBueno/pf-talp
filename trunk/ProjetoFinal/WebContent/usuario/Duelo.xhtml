@@ -8,11 +8,39 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="IndexUsuario.xhtml">
-	
-	
-	<ui:define name="conteudo">	
+	<ui:define name="conteudo">
+		<p:panel styleClass="FundoPaginaUsuario" >
+			<h:form id="form">
+				<center>  
+				    <p:dataTable emptyMessage="Não existem personagens para o duelo..." 
+				    			 var="personagem" value="#{personagemManagedBean.personagens}" 
+				    			 rowKey="#{personagem.nick}" paginator="true" rows="10" 
+				    			 filteredValue="#{personagemManagedBean.filtroPersonagens}" 
+				    			 id="TablePersonagens" styleClass="painelTrabalho">  
+				  
+				        <f:facet name="header">  
+				        	<h:outputText value="Listagem de Personagens"/>  
+				        </f:facet>  
+				  
+				        <p:column headerText="Nick" sortBy="#{personagem.nick}" filterBy="#{personagem.nick}" id="nick">  
+				            <h:outputText value="#{personagem.nick}"/>
+				        </p:column>
+				        
+				        <p:column headerText="Classe" sortBy="#{personagem.classe.nome}" filterBy="#{personagem.classe.nome}" id="classe">  
+				            <h:outputText value="#{personagem.classe.nome}"/>
+				        </p:column>
+				        
+				  		<p:column headerText="Selecionar" id="selecionar">
+				  			<h:commandLink action="IndexUsuario.xhtml">
+					  			<f:setPropertyActionListener target="#{classeManagedBean.classe}" value="#{classe}"/>
+					  			<h:graphicImage url="/imagens/select.png" title="Selecionar" alt="Selecionar"/>
+				  			</h:commandLink>
+				        </p:column>
+				        
+				    </p:dataTable>  
+				</center>  
+			</h:form>
+		</p:panel>
 	</ui:define>
-
-	
 </ui:composition>
 </html>
