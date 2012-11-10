@@ -71,10 +71,9 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Personagens` (
   `agilidade` INT(11) NOT NULL ,
   `defesa` INT(11) NOT NULL ,
   `Classe_idClasse` INT NOT NULL ,
-  `Loja_idLoja` INT NOT NULL ,
   `Alianca_idAlianca` INT NOT NULL ,
   `Usuarios_idUsuarios` INT NOT NULL ,
-  PRIMARY KEY (`idPersonagens`, `Classe_idClasse`, `Loja_idLoja`, `Alianca_idAlianca`, `Usuarios_idUsuarios`) ,
+  PRIMARY KEY (`idPersonagens`, `Classe_idClasse`, `Alianca_idAlianca`, `Usuarios_idUsuarios`) ,
   INDEX `fk_Personagens_Classe1` (`Classe_idClasse` ASC) ,
   INDEX `fk_Personagens_Alianca1` (`Alianca_idAlianca` ASC) ,
   INDEX `fk_Personagens_Usuarios1` (`Usuarios_idUsuarios` ASC) ,
@@ -240,24 +239,20 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Autorizacao` (
 ENGINE = InnoDB;
 
 INSERT INTO Autorizacao VALUES ('admin',1,'admin');
+
 -- -----------------------------------------------------
 -- Table `jogo`.`Loggers`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `jogo`.`Loggers` ;
 
 CREATE  TABLE IF NOT EXISTS `jogo`.`Loggers` (
-  `idLoggers` INT NOT NULL ,
-  `mensagem` VARCHAR(255) NOT NULL ,
-  `data` DATETIME NULL ,
-  `Usuarios_idUsuarios` INT NOT NULL ,
-  PRIMARY KEY (`idLoggers`) ,
-  INDEX `fk_Loggers_Usuarios1` (`Usuarios_idUsuarios` ASC) ,
-  CONSTRAINT `fk_Loggers_Usuarios1`
-    FOREIGN KEY (`Usuarios_idUsuarios` )
-    REFERENCES `jogo`.`Usuarios` (`idUsuarios` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `data` DATETIME NOT NULL ,
+  `logger` VARCHAR(100) NOT NULL ,
+  `level` CHAR(10) NOT NULL ,
+  `messagem` VARCHAR(255) NOT NULL ,
+  `user_id` VARCHAR(45) NOT NULL )
 ENGINE = InnoDB;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
