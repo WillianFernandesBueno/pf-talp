@@ -12,7 +12,10 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import br.ucb.jogo.HIB.ItemHIB;
+import br.ucb.jogo.HIB.PersonagemHIB;
+import br.ucb.jogo.HIB.UsuarioHIB;
 import br.ucb.jogo.bean.Item;
+import br.ucb.jogo.service.Util;
 
 @ManagedBean (name = "itensManagedBean")
 @SessionScoped
@@ -73,6 +76,14 @@ public class ItensManagedBean {
 		c.save(getItem());
 		this.item = new Item();
 		this.itens = c.list();
+        return "ListarItens?faces-redirect=true";
+    }
+    
+    public String saveCompra() throws IOException {
+    	
+    	PersonagemHIB userHib = new PersonagemHIB();
+    	System.out.println(userHib.findTById(1));
+    	
         return "ListarItens?faces-redirect=true";
     }
     
