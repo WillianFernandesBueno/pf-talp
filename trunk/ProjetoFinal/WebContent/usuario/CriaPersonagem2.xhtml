@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="IndexUsuario.xhtml">
+
+	<ui:define name="conteudo">
+	<h:form>
+
+			<p:growl id="growl" sticky="true" showDetail="true" />
+
+
+				<p:tab id="pessoal" title="pessoal">
+					<p:panel header="Dados Pessoais">
+
+						<h:messages errorClass="error" />
+
+						<h:panelGrid columns="2" columnClasses="label, value"
+							styleClass="grid">
+							<h:outputText value="nick" disabled = "#{loginManagedBean.isUserInRole('admin')}"/>
+							<p:inputText required="true" label="Nome" value="#{usuarioManagedBean.user.nome}" disabled = "#{loginManagedBean.isUserInRole('admin')}"/>
+
+							<p:commandButton value="Enviar" update="growl"
+								action="#{usuarioManagedBean.save}" />
+
+						</h:panelGrid>
+
+					</p:panel>
+				</p:tab>
+ 
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

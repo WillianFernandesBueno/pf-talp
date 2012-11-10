@@ -4,10 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.model.ListDataModel;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +21,7 @@ public class Classe  implements Serializable {
 	private String nome;
 	private Integer forca, agilidade, defesa, mana;
 	private Integer idClasse;
+	private Personagem personagem;
 	
 	@SuppressWarnings("rawtypes")
 	ListDataModel model = null;
@@ -88,6 +92,15 @@ public class Classe  implements Serializable {
 
 	public void setMana(Integer mana) {
 		this.mana = mana;
+	}
+	
+	@OneToOne(mappedBy="classe", fetch = FetchType.LAZY, targetEntity = Personagem.class, cascade = CascadeType.ALL)
+	public Personagem getPersonagem() {
+		return personagem;
+	}
+
+	public void setPersonagem(Personagem personagem) {
+		this.personagem = personagem;
 	}  
 	
 	

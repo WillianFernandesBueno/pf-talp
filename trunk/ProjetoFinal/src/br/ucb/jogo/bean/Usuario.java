@@ -23,7 +23,6 @@ public class Usuario extends Pessoa implements Serializable{
 	private String senha;
 	private Integer tipo;
 	private String login;		
-	
 	private List<Autorizacao> autorizacao;
 	private List<Loggers> logs;
 	private Personagem personagem;
