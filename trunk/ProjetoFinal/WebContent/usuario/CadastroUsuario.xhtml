@@ -8,7 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-<ui:composition template="IndexAdmin.xhtml">
+<ui:composition template="IndexUsuario.xhtml">
 
 	<ui:define name="conteudo">
 		<h:form>
@@ -33,11 +33,11 @@
 
 							<h:outputText value="Login " disabled= "#{loginManagedBean.isUserInRole('usuario')}"/>
 							<p:inputText required="true" label="Login"
-								value="#{usuarioManagedBean.user.login}" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
+								value="#{usuarioManagedBean.user.login}" disabled= "#{loginManagedBean.isUserInRole('usuario')}"/>
 
 							<h:outputText value="Senha " disabled= "#{loginManagedBean.isUserInRole('usuario')}"/>
 							<p:password required="true"	
-								value="#{usuarioManagedBean.user.senha}" feedback="true" promptLabel="Digite uma senha segura" goodLabel="Boa" weakLabel="Razoável" strongLabel="Excelente" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
+								value="#{usuarioManagedBean.user.senha}" feedback="true" promptLabel="Digite uma senha segura" goodLabel="Boa" weakLabel="Razoável" strongLabel="Excelente" disabled= "#{loginManagedBean.isUserInRole('usuario')}"/>
 								
 								
 							<h:outputLabel value="Tipo de Acesso" for="tipo"  rendered="#{loginManagedBean.isUserInRole('admin')}"/>

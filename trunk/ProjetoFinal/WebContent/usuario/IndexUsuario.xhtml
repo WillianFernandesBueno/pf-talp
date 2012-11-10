@@ -31,6 +31,15 @@
 					<h:form>
 						<p:growl id="messages" />
 						<p:slideMenu styleClass="menuUsuario" style="width:300px;">
+						
+							<p:submenu label="Usuario">
+								<p:menuitem value="Perfil"
+									action="#" update="messages"
+									icon="ui-icon-disk" />
+								<p:menuitem value="#{msg.login}" action="#{usuarioManagedBean.alterar}"
+									update="messages" icon="ui-icon-arrowrefresh-1-w" />
+							</p:submenu>
+						
 							<p:menuitem value="Perfil" url="IndexUsuario.jsf"
 								update="messages" />
 							<p:menuitem value="Aliança" url="Alianca.jsf" update="messages" />
