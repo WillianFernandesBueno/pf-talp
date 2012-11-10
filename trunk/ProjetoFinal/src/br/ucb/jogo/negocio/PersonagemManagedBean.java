@@ -19,7 +19,7 @@ import br.ucb.jogo.service.Util;
 
 @ManagedBean (name="criaPersonagemManagedBean")
 @SessionScoped
-public class CriaPersonagemManagedBean {  
+public class PersonagemManagedBean {  
 
 	private Personagem personagem;
     private String imagem;
@@ -55,7 +55,7 @@ public class CriaPersonagemManagedBean {
     	
     }
 	
-	public String save()
+	public String saveClass()
     {
 		List<Personagem> personagem = new ArrayList<Personagem>();
 		populaPersonagem(personagem);
