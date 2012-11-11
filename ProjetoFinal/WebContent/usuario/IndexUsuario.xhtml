@@ -9,7 +9,7 @@
 
 <h:head>
 	<title>War of the Worlds</title>
-	 <h:outputStylesheet name="style.css" library="css" /> 
+	<h:outputStylesheet name="style.css" library="css" />
 </h:head>
 <h:body>
 
@@ -47,10 +47,25 @@
 							<p:menuitem value="Mercado" action="#{itensManagedBean.url}" update="messages" />
 							<p:menuitem value="Duelo" action="#{dueloManagedBean.url}" update="messages" />
 							<p:menuitem value="Sair" action="#{loginManagedBean.logOut}" update="messages" />
+>>>>>>> .r130
 
-						</p:slideMenu>
-					</h:form>
-				</ui:insert>
+						<p:submenu label="Usuario">
+							<p:menuitem value="Perfil" url="IndexUsuario.jsf" update="messages" />
+							<p:menuitem value="Alterar Perfil"
+								action="#{usuarioManagedBean.alterar}" update="messages"
+								icon="ui-icon-arrowrefresh-1-w" />
+						</p:submenu>
+						<p:menuitem value="Compra de Item" action="CompraItem.jsf" update="messages" />
+						<p:menuitem value="Aliança" url="Alianca.jsf" update="messages" />
+						<p:menuitem value="Treino" url="Treino.jsf" update="messages" />
+						<p:menuitem value="Mercado" url="Loja.jsf" update="messages" />
+						<p:menuitem value="Duelo" url="Duelo.jsf" update="messages" />
+						<p:menuitem value="Sair" action="#{loginManagedBean.logOut}"
+							update="messages" />
+
+					</p:slideMenu>
+				</h:form>
+			</ui:insert>
 		</p:layoutUnit>
 
 		<p:layoutUnit position="center"
@@ -59,9 +74,7 @@
 			<div id="conteudo">
 				<ui:insert name="conteudo">
 					<p:panel styleClass="FundoPaginaUsuario">
-						<center>
-							
-						</center>
+						<center></center>
 					</p:panel>
 				</ui:insert>
 			</div>
