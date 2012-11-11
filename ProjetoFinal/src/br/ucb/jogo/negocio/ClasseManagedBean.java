@@ -30,9 +30,9 @@ public class ClasseManagedBean {
 	private List<Classe> filtroClasses;
 	
     public ClasseManagedBean() {
-    	populaClasse();
     	classe = new Classe();
     	filtroClasses = new ArrayList<Classe>();
+    	populaClasse();
     }  
 
     private void populaClasse() {
