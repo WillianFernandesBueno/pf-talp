@@ -77,19 +77,42 @@ public class TreinoManagedBean {
 		this.selectTreino = selectTreino;
 	}
 
-	public String teste() {
-		
-		
-		UsuarioHIB userHib = new UsuarioHIB();
+public String teste() {
+		UsuarioHIB userHib = new UsuarioHIB();		
 		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
-		personagem.setAtivo(true);
+		personagem.setAtivo(false);
 		personHib.save(personagem);
 		return "Trabalhando?faces-redirect=true";
 		
 	}
 	
+public String finalizaTreino() {
+
+	UsuarioHIB userHib = new UsuarioHIB();
+	personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
+	Double cash = personagem.getCash();
+	Integer experiencia = personagem.getExperiencia();
+	cash += treino.getCash();
+	experiencia += treino.getPontos();
 	
-    public String incluir() {
+	personagem.setAtivo(true);
+	personagem.setCash(cash);
+	personagem.setExperiencia(experiencia);
+	personHib.save(personagem);
+	aumentalevel(personagem);
+	return "Treino?faces-redirect=true";
+}
+public void aumentalevel(Personagem personagem) {
+    UsuarioHIB userHib = new UsuarioHIB();
+    personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
+    Integer level = personagem.getLevel();
+    level = (personagem.getExperiencia()/1000);
+    personagem.setLevel(level);
+    personHib.save(personagem);
+	
+}
+
+	public String incluir() {
 		this.treino = new Treino();
 		return "CadastroTreino.xhtml";
 	}
@@ -120,10 +143,15 @@ public class TreinoManagedBean {
     	this.treinos = c.list();
 	}
     
+    
     public String url(){
     	UsuarioHIB userHib = new UsuarioHIB();
 		PersonagemHIB personHib = new PersonagemHIB();
 		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
+		if(personagem.getAtivo()==false)
+		{
+			return "Trabalhando?faces-redirect=true";
+		}
     	return "Treino?faces-redirect=true";
     }
 }
