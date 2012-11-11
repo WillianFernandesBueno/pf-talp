@@ -1,6 +1,7 @@
 package br.ucb.jogo.negocio;
 
   
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +20,9 @@ import br.ucb.jogo.service.Util;
 
 @ManagedBean (name="personagemManagedBean")
 @SessionScoped
-public class PersonagemManagedBean {  
+public class PersonagemManagedBean implements Serializable{  
 
+	private static final long serialVersionUID = 1L;
 	private Personagem personagem;
 	private List<Personagem> personagens;
 	private List<Personagem> filtroPersonagens;
@@ -77,18 +79,22 @@ public class PersonagemManagedBean {
 		this.imagem = imagem;
 	}
 
-	public String escolheClass()
-    {
+	public String escolheClass(){
 		return "CriaPersonagem?faces-redirect=true";
     	
     }
 	
-	public String saveClass()
-    {
+	public String saveClass(){
+	
 		UsuarioHIB userHib = new UsuarioHIB();
 		PersonagemHIB personHib = new PersonagemHIB();
 		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
+		if(personagem == null){
+			personagem = new Personagem();
+		}
+		System.out.println("Personagem: "+personagem+" Usuario: "+userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
 		personagem.setClasse(classe);
+		
 		return "CriaPersonagem2?faces-redirect=true";
     	
     }
@@ -160,6 +166,14 @@ public class PersonagemManagedBean {
 		personagem.setForca(personagem.getForca() + itensSelect.getForca());
 		personagem.setDefesa(personagem.getDefesa() + itensSelect.getDefesa());
 		personagem.setMana(personagem.getMana() + itensSelect.getMana());
+	}
+	
+	public String getCriaPersonagem(){
+		
+		Usuario user = new UsuarioHIB().findTByLogin(Util.getUserSession());
+		if(user.getPersonagem() == null)
+			return "true";
+		return "false";
 	}
 	
 }  

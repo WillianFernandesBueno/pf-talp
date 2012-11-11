@@ -1,5 +1,6 @@
 package br.ucb.jogo.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,8 +21,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Personagens")
-public class Personagem {
+public class Personagem implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private Integer idPersonagens;
 	private String nick;
 	private Integer level;
