@@ -71,7 +71,7 @@ public class Personagem implements Serializable {
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="Classe_idClasse", referencedColumnName="idClasse")
 	public Classe getClasse() {
 		return classe;
