@@ -105,4 +105,15 @@ public class DueloManagedBean {
 		this.desafio = desafio;
 	}
 	
+	public String url(){
+    	UsuarioHIB userHib = new UsuarioHIB();
+		PersonagemHIB personHib = new PersonagemHIB();
+		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
+		if(personagem.getAtivo()==false)
+		{
+			return "Trabalhando?faces-redirect=true";
+		}
+    	return "Duelo?faces-redirect=true";
+    }
+	
 }

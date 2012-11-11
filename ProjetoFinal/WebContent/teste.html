@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<script language="javascript">
+	var tempo = 60; //sem segundos
+	function contar()
+	{
+	if (tempo <= 0)
+	{
+	document.forma.campo1.disabled = true;
+	document.forma.campo2.disabled = true;
+	}
+	else
+	{
+	tempo = tempo - 1;
+	}
+	document.all('tempo').innerHTML = tempo;
+	setTimeout('javascript:contar();', 15);
+	}
+	</script>
+</h:head>
+
+<h:body onLoad="javascript:contar();">
+<form name="forma">
+	<h:commandButton value="teste" />
+</form>
+</h:body>
+</html>

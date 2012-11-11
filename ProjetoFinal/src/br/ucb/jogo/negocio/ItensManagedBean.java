@@ -15,6 +15,7 @@ import br.ucb.jogo.HIB.ItemHIB;
 import br.ucb.jogo.HIB.PersonagemHIB;
 import br.ucb.jogo.HIB.UsuarioHIB;
 import br.ucb.jogo.bean.Item;
+import br.ucb.jogo.bean.Personagem;
 import br.ucb.jogo.service.Util;
 
 @ManagedBean (name = "itensManagedBean")
@@ -23,7 +24,7 @@ public class ItensManagedBean {
 	private Item item;
 	private List<Item> itens;
 	private List<Item> filtroItens;
-	
+	private Personagem personagem;
     public ItensManagedBean() {
     	populaItem();
     	item = new Item();
@@ -96,4 +97,15 @@ public class ItensManagedBean {
     	c.excluir(getItem());
     	this.itens = c.list();
 	}
+    
+    public String url(){
+    	UsuarioHIB userHib = new UsuarioHIB();
+		PersonagemHIB personHib = new PersonagemHIB();
+		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
+		if(personagem.getAtivo()==false)
+		{
+			return "Trabalhando?faces-redirect=true";
+		}
+    	return "Loja?faces-redirect=true";
+    }
 }

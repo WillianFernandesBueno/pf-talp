@@ -15,7 +15,10 @@ import javax.faces.event.ActionEvent;
 import org.primefaces.event.FlowEvent;
 
 import br.ucb.jogo.HIB.ClasseHIB;
+import br.ucb.jogo.HIB.PersonagemHIB;
+import br.ucb.jogo.HIB.UsuarioHIB;
 import br.ucb.jogo.bean.Classe;
+import br.ucb.jogo.service.Util;
 
 
 
@@ -88,4 +91,7 @@ public class ClasseManagedBean {
     	c.excluir(getClasse());
     	this.classes = c.list();
 	}
+    
+   
+    
 }
