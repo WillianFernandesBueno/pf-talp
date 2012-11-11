@@ -109,10 +109,10 @@ public void aumentalevel(Personagem personagem) {
     level = (personagem.getExperiencia()/1000);
     if(level>personagem.getLevel())
     {
-	    Integer AumentaMana = (level*2)+(personagem.getMana());
-		Integer AumentaForca = (level*2)+(personagem.getForca());
-		Integer AumentaAgilidade = (level*1)+(personagem.getAgilidade());
-		Integer AumentaDefesa = (level*1)+(personagem.getDefesa());
+	    Integer AumentaMana = (level*40)+(personagem.getMana());
+		Integer AumentaForca = (level*40)+(personagem.getForca());
+		Integer AumentaAgilidade = (level*20)+(personagem.getAgilidade());
+		Integer AumentaDefesa = (level*20)+(personagem.getDefesa());
 		personagem.setAgilidade(AumentaAgilidade);
 		personagem.setForca(AumentaForca);
 		personagem.setDefesa(AumentaDefesa);
@@ -121,6 +121,7 @@ public void aumentalevel(Personagem personagem) {
     }
     personHib.save(personagem);
 }
+
 
 	public String incluir() {
 		this.treino = new Treino();

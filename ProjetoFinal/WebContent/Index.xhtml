@@ -23,12 +23,12 @@
 			</div>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="west" size="320" header="#{msg.ocultar}"
+		<p:layoutUnit position="west" header="#{msg.ocultar}"
 			resizable="true" closable="true" collapsible="true">
 			<ui:insert name="menu">
 				<h:form>
 					<p:growl id="messages" />
-					<p:slideMenu styleClass="menuUsuario" style="width:300px;">
+					<p:slideMenu styleClass="menuNormal" style="width:300px;">
 						<p:menuitem value="Home" url="Index.jsf" update="messages" />
 						<p:submenu label="Usuario">
 
@@ -64,6 +64,7 @@
 
 					</p:slideMenu>
 				</h:form>
+				 <p:calendar mode="inline" id="inlineCal"/>    
 			</ui:insert>
 		</p:layoutUnit>
 

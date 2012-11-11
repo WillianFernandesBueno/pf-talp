@@ -10,34 +10,24 @@
 <ui:composition template="Index.xhtml">
 	
 	<ui:define name="conteudo">	
-		<form action="j_security_check" method="post">
-			
-			<table border="1" cellspacing="1">
-				<tr>
-					<td>
-						<label>Email:</label><br />
-					</td>
-					<td>
-						<input type="text" name="j_username" /><p />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Senha:</label><br />			
-					</td>
-					<td>
-						<input type="password" name="j_password" /><p />
-					</td>
-				</tr>
-				
-				<tr>
-					<td colspan="2">
-						<input type="submit" value="Enviar" />
-					</td>
-				</tr>				
-			</table>
-			
-		</form>
+	<p:panel styleClass="FundoPaginaUsuario">
+		<br/><br/><br/><br/>
+		<center>
+			<p:panel styleClass="PainelTrabalho">
+				 <form action="j_security_check" method="post">
+					<center>
+						<p:panelGrid columns="2">
+							<h:outputLabel value="Login"/>
+							<input type="text" name="j_username" />
+							<h:outputLabel value="Senha" />
+							<input type="password" name="j_password" />
+							<input type="submit" value="entrar" />
+						</p:panelGrid>
+				 	</center>	
+				 </form>
+			</p:panel>
+		</center>
+	</p:panel>
 	</ui:define>
 
 </ui:composition>

@@ -48,12 +48,11 @@
 			            <h:outputText value="#{item.mana}"/>
 			        </p:column>
 			  		
-			  	 <p:column headerText="Excluir" id="excluir">
-			  			<h:commandLink actionListener="#{itensManagedBean.saveCompra}">
-				  			<f:attribute name="item" value="#{item}"/>
-				  			<h:graphicImage url="/imagens/compras.png" title="excluir" alt="excluir"/>
-			  			</h:commandLink>
-			        </p:column>
+			  	<p:column headerText="Comprar" id="compra">
+					<p:commandButton action="#{personagemManagedBean.compraItem}" label="Comprar" value="comprar" immediate="true">
+						<f:setPropertyActionListener target="#{personagemManagedBean.itensSelect}"	value="#{item}" />
+					</p:commandButton>
+				</p:column>
 			        			        
 			    </p:dataTable>  
 			</center>  
