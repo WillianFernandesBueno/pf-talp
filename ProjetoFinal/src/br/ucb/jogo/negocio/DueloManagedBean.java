@@ -1,5 +1,7 @@
 package br.ucb.jogo.negocio;
 
+import java.util.Date;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -24,6 +26,8 @@ public class DueloManagedBean {
 
 	public DueloManagedBean() {
 		this.personagem = new Personagem();
+		this.resultado = new Resultado();
+		this.desafio = new Desafio();
 	}
 	
 	public String saveDuelo() {
@@ -31,10 +35,9 @@ public class DueloManagedBean {
 		PersonagemHIB p = new PersonagemHIB();
 		
 		Usuario userLogado = u.findTByLogin(Util.getUserSession());
-		
 		Personagem desafiante = p.findTByIdUser(userLogado.getIdUsuarios());
 		Personagem desafiado  = this.personagem;
-		
+
 		desafio.setIdDesafiado(desafiado.getIdPersonagens());
 		desafio.setIdDesafiante(desafiante.getIdPersonagens());
 		desafio.setAposta(Float.parseFloat("100"));
@@ -45,7 +48,6 @@ public class DueloManagedBean {
 		
 		Double cash = personagem.getCash();
 		Integer experiencia = personagem.getExperiencia();
-		
 		cash += desafio.getAposta();
 		experiencia += resultado.getPontosGanhos();
 		
@@ -63,8 +65,7 @@ public class DueloManagedBean {
 	private void obtemResultado(Personagem desafiante, Personagem desafiado) {
 		int totalDesafiante, totalDesafiado;
 		totalDesafiante = desafiante.getForca() + desafiante.getMana();
-		totalDesafiado = desafiado.getAgilidade() + desafiado.getDefesa();
-		
+		totalDesafiado = desafiado.getAgilidade() + desafiado.getDefesa();		
 		if(totalDesafiante > totalDesafiado){
 			resultado.setIdGanhador(desafiante.getIdPersonagens());
 			resultado.setIdPerdedor(desafiado.getIdPersonagens());
@@ -73,9 +74,8 @@ public class DueloManagedBean {
 			resultado.setIdPerdedor(desafiante.getIdPersonagens());
 		}
 		resultado.setDesafio(desafio);
-		
+		resultado.setDataDuelo(new Date());
 		resultado.setPontosGanhos(100);
-		
 		ResultadoHIB r = new ResultadoHIB();
 		r.save(resultado);
 		
@@ -88,7 +88,15 @@ public class DueloManagedBean {
 	public void setPersonagem(Personagem personagem) {
 		this.personagem = personagem;
 	}
-	
+
+	public Resultado getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(Resultado resultado) {
+		this.resultado = resultado;
+	}
+
 	public Desafio getDesafio() {
 		return desafio;
 	}

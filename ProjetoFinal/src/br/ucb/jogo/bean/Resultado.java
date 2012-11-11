@@ -1,5 +1,7 @@
 package br.ucb.jogo.bean;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,16 +9,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
-@Table(name="desafios")
+@Table(name="resultado")
 public class Resultado {
 	
 	
 	private Integer idResultado;
 	private Integer idGanhador;
 	private Integer idPerdedor;
+	private Date dataDuelo;
 	private Integer pontosGanhos;
 	private Desafio desafio;
 	
@@ -54,6 +59,16 @@ public class Resultado {
 		this.pontosGanhos = pontosGanhos;
 	}
 	
+	@Column
+	@Temporal(TemporalType.DATE)
+	public Date getDataDuelo() {
+		return dataDuelo;
+	}
+
+	public void setDataDuelo(Date dataDuelo) {
+		this.dataDuelo = dataDuelo;
+	}
+
 	@OneToOne
 	@JoinColumn(name="Desafios_idDesafios", referencedColumnName="idDesafios")
 	public Desafio getDesafio() {

@@ -18,7 +18,7 @@ public class Desafio {
 	private Integer idDesafiante;
 	private Integer idDesafiado;
 	private Float aposta;
-	private Personagem personagem;
+	//private Personagem personagem;
 	
 	@Id
 	@GeneratedValue
@@ -54,14 +54,14 @@ public class Desafio {
 		this.aposta = aposta;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name="Personagens_idPersonagens")
-	public Personagem getPersonagem() {
-		return personagem;
-	}
-	public void setPersonagem(Personagem personagem) {
-		this.personagem = personagem;
-	}
+//	@ManyToOne
+//	@JoinColumn(name="Personagens_idPersonagens")
+//	public Personagem getPersonagem() {
+//		return personagem;
+//	}
+//	public void setPersonagem(Personagem personagem) {
+//		this.personagem = personagem;
+//	}
 	
 	
 

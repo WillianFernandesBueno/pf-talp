@@ -11,29 +11,17 @@
 
 	<ui:define name="conteudo">
 	<h:form>
-
 			<p:growl id="growl" sticky="true" showDetail="true" />
-
-
-				<p:tab id="pessoal" title="pessoal">
-					<p:panel header="Dados Pessoais">
-
+			<p:tab id="pessoal" title="personagem">
+				<p:panel header="Personagem">
 						<h:messages errorClass="error" />
-
-						<h:panelGrid columns="2" columnClasses="label, value"
-							styleClass="grid">
-							<h:outputText value="nick"/>
-							<p:inputText required="true" label="nick" value="#{personagemManagedBean.personagem.nick}"/>
-
-							<p:commandButton value="Enviar" update="growl"
-								action="#{personagemManagedBean.savePersonagem}" />
-
+						<h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">
+							<h:outputText value="Nick: " />
+							<p:inputText required="true" label="nick" value="#{personagemManagedBean.personagem.nick}" />
+							<p:commandButton value="Enviar" update="growl" action="#{personagemManagedBean.savePersonagem}" />
 						</h:panelGrid>
-
-					</p:panel>
-				</p:tab>
- 
-
+				</p:panel>
+			</p:tab>
 		</h:form>
 	</ui:define>
 

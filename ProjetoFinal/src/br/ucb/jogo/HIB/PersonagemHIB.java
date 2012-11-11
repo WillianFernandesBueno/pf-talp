@@ -38,6 +38,23 @@ public class PersonagemHIB implements HIB<Personagem> {
 			session.close();
 		}
 	}
+	
+//	@SuppressWarnings("unchecked")
+//	public List<Personagem> listaDisponiveisDuelo(Personagem pers) {
+//		Session session = HibernateUtil.getSession();
+//		Criteria criteria;
+//		try {
+//			criteria = session.createCriteria(Personagem.class);
+//			criteria.add(Restrictions.ne("idPersonagens",pers.getIdPersonagens()));	
+//			ArrayList<Personagem> lista = (ArrayList<Personagem>) criteria.list();
+//			for (Personagem personagem : lista) {
+//				System.out.println(personagem.getNick());
+//			}
+//			return lista; 
+//		} finally {
+//			session.close();
+//		}
+//	}
 
 	@Override
 	public boolean excluir(Personagem t) {

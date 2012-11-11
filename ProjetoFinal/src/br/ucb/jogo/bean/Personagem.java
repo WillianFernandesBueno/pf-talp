@@ -35,7 +35,7 @@ public class Personagem {
 	private List<Item> itens;
 	private Alianca alianca;
 	private List<Treino> trienos;
-	private List<Desafio> desafios;
+	//private List<Desafio> desafios;
 	private Boolean ativo;
 	private Integer experiencia;
 	
@@ -157,13 +157,13 @@ public class Personagem {
 		this.itens = itens;
 	}
 	
-	@OneToMany(targetEntity = Desafio.class)
-	public List<Desafio> getDesafios() {
-		return desafios;
-	}
-	public void setDesafios(List<Desafio> desafios) {
-		this.desafios = desafios;
-	}
+//	@OneToMany(targetEntity = Desafio.class)
+//	public List<Desafio> getDesafios() {
+//		return desafios;
+//	}
+//	public void setDesafios(List<Desafio> desafios) {
+//		this.desafios = desafios;
+//	}
 	
 	@ManyToOne
 	@JoinColumn(name="Alianca_idAlianca")

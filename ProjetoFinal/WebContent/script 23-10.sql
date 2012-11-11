@@ -137,16 +137,9 @@ DROP TABLE IF EXISTS `jogo`.`Desafios` ;
 CREATE  TABLE IF NOT EXISTS `jogo`.`Desafios` (
   `idDesafios` INT NOT NULL AUTO_INCREMENT ,
   `idDesafiante` INT(11) NULL ,
-  `idDeafiado` INT(11) NULL ,
+  `idDesafiado` INT(11) NULL ,
   `aposta` FLOAT NULL ,
-  `Personagens_idPersonagens` INT NOT NULL ,
-  PRIMARY KEY (`idDesafios`) ,
-  INDEX `fk_Desafios_Personagens1` (`Personagens_idPersonagens` ASC) ,
-  CONSTRAINT `fk_Desafios_Personagens1`
-    FOREIGN KEY (`Personagens_idPersonagens` )
-    REFERENCES `jogo`.`Personagens` (`idPersonagens` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`idDesafios`) )
 ENGINE = InnoDB;
 
 
