@@ -33,15 +33,12 @@
 						<p:slideMenu styleClass="menuUsuario" style="width:300px;">
 						
 							<p:submenu label="Usuario">
-								<p:menuitem value="Perfil"
-									action="#" update="messages"
-									icon="ui-icon-disk" />
-								<p:menuitem value="#{msg.login}" action="#{usuarioManagedBean.alterar}"
-									update="messages" icon="ui-icon-arrowrefresh-1-w" />
-							</p:submenu>
-						
-							<p:menuitem value="Perfil" url="IndexUsuario.jsf"
-								update="messages" />
+							<p:menuitem value="Perfil" url="IndexUsuario.jsf" update="messages" />
+							<p:menuitem value="Alterar Perfil"
+								action="#{usuarioManagedBean.alterar}" update="messages"
+								icon="ui-icon-arrowrefresh-1-w" />
+						</p:submenu>
+						<p:menuitem value="Compra de Item" action="CompraItem.jsf" update="messages" />
 							<p:menuitem value="Aliança" action="#{aliancaManagedBean.url}" update="messages" />
 							<p:menuitem value="Treino" action="#{treinoManagedBean.url}" update="messages" />
 							<p:menuitem value="Mercado" action="#{itensManagedBean.url}" update="messages" />
