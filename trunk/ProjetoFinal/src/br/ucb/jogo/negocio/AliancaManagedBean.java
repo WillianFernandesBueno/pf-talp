@@ -11,7 +11,11 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import br.ucb.jogo.HIB.AliancaHIB;
+import br.ucb.jogo.HIB.PersonagemHIB;
+import br.ucb.jogo.HIB.UsuarioHIB;
 import br.ucb.jogo.bean.Alianca;
+import br.ucb.jogo.bean.Personagem;
+import br.ucb.jogo.service.Util;
 
 
 
@@ -19,6 +23,7 @@ import br.ucb.jogo.bean.Alianca;
 @ManagedBean (name = "aliancaManagedBean")
 @SessionScoped
 public class AliancaManagedBean {
+	private Personagem personagem;
 	private Alianca alianca;
 	private List<Alianca> aliancas;
 	private List<Alianca> filtroAliancas;
@@ -91,6 +96,19 @@ public class AliancaManagedBean {
     	disable = true;
     	return "CadastroAlianca";
     }
+    
+    public String url(){
+    	UsuarioHIB userHib = new UsuarioHIB();
+		PersonagemHIB personHib = new PersonagemHIB();
+		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
+		if(personagem.getAtivo()==false)
+		{
+			return "Trabalhando?faces-redirect=true";
+		}
+    	return "Alianca?faces-redirect=true";
+    }
+    
+    
     
     public void excluir(ActionEvent evento) throws SQLException{
     	FacesMessage msg = new FacesMessage("Sucesso", "Alianca "+getAlianca().getNome()+" excluida com sucesso");  

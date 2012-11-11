@@ -82,6 +82,9 @@ public class PersonagemManagedBean {
 	
 	public String saveClass()
     {
+		UsuarioHIB userHib = new UsuarioHIB();
+		PersonagemHIB personHib = new PersonagemHIB();
+		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
 		personagem.setClasse(classe);
 		return "CriaPersonagem2?faces-redirect=true";
     	
