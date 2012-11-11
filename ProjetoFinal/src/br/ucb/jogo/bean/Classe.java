@@ -16,8 +16,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="classe")
 public class Classe  implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
-
 	private String nome;
 	private Integer forca, agilidade, defesa, mana;
 	private Integer idClasse;
@@ -94,7 +94,7 @@ public class Classe  implements Serializable {
 		this.mana = mana;
 	}
 	
-	@OneToOne(mappedBy="classe", fetch = FetchType.LAZY, targetEntity = Personagem.class, cascade = CascadeType.ALL)
+	@OneToOne(mappedBy="classe", fetch = FetchType.EAGER, targetEntity = Personagem.class, cascade = CascadeType.ALL)
 	public Personagem getPersonagem() {
 		return personagem;
 	}
