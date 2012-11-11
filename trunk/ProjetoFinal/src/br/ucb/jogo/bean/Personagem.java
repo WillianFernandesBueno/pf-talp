@@ -2,20 +2,20 @@ package br.ucb.jogo.bean;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 
 @Entity
@@ -38,8 +38,6 @@ public class Personagem {
 	//private List<Desafio> desafios;
 	private Boolean ativo;
 	private Integer experiencia;
-	
-	
 	
 	@Id
 	@GeneratedValue
@@ -71,7 +69,7 @@ public class Personagem {
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="Classe_idClasse", referencedColumnName="idClasse")
 	public Classe getClasse() {
 		return classe;
@@ -136,7 +134,7 @@ public class Personagem {
 		this.cash = cash;
 	}
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="Usuarios_idUsuarios", referencedColumnName="idUsuarios")
 	public Usuario getUsuario() {
 		return usuario;
@@ -146,9 +144,10 @@ public class Personagem {
 		this.usuario = usuario;
 	}
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name="Personagens_has_Item", 
-	  joinColumns = {@JoinColumn(name = "Personagens_idPersonagens", referencedColumnName="idPersonagens") }, inverseJoinColumns = {@JoinColumn(name = "Item_idItem", referencedColumnName="idItem" )} )
+       joinColumns = {@JoinColumn(name = "Personagens_idPersonagens", referencedColumnName="idPersonagens")}, 
+       inverseJoinColumns = {@JoinColumn(name = "Item_idItem", referencedColumnName="idItem")} )
 	public List<Item> getItens() {
 		return itens;
 	}
@@ -167,7 +166,6 @@ public class Personagem {
 	
 	@ManyToOne
 	@JoinColumn(name="Alianca_idAlianca")
-	@Fetch(FetchMode.JOIN)
 	public Alianca getAlianca() {
 		return alianca;
 	}
