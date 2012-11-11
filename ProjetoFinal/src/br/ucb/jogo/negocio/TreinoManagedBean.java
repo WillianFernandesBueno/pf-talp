@@ -107,9 +107,19 @@ public void aumentalevel(Personagem personagem) {
     personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
     Integer level = personagem.getLevel();
     level = (personagem.getExperiencia()/1000);
-    personagem.setLevel(level);
+    if(level>personagem.getLevel())
+    {
+	    Integer AumentaMana = (level*2)+(personagem.getMana());
+		Integer AumentaForca = (level*2)+(personagem.getForca());
+		Integer AumentaAgilidade = (level*1)+(personagem.getAgilidade());
+		Integer AumentaDefesa = (level*1)+(personagem.getDefesa());
+		personagem.setAgilidade(AumentaAgilidade);
+		personagem.setForca(AumentaForca);
+		personagem.setDefesa(AumentaDefesa);
+		personagem.setMana(AumentaMana);   
+	    personagem.setLevel(level);
+    }
     personHib.save(personagem);
-	
 }
 
 	public String incluir() {
