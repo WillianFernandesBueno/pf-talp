@@ -13,6 +13,7 @@ import br.ucb.jogo.HIB.UsuarioHIB;
 import br.ucb.jogo.bean.Classe;
 import br.ucb.jogo.bean.Item;
 import br.ucb.jogo.bean.Personagem;
+import br.ucb.jogo.bean.Usuario;
 import br.ucb.jogo.service.Util;
 
 
@@ -146,9 +147,19 @@ public class PersonagemManagedBean {
 		if(personagem.getItens() == null && personagem.getItens().isEmpty()){
 			personagem.setItens(new ArrayList<Item>());
 		} 		
-		if(!Util.verificaItemDispo(personagem, itensSelect))
+		if(Util.verificaItemDispo(personagem, itensSelect)){
 			personagem.getItens().add(itensSelect);	
-		personHib.save(personagem);
-		return "CompraItem";
+			atualiItem();
+			personHib.save(personagem);
+		}return "CompraItem";
 	}	
+	
+	public void atualiItem(){
+		personagem.setCash(personagem.getCash() - itensSelect.getPreco());
+		personagem.setAgilidade(personagem.getAgilidade() + itensSelect.getAgilidade());
+		personagem.setForca(personagem.getForca() + itensSelect.getForca());
+		personagem.setDefesa(personagem.getDefesa() + itensSelect.getDefesa());
+		personagem.setMana(personagem.getMana() + itensSelect.getMana());
+	}
+	
 }  

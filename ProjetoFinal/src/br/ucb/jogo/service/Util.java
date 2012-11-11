@@ -24,8 +24,16 @@ public class Util {
 	
 	public static boolean verificaItemDispo(Personagem personagem, Item item){
 		
-		return personagem.getLevel() >= item.getLevelNecessario() && personagem.getCash() >= item.getPreco() && personagem.getItens().equals(item);
+		System.out.println(personagem.getLevel()+ " " +item.getLevelNecessario());
 		
+		if (personagem.getLevel() >= item.getLevelNecessario()){
+			if (personagem.getCash() >= item.getPreco()){
+				if(!personagem.getItens().equals(item)){
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 }
