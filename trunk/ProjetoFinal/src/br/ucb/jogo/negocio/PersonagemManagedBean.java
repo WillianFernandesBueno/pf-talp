@@ -7,9 +7,11 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import br.ucb.jogo.HIB.ItemHIB;
 import br.ucb.jogo.HIB.PersonagemHIB;
 import br.ucb.jogo.HIB.UsuarioHIB;
 import br.ucb.jogo.bean.Classe;
+import br.ucb.jogo.bean.Item;
 import br.ucb.jogo.bean.Personagem;
 import br.ucb.jogo.service.Util;
 
@@ -24,7 +26,7 @@ public class PersonagemManagedBean {
 	private String imagem;
     private String nome;
     private Classe classe;
-    
+	private Item itensSelect;
     
     public PersonagemManagedBean() {
     	setPersonagem(new Personagem());
@@ -90,12 +92,10 @@ public class PersonagemManagedBean {
     	
     }
 	
-	public String savePersonagem()
-    {
+	public String savePersonagem() {
 		
 		UsuarioHIB userHib = new UsuarioHIB();
 		PersonagemHIB person = new PersonagemHIB();
-		
 		personagem.setLevel(1);
 		personagem.setMana(getClasse().getMana());
 		personagem.setForca(getClasse().getForca());
@@ -129,5 +129,26 @@ public class PersonagemManagedBean {
 		this.personagens = personagens;
 	}
 
-	
+	public Item getItensSelect() {		
+		return itensSelect;
+	}
+
+	public void setItensSelect(Item itens) {
+		this.itensSelect = itens;
+	}
+		
+	public String compraItem(){
+	 
+		UsuarioHIB userHib = new UsuarioHIB();
+		PersonagemHIB personHib = new PersonagemHIB();
+		Usuario user = userHib.findTByLogin(Util.getUserSession());
+		personagem = personHib.findTByIdUser(user.getIdUsuarios());
+		if(personagem.getItens() == null && personagem.getItens().isEmpty()){
+			personagem.setItens(new ArrayList<Item>());
+		} 		
+		if(!Util.verificaItemDispo(personagem, itensSelect))
+			personagem.getItens().add(itensSelect);	
+		personHib.save(personagem);
+		return "CompraItem";
+	}	
 }  
