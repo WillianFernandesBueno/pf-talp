@@ -1,7 +1,5 @@
 package br.ucb.jogo.service;
 
-import java.util.Date;
-
 import javax.faces.context.FacesContext;
 
 public class Util {

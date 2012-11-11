@@ -11,7 +11,6 @@ import br.ucb.jogo.HIB.PersonagemHIB;
 import br.ucb.jogo.HIB.UsuarioHIB;
 import br.ucb.jogo.bean.Classe;
 import br.ucb.jogo.bean.Personagem;
-import br.ucb.jogo.bean.Usuario;
 import br.ucb.jogo.service.Util;
 
 
