@@ -115,7 +115,6 @@ public class PersonagemManagedBean implements Serializable{
 		personagem.setAtivo(true);
 		personagem.setExperiencia(1);
 		person.save(personagem);
-		
 		return "IndexUsuario?faces-redirect=true";
     	
     }
@@ -175,5 +174,42 @@ public class PersonagemManagedBean implements Serializable{
 			return "true";
 		return "false";
 	}
+	public String getCriaPersonagem2(){
+		Usuario user = new UsuarioHIB().findTByLogin(Util.getUserSession());
+		PersonagemHIB personHib = new PersonagemHIB();
+		UsuarioHIB userHib = new UsuarioHIB();
+		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
+		
+		if(user.getPersonagem() != null)
+		{
+			if(personagem.getForca() > personagem.getDefesa() && personagem.getForca() > personagem.getAgilidade() && personagem.getForca() > personagem.getMana())
+			{
+				setImagem("ataque.png");
+			}else if(personagem.getDefesa() > personagem.getMana() && personagem.getDefesa() > personagem.getAgilidade())
+			{
+				setImagem("defesa.png");
+			}else if(personagem.getMana() > personagem.getAgilidade())
+			{
+				setImagem("magia.png");
+			}else
+			{
+				setImagem("agilidade.png");
+			}
+			return "true";
+		}
+		return "false";
+	}
+
+	
+	 public String url(){
+	    	UsuarioHIB userHib = new UsuarioHIB();
+			PersonagemHIB personHib = new PersonagemHIB();
+			personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
+			if(personagem.getAtivo()==false)
+			{
+				return "Trabalhando?faces-redirect=true";
+			}
+	    	return "PerfilPersonagem?faces-redirect=true";
+	    }
 	
 }  

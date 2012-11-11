@@ -13,7 +13,49 @@
 		<h:form id="form" rendered="true">
 			<p:panel styleClass="FundoPaginaUsuario">
 				<center>
-					<p:commandButton value="criar personagem" label="Criar personagem" action="CriaPersonagem.jsf" rendered="#{personagemManagedBean.criaPersonagem}"/>
+				<br/><br/><br/><br/>
+				<p:panel rendered="#{personagemManagedBean.criaPersonagem}" styleClass="PainelTrabalho">
+					<center>
+						<p:commandButton value="criar personagem" label="Criar personagem" action="CriaPersonagem.jsf" rendered="#{personagemManagedBean.criaPersonagem}"/>
+					</center>
+				</p:panel>
+				<p:panel rendered="#{personagemManagedBean.criaPersonagem2}" style="width:500px;">
+					<center>
+						<p:panelGrid columns="2">
+							<p:panel>
+								<p:graphicImage url="../images/personagem/#{personagemManagedBean.imagem}" />	
+							</p:panel>
+							<p:panelGrid columns="1">
+								<p:panel>
+									<h:outputLabel value="Level:" />
+									<h:outputText value="#{personagemManagedBean.personagem.level}" />	
+								</p:panel>
+								<p:panel>
+									<h:outputLabel value="Nome:" />
+									<h:outputText value="#{personagemManagedBean.personagem.nick}" />	
+								</p:panel>
+								<p:panel>
+									<h:outputLabel value="Forca:" />
+									<h:outputText value="#{personagemManagedBean.personagem.forca}" />	
+								</p:panel>
+								<p:panel>
+									<h:outputLabel value="Defesa:" />
+									<h:outputText value="#{personagemManagedBean.personagem.defesa}" />	
+								</p:panel>
+								<p:panel>
+									<h:outputLabel value="Agilidade:" />
+									<h:outputText value="#{personagemManagedBean.personagem.agilidade}" />	
+								</p:panel>
+								<p:panel>
+									<h:outputLabel value="Mana:" />
+									<h:outputText value="#{personagemManagedBean.personagem.mana}" />	
+								</p:panel>
+					
+							</p:panelGrid>
+						</p:panelGrid>
+						
+					</center>
+				</p:panel>
 				</center>
 			</p:panel>
 		</h:form>

@@ -43,22 +43,13 @@
 			             <h:outputText value="#{treino.tempoNecessario}"/>
 			        </p:column>
 			       			        
-			             <p:column headerText="treinar" id="treinar">
+			        <p:column headerText="treinar" id="treinar">
 			  			<h:commandLink action="#{treinoManagedBean.teste}">
 				  			<f:setPropertyActionListener target="#{treinoManagedBean.treino}" value="#{treino}"/>
 				  			<h:graphicImage url="/imagens/select.png" title="Selecionar" alt="Selecionar"/>
 			  			</h:commandLink>
-			        </p:column>
-			        			        
+			        </p:column>        
 			    </p:dataTable> 
-
-
-
-
-
-
-
-
 				</center>
 			</p:panel>
 		</h:form>

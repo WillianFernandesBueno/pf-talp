@@ -42,11 +42,18 @@
 }
 
 .menuUsuario{
-	background-color: #57411c;
-	height:400px;
+	background-color: #b28b54;
 	border: 0;
 }
 
+.menuNormal{
+	background-color: #b28b54;
+	height:320px;
+	border: 0;
+}
+.cor1{
+	background-color: #63461a;
+}
 .menu{
 	background-color: #57411c;		
 	width:298px;

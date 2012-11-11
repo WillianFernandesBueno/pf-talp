@@ -25,8 +25,7 @@
 		</p:layoutUnit>
 		
 		<p:layoutUnit position="west" size="320" header="OCULTAR" resizable="true" closable="true" collapsible="true">
-			<div id="menu">
-				<ui:insert name="menu"> 
+
 					<h:form>
 						<p:slideMenu styleClass="menuAdmin" style="width:300px;">
 							<p:menuitem value="Home" url="IndexAdmin.jsf"   />
@@ -61,15 +60,7 @@
 			style="background:#cbcbcb;">
 			<div id="conteudo">
 				<ui:insert name="conteudo">
-					<table align="center">
-						<tr>
-							<td><p:galleria value="#{galleriaBean.images}" var="image"
-									rendered="true" panelHeight="550" panelWidth="1570"
-									transitionInterval="10000" style="background:#cbcbcb;">
-									<p:graphicImage value="../images/#{image}" height="50" />
-								</p:galleria></td>
-						</tr>
-					</table>
+				
 				</ui:insert>
 			</div>
 		</p:layoutUnit>
