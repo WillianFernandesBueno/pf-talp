@@ -2,6 +2,7 @@ package br.ucb.jogo.HIB;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -26,7 +27,7 @@ public class ClasseHIB implements HIB<Classe>{
 	public List<Classe> list() {
 		Session session = HibernateUtil.getSession();
 		try {
-			return session.createCriteria(Classe.class).list();
+			return session.createCriteria(Classe.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		} finally {
 			session.close();
 		}
