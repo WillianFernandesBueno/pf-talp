@@ -10,7 +10,27 @@
 <ui:composition template="IndexUsuario.xhtml">
 
 	<ui:define name="conteudo">
-		
+	<center>
+	<p:panel styleClass="FundoPaginaUsuario">
+	<br/><br/>
+		<p:panel style="width:1200px;">
+			<h:outputText value="   TREINANDO" style="font-size: 40px;"/><br/>
+		</p:panel>
+		<p:panelGrid columns="2" style="width:1210px;">
+			<h:graphicImage url="/imagens/treinando.jpg" style="width:500px;"/>
+			<h:outputText value="enquanto estiver treinando nao será possivel executar outra acão do jogo, espere o tempo nescessario
+			para que você possa pegar sua recompensa em experiencia e barras de ouro. Caso desista do treinamento as açoes voltarao mais 
+			vc nao recebera
+			nenhuma recompensa e o tempo ja treinando sera em vao."/>
+		</p:panelGrid>
+		<p:panelGrid columns="4" style="width:1210px;">
+			<h:outputText value="INICIO: 12:00"/>
+			<h:outputText value="TERMINO: 18:00"/>
+			<p:commandButton value="pegar recompensa" action="#{treinoManagedBean.finalizaTreino}" style="background:#dbcba5;"/>
+			<p:commandButton value="cancelar" style="background:#dbcba5;"/>
+		</p:panelGrid>
+		</p:panel>
+	</center>
 	</ui:define>
 
 
