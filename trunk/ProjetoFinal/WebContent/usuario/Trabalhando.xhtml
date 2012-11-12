@@ -24,9 +24,13 @@
 			nenhuma recompensa e o tempo ja treinando sera em vao."/>
 		</p:panelGrid>
 		<p:panelGrid columns="4" style="width:1210px;">
-			<h:outputText value="INICIO: 12:00"/>
-			<h:outputText value="TERMINO: 18:00"/>
-			<p:commandButton value="pegar recompensa" action="#{treinoManagedBean.finalizaTreino}" style="background:#dbcba5;"/>
+			<h:outputText value="Data Inicio: #{treinoManagedBean.personHasTreino.dataInicial}">
+				<!-- <f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss"/> -->
+			</h:outputText>
+			<h:outputText value="Data Fim: #{treinoManagedBean.personHasTreino.dataSaida}">
+				<!-- <f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss"/> -->
+			</h:outputText>
+			<p:commandButton value="pegar recompensa" action="#{treinoManagedBean.finalizaTreino}" style="background:#dbcba5;" disabled="#{treinoManagedBean.disable}" />
 			<p:commandButton value="cancelar" style="background:#dbcba5;"/>
 		</p:panelGrid>
 		</p:panel>
