@@ -13,7 +13,7 @@
 			<h:form id="form">
 				<center>  
 				    <p:dataTable emptyMessage="Não existem personagens para o duelo..." 
-				    			 var="personagem" value="#{personagemManagedBean.personagens}" 
+				    			 var="personagem" value="#{dueloManagedBean.personagensDuelo}" 
 				    			 rowKey="#{personagem.nick}" paginator="true" rows="10" 
 				    			 filteredValue="#{personagemManagedBean.filtroPersonagens}" 
 				    			 id="TablePersonagens" styleClass="painelTrabalho">  
