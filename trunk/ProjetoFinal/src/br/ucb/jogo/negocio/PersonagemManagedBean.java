@@ -8,10 +8,11 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import br.ucb.jogo.HIB.ItemHIB;
+import br.ucb.jogo.HIB.DesafioHIB;
 import br.ucb.jogo.HIB.PersonagemHIB;
 import br.ucb.jogo.HIB.UsuarioHIB;
 import br.ucb.jogo.bean.Classe;
+import br.ucb.jogo.bean.Desafio;
 import br.ucb.jogo.bean.Item;
 import br.ucb.jogo.bean.Personagem;
 import br.ucb.jogo.bean.Usuario;
@@ -30,6 +31,8 @@ public class PersonagemManagedBean implements Serializable{
     private String nome;
     private Classe classe;
 	private Item itensSelect;
+	
+	private Desafio desafio;
     
     public PersonagemManagedBean() {
     	setPersonagem(new Personagem());
@@ -38,8 +41,6 @@ public class PersonagemManagedBean implements Serializable{
     	setPersonagens(p.list());
     	this.classe = new Classe();
     	
-    
-   	
 	}
     
 
@@ -128,8 +129,16 @@ public class PersonagemManagedBean implements Serializable{
 	public String encaminha()
     {
 		UsuarioHIB userHib = new UsuarioHIB();
+		DesafioHIB desafioHIB = new DesafioHIB();
+		personagem = userHib.findTByLogin(Util.getUserSession()).getPersonagem();
 		
-		return userHib.findTByLogin(Util.getUserSession()).getPersonagem() == null ? "/usuario/CriaPersonagem?faces-redirect=true": "/usuario/IndexUsuario?faces-redirect=true";
+		if(personagem == null){
+			return "/usuario/CriaPersonagem?faces-redirect=true";
+		}
+		desafio = desafioHIB.findByDesafio(personagem.getIdPersonagens());
+		return "/usuario/PerfilPersonagem?faces-redirect=true";
+		
+		
     }
 	public List<Personagem> getPersonagens() {
 		return personagens;
@@ -215,5 +224,15 @@ public class PersonagemManagedBean implements Serializable{
 			}
 	    	return "PerfilPersonagem?faces-redirect=true";
 	    }
+
+
+	public Desafio getDesafio() {
+		return desafio;
+	}
+
+
+	public void setDesafio(Desafio desafio) {
+		this.desafio = desafio;
+	}
 	
 }  
