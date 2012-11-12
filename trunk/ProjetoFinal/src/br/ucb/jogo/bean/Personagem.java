@@ -40,6 +40,7 @@ public class Personagem implements Serializable {
 	private List<Treino> trienos;
 	//private List<Desafio> desafios;
 	private Boolean ativo;
+	private Integer situacaoDuel;
 	private Integer experiencia;
 	private List<PersonagenHasTreino> personagenHasTreinos;
 
@@ -187,7 +188,15 @@ public class Personagem implements Serializable {
 			List<PersonagenHasTreino> personagenHasTreinos) {
 		this.personagenHasTreinos = personagenHasTreinos;
 	}
-
-
+	
+	@Column
+	public Integer getSituacaoDuel() {
+		return situacaoDuel;
+	}
+	public void setSituacaoDuel(Integer situacaoDuel) {
+		this.situacaoDuel = situacaoDuel;
+	}
+	
+	
 
 }
