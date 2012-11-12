@@ -12,19 +12,20 @@
 <ui:composition template="IndexAdmin.xhtml">
 
 	<ui:define name="conteudo">
+		<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 		<h:form>
 			<center>
-				<p:panel header="Cadastro de Itens">
+				<p:panel header="#{msg.CADASTRO_DE_ITEM}">
 					<p:panelGrid columns="2" id="painelCadastroItens" style="width:500px">
-						<h:outputLabel value="Nome: "/><p:inputText id="nome" required="true" value="#{itensManagedBean.item.nome}" style="width:500px"/>
-						<h:outputLabel value="Preço: "/><p:inputText id="preco" required="true" value="#{itensManagedBean.item.preco}" style="width:500px"/>
-						<h:outputLabel value="Level Necessário: "/><p:inputText id="levelNecessario" required="true" value="#{itensManagedBean.item.levelNecessario}" style="width:500px"/>
-						<h:outputLabel value="Força: "/><p:inputText id="forca" value="#{itensManagedBean.item.forca}" style="width:500px"/>
-						<h:outputLabel value="Agilidade: "/><p:inputText id="agilidade" value="#{itensManagedBean.item.agilidade}" style="width:500px"/>
-						<h:outputLabel value="Defesa: "/><p:inputText id="defesa" value="#{itensManagedBean.item.defesa}" style="width:500px"/>
-						<h:outputLabel value="Mana: "/><p:inputText id="mana" value="#{itensManagedBean.item.mana}" style="width:500px"/>
+						<h:outputLabel value="#{msg.NOME}: "/><p:inputText id="nome" required="true" value="#{itensManagedBean.item.nome}" style="width:500px"/>
+						<h:outputLabel value="#{msg.PRECO}: "/><p:inputText id="preco" required="true" value="#{itensManagedBean.item.preco}" style="width:500px"/>
+						<h:outputLabel value="#{msg.LEVEL_NECESSARIO}: "/><p:inputText id="levelNecessario" required="true" value="#{itensManagedBean.item.levelNecessario}" style="width:500px"/>
+						<h:outputLabel value="#{msg.FORCA}: "/><p:inputText id="forca" value="#{itensManagedBean.item.forca}" style="width:500px"/>
+						<h:outputLabel value="#{msg.AGILIDADE}: "/><p:inputText id="agilidade" value="#{itensManagedBean.item.agilidade}" style="width:500px"/>
+						<h:outputLabel value="#{msg.DEFESA}: "/><p:inputText id="defesa" value="#{itensManagedBean.item.defesa}" style="width:500px"/>
+						<h:outputLabel value="#{msg.MANA}: "/><p:inputText id="mana" value="#{itensManagedBean.item.mana}" style="width:500px"/>
 					</p:panelGrid>
-					<p:commandButton value="Enviar" action="#{itensManagedBean.save}"/> 
+					<p:commandButton value="#{msg.ENVIAR}" action="#{itensManagedBean.save}"/> 
 				</p:panel>		      
 			</center>
 		</h:form>
