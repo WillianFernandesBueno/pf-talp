@@ -73,7 +73,6 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Personagens` (
   `ativo` boolean not null,
   `experiencia` int(11) not null ,
   `situacaoDuel` int(11) not null ,
-  `dueloAtivo` boolean not null ,
   `Classe_idClasse` INT ,
   `Alianca_idAlianca` INT  ,
   `Usuarios_idUsuarios` INT NOT NULL ,
@@ -140,6 +139,7 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Desafios` (
   `idDesafios` INT NOT NULL AUTO_INCREMENT ,
   `idDesafiante` INT(11) NULL ,
   `idDesafiado` INT(11) NULL ,
+  `dueloAtivo` boolean not null ,
   `aposta` FLOAT NULL ,
   PRIMARY KEY (`idDesafios`) )
 ENGINE = InnoDB;
