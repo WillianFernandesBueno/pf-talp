@@ -13,16 +13,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 
 @Entity
 @Table(name="Personagens")
 public class Personagem implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 	private Integer idPersonagens;
 	private String nick;
@@ -40,7 +41,9 @@ public class Personagem implements Serializable {
 	//private List<Desafio> desafios;
 	private Boolean ativo;
 	private Integer experiencia;
-	
+	private List<PersonagenHasTreino> personagenHasTreinos;
+
+
 	@Id
 	@GeneratedValue
 	public Integer getIdPersonagens() {
@@ -79,7 +82,7 @@ public class Personagem implements Serializable {
 	public void setClasse(Classe classe) {
 		this.classe = classe;
 	}
-	
+
 	@Column
 	public Integer getLevel() {
 		return level;
@@ -87,26 +90,26 @@ public class Personagem implements Serializable {
 	public void setLevel(Integer level) {
 		this.level = level;
 	}
-	
+
 	@Column
 	public Integer getMana() {
 		return mana;
 	}
-	
+
 	public void setMana(Integer mana) {
 		this.mana = mana;
 	}
-	
+
 	@ManyToMany
 	@JoinTable(name="Personagens_has_treino", joinColumns = {@JoinColumn(name="idPersonagens")}, inverseJoinColumns = {@JoinColumn (name="idTreino")})
 	public List<Treino> getTrienos() {
 		return trienos;
 	}
-	
+
 	public void setTrienos(List<Treino> trienos) {
 		this.trienos = trienos;
 	}
-	
+
 	@Column
 	public Integer getForca() {
 		return forca;
@@ -135,37 +138,37 @@ public class Personagem implements Serializable {
 	public void setCash(Double cash) {
 		this.cash = cash;
 	}
-	
+
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="Usuarios_idUsuarios", referencedColumnName="idUsuarios")
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name="Personagens_has_Item", 
-       joinColumns = {@JoinColumn(name = "Personagens_idPersonagens", referencedColumnName="idPersonagens")}, 
-       inverseJoinColumns = {@JoinColumn(name = "Item_idItem", referencedColumnName="idItem")} )
+	joinColumns = {@JoinColumn(name = "Personagens_idPersonagens", referencedColumnName="idPersonagens")}, 
+	inverseJoinColumns = {@JoinColumn(name = "Item_idItem", referencedColumnName="idItem")} )
 	public List<Item> getItens() {
 		return itens;
 	}
-	
+
 	public void setItens(List<Item> itens) {
 		this.itens = itens;
 	}
-	
-//	@OneToMany(targetEntity = Desafio.class)
-//	public List<Desafio> getDesafios() {
-//		return desafios;
-//	}
-//	public void setDesafios(List<Desafio> desafios) {
-//		this.desafios = desafios;
-//	}
-	
+
+	//	@OneToMany(targetEntity = Desafio.class)
+	//	public List<Desafio> getDesafios() {
+	//		return desafios;
+	//	}
+	//	public void setDesafios(List<Desafio> desafios) {
+	//		this.desafios = desafios;
+	//	}
+
 	@ManyToOne
 	@JoinColumn(name="Alianca_idAlianca")
 	public Alianca getAlianca() {
@@ -174,5 +177,17 @@ public class Personagem implements Serializable {
 	public void setAlianca(Alianca alianca) {
 		this.alianca = alianca;
 	}
-	
+	@SuppressWarnings("deprecation")
+	@OneToMany(fetch = FetchType.LAZY,	 mappedBy = "pk.personagem", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@Cascade( { org.hibernate.annotations.CascadeType.SAVE_UPDATE,	 org.hibernate.annotations.CascadeType.DELETE_ORPHAN })
+	public List<PersonagenHasTreino> getPersonagenHasTreinos() {
+		return personagenHasTreinos;
+	}
+	public void setPersonagenHasTreinos(
+			List<PersonagenHasTreino> personagenHasTreinos) {
+		this.personagenHasTreinos = personagenHasTreinos;
+	}
+
+
+
 }

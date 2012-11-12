@@ -1,32 +1,40 @@
 package br.ucb.jogo.bean;
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name="treino")
 public class Treino {
-	
+
 	private Integer idTreino;
 	private String nome;
 	private Float cash;
 	private Integer pontos;
 	private Integer tempoNecessario;
 	private List<Personagem> personagens;
+	private List<PersonagenHasTreino> personagenHasTreinos;
 	
+
 	@Id
 	@GeneratedValue
 	public Integer getIdTreino() {
 		return idTreino;
 	}
-	
+
 	public void setIdTreino(Integer idTreino) {
 		this.idTreino = idTreino;
 	}
@@ -46,12 +54,12 @@ public class Treino {
 	public void setCash(Float cash) {
 		this.cash = cash;
 	}
-	
+
 	@Column
 	public Integer getPontos() {
 		return pontos;
 	}
-	
+
 	public void setPontos(Integer pontos) {
 		this.pontos = pontos;
 	}
@@ -74,25 +82,17 @@ public class Treino {
 	public void setPersonagens(List<Personagem> personagens) {
 		this.personagens = personagens;
 	}
-	
-	
-	
-//	@Temporal(TemporalType.DATE)
-//	public Date getDataInicial() {
-//		return dataInicial;
-//	}
-//	
-//	public void setDataInicial(Date dataInicial) {
-//		this.dataInicial = dataInicial;
-//	}
-//	
-//	@Temporal(TemporalType.DATE)
-//	public Date getDataSaida() {
-//		return dataSaida;
-//	}
-//
-//	public void setDataSaida(Date dataSaida) {
-//		this.dataSaida = dataSaida;
-//	}
-	
+
+	@SuppressWarnings("deprecation")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.treino",	cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@Cascade( { org.hibernate.annotations.CascadeType.SAVE_UPDATE,	 org.hibernate.annotations.CascadeType.DELETE_ORPHAN })
+	public List<PersonagenHasTreino> getPersonagenHasTreinos() {
+		return personagenHasTreinos;
+	}
+
+	public void setPersonagenHasTreinos(
+			List<PersonagenHasTreino> personagenHasTreinos) {
+		this.personagenHasTreinos = personagenHasTreinos;
+	}
+
 }
