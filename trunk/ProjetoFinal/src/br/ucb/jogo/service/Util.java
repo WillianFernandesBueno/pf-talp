@@ -1,5 +1,10 @@
 package br.ucb.jogo.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.faces.context.FacesContext;
 
 
@@ -35,5 +40,31 @@ public class Util {
 		}
 		return false;
 	}
+
+	public static Date somaData(int valor) {
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.HOUR,valor);
+		return cal.getTime(); 
+				
+	}
 	
+	public static Date strToDate(String data, String formato){  
+        Date resultado = null;  
+        SimpleDateFormat sdf =  new SimpleDateFormat(formato);  
+        try {  
+            resultado = sdf.parse(data);  
+        } catch (ParseException ex) {  
+            ex.printStackTrace ();  
+        }  
+        return resultado;  
+    }  
+	
+	public static int comparaData(Date data){
+		
+		return new Date().compareTo(data);
+		
+	}
+	
+	
+
 }
