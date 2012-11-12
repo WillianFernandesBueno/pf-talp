@@ -171,10 +171,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `jogo`.`Personagens_has_Treino` ;
 
 CREATE  TABLE IF NOT EXISTS `jogo`.`Personagens_has_Treino` (
-  `Personagens_idPersonagens` INT NOT NULL ,
-  `Treino_idTreino` INT NOT NULL ,
-  `dataInicial` DATETIME NULL ,
-  `dataSaida` DATETIME NULL ,
+  `Personagens_idPersonagens` INT ,
+  `Treino_idTreino` INT ,
+  `dataInicial` DATETIME ,
+  `dataSaida` DATETIME  ,
   PRIMARY KEY (`Personagens_idPersonagens`, `Treino_idTreino`) ,
   INDEX `fk_Personagens_has_Treino_Treino1` (`Treino_idTreino` ASC) ,
   INDEX `fk_Personagens_has_Treino_Personagens1` (`Personagens_idPersonagens` ASC) ,
