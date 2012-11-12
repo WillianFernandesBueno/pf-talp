@@ -90,7 +90,10 @@ public class TreinoManagedBean {
 		personHasTreino = personHasTreinoHib.findByMaxCadastro(personagem.getIdPersonagens(), treino.getIdTreino());
 		UsuarioHIB userHib = new UsuarioHIB();		
 		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
-
+		
+		
+		System.out.println(personHasTreino);
+		
 		if(personHasTreino == null){
 
 			personagem.setAtivo(false);
@@ -107,14 +110,11 @@ public class TreinoManagedBean {
 			personHasTreino.getPk().setPersonagem(personagem);
 			personHasTreino.getPk().setTreino(treino);
 			personHasTreinoHib.save(personHasTreino);
-			
 
 		}else{
 			
 			personHasTreino = new PersonagenHasTreino();
 			personHasTreino = personHasTreinoHib.findByMaxCadastro(personagem.getIdPersonagens(), treino.getIdTreino());
-			
-			
 			
 		}
 		if(Util.comparaData(personHasTreino.getDataSaida()) == -1) setDisable(true);
