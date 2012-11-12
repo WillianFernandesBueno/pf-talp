@@ -199,12 +199,8 @@ public class TreinoManagedBean {
 		UsuarioHIB userHib = new UsuarioHIB();
 		PersonagemHIB personHib = new PersonagemHIB();
 		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
-
-		//System.out.println(new TreinoHIB().findByIdMax(personagem.getIdPersonagens()));
-		//if(personagem.getAtivo() == false){
-		//	return "Trabalhando?faces-redirect=true";
-		//}
 		return "Treino?faces-redirect=true";
+		
 	}
 
 	public Date getInicial() {
