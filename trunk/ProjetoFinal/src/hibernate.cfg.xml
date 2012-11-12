@@ -24,8 +24,8 @@
 		<mapping class="br.ucb.jogo.bean.Autorizacao" />
 		<mapping class="br.ucb.jogo.bean.Resultado" />
 		<mapping class="br.ucb.jogo.bean.Loggers" />
+		<mapping class="br.ucb.jogo.bean.PersonagenHasTreino" />
 		
-	
 	</session-factory>
 	
 	
