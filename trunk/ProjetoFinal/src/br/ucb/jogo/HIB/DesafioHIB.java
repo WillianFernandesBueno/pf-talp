@@ -66,18 +66,21 @@ public class DesafioHIB implements HIB<Desafio>{
 
 			criteria.add(Restrictions.eq("idDesafiado",idDesafiado));
 			criteria.add(Restrictions.eq("idDesafiante",idDesafiante));
-			criteria.setProjection(Projections.projectionList().add(Projections.max("idDesafios"))).list();
-			@SuppressWarnings("unchecked")
-			ArrayList<Desafio> a = (ArrayList<Desafio>) criteria.setProjection(Projections.projectionList().add(Projections.max("idDesafios"))).list();
-			for (Desafio desafio : a) {
-				return findTById(desafio.getIdDesafios());
+			
+			Integer id = (Integer)criteria.setProjection(Projections.projectionList().add(Projections.max("idDesafios"))).list().get(0);
+			
+			if(id != null){
+				Desafio des = findTById(id);
+				if(des != null)
+					return des;
 			}
-			 
+					
+			
+			
 		} finally {
 			session.close();
 		}
 		return null;
-
 	}
 	
 	public Desafio findByDesafio(int idDesafiado){
@@ -90,7 +93,7 @@ public class DesafioHIB implements HIB<Desafio>{
 			criteria.add(Restrictions.eq("idDesafiado",idDesafiado));
 			criteria.add(Restrictions.eq("dueloAtivo",true));
 			@SuppressWarnings("unchecked")
-			ArrayList<Desafio> a = (ArrayList<Desafio>) criteria.setProjection(Projections.projectionList().add(Projections.max("idDesafios"))).list();
+			ArrayList<Desafio> a = (ArrayList<Desafio>) criteria.list();
 			for (Desafio desafio : a) {
 				return findTById(desafio.getIdDesafios());
 			}
