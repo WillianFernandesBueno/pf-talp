@@ -65,7 +65,7 @@ public class PersonagemHasTreinoHIB implements HIB<PersonagenHasTreino>{
 		try {
 			criteria = session.createCriteria(PersonagenHasTreino.class);
 			criteria.add(Restrictions.eq("pk.personagem.idPersonagens",idPerson));
-			criteria.add(Restrictions.eq("pk.treino.idTreino",idPerson));
+			criteria.add(Restrictions.eq("pk.treino.idTreino",idTreino));
 			@SuppressWarnings("unchecked")
 			ArrayList<PersonagenHasTreino> a = (ArrayList<PersonagenHasTreino>) criteria.list();
 			for (PersonagenHasTreino personagenHasTreino : a) {

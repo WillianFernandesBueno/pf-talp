@@ -43,7 +43,7 @@ public class Util {
 
 	public static Date somaData(int valor) {
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.HOUR,valor);
+		cal.add(Calendar.SECOND,valor);
 		return cal.getTime(); 
 				
 	}
