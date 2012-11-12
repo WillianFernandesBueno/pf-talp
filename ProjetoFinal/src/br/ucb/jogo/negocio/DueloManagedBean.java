@@ -1,6 +1,7 @@
 package br.ucb.jogo.negocio;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -23,13 +24,25 @@ public class DueloManagedBean {
 	private Personagem personagem;
 	private Desafio desafio;
 	private Resultado resultado;
+	private List<Personagem> personagensDuelo;
+	private PersonagemHIB personHib;
 
 	public DueloManagedBean() {
 		this.personagem = new Personagem();
 		this.resultado = new Resultado();
 		this.desafio = new Desafio();
+		this.personHib = new PersonagemHIB();
+		setPersonagensDuelo(personHib.listaDisponiveisDuelo(personHib.findTByIdUser(new UsuarioHIB().findTByLogin(Util.getUserSession()).getIdUsuarios())));
 	}
 	
+	public PersonagemHIB getPersonHib() {
+		return personHib;
+	}
+
+	public void setPersonHib(PersonagemHIB personHib) {
+		this.personHib = personHib;
+	}
+
 	public String saveDuelo() {
 		UsuarioHIB u = new UsuarioHIB();
 		PersonagemHIB p = new PersonagemHIB();
@@ -117,5 +130,13 @@ public class DueloManagedBean {
 		}
     	return "Duelo?faces-redirect=true";
     }
+
+	public List<Personagem> getPersonagensDuelo() {
+		return personagensDuelo;
+	}
+
+	public void setPersonagensDuelo(List<Personagem> personagensDuelo) {
+		this.personagensDuelo = personagensDuelo;
+	}
 	
 }

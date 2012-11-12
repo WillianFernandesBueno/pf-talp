@@ -37,9 +37,13 @@ public class PersonagemManagedBean implements Serializable{
     	PersonagemHIB p = new PersonagemHIB();
     	setPersonagens(p.list());
     	this.classe = new Classe();
+    	
+    
+   	
 	}
     
-    public List<Personagem> getFiltroPersonagens() {
+
+	public List<Personagem> getFiltroPersonagens() {
 		return filtroPersonagens;
 	}
 

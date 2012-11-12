@@ -139,7 +139,7 @@ public class Personagem implements Serializable {
 		this.cash = cash;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="Usuarios_idUsuarios", referencedColumnName="idUsuarios")
 	public Usuario getUsuario() {
 		return usuario;

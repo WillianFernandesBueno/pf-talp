@@ -39,22 +39,22 @@ public class PersonagemHIB implements HIB<Personagem> {
 		}
 	}
 	
-//	@SuppressWarnings("unchecked")
-//	public List<Personagem> listaDisponiveisDuelo(Personagem pers) {
-//		Session session = HibernateUtil.getSession();
-//		Criteria criteria;
-//		try {
-//			criteria = session.createCriteria(Personagem.class);
-//			criteria.add(Restrictions.ne("idPersonagens",pers.getIdPersonagens()));	
-//			ArrayList<Personagem> lista = (ArrayList<Personagem>) criteria.list();
-//			for (Personagem personagem : lista) {
-//				System.out.println(personagem.getNick());
-//			}
-//			return lista; 
-//		} finally {
-//			session.close();
-//		}
-//	}
+	@SuppressWarnings("unchecked")
+	public List<Personagem> listaDisponiveisDuelo(Personagem pers) {
+		Session session = HibernateUtil.getSession();
+		Criteria criteria;
+		try {
+			criteria = session.createCriteria(Personagem.class);
+			criteria.add(Restrictions.ne("idPersonagens",pers.getIdPersonagens()));	
+			ArrayList<Personagem> lista = (ArrayList<Personagem>) criteria.list();
+			for (Personagem personagem : lista) {
+				System.out.println(personagem.getNick());
+			}
+			return lista; 
+		} finally {
+			session.close();
+		}
+	}
 
 	@Override
 	public boolean excluir(Personagem t) {
@@ -94,24 +94,6 @@ public class PersonagemHIB implements HIB<Personagem> {
 		return null;
 	}
 
-//	
-//	public Usuario findTByLogin(String login) {
-//		Session session = HibernateUtil.getSession();
-//		Criteria criteria;
-//		try {
-//			criteria = session.createCriteria(Usuario.class);
-//			criteria.add(Restrictions.eq("login",login));			
-//			@SuppressWarnings("unchecked")
-//			ArrayList<Usuario> a = (ArrayList<Usuario>) criteria.list();
-//			for (Usuario usuario : a) {
-//				return usuario;
-//			}
-//			 
-//		} finally {
-//			session.close();
-//		}
-//		return null;
-//	}
 	
 }
 
