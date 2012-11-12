@@ -26,13 +26,21 @@ public class DueloManagedBean {
 	private Resultado resultado;
 	private List<Personagem> personagensDuelo;
 	private PersonagemHIB personHib;
-
+	private Desafio selectDesafio;
+	private DesafioHIB d;
+	private List<Desafio> desafios; 
+	
+	PersonagemHIB p;
 	public DueloManagedBean() {
 		this.personagem = new Personagem();
 		this.resultado = new Resultado();
 		this.desafio = new Desafio();
 		this.personHib = new PersonagemHIB();
+		this.d = new DesafioHIB();
+		this.p = new PersonagemHIB();
 		setPersonagensDuelo(personHib.listaDisponiveisDuelo(personHib.findTByIdUser(new UsuarioHIB().findTByLogin(Util.getUserSession()).getIdUsuarios())));
+		
+		
 	}
 
 	public PersonagemHIB getPersonHib() {
@@ -46,8 +54,8 @@ public class DueloManagedBean {
 	public String saveDuelo() {
 
 		UsuarioHIB u = new UsuarioHIB();
-		PersonagemHIB p = new PersonagemHIB();
-		DesafioHIB d = new DesafioHIB();
+		
+		
 		Usuario userLogado = u.findTByLogin(Util.getUserSession());
 		Personagem desafiante = p.findTByIdUser(userLogado.getIdUsuarios());
 		Personagem desafiado  = this.personagem;
@@ -79,12 +87,21 @@ public class DueloManagedBean {
 		return "IndexUsuario";
 	}
 	
-	public String resultado(){
-		
-		
-		return "";
+	public String carregaDesafios(){
+		setDesafios(d.findByDesafios(new PersonagemHIB().findTByIdUser(new UsuarioHIB().findTByLogin(Util.getUserSession()).getIdUsuarios()).getIdPersonagens()));
+		return "DueloDesafiado?faces-redirect=true";
 	}
 	
+
+	public String resultado(){		
+		selectDesafio.setDueloAtivo(false);
+		d.save(selectDesafio);
+		Personagem desafiante = p.findTById(selectDesafio.getIdDesafiante());
+		Personagem desafiado  = p.findTById(selectDesafio.getIdDesafiado());
+		obtemResultado(desafiante, desafiado);
+		return "IndexUsuario?faces-redirect=true";
+	}
+
 
 	private void obtemResultado(Personagem desafiante, Personagem desafiado) {
 		int totalDesafiante, totalDesafiado;
@@ -97,22 +114,23 @@ public class DueloManagedBean {
 			resultado.setIdGanhador(desafiado.getIdPersonagens());
 			resultado.setIdPerdedor(desafiante.getIdPersonagens());
 		}
-		resultado.setDesafio(desafio);
+		
+		resultado.setDesafio(selectDesafio);
 		resultado.setDataDuelo(new Date());
 		resultado.setPontosGanhos(100);
+		personagem = p.findTById(resultado.getIdGanhador());
 		ResultadoHIB r = new ResultadoHIB();
+		atualizaPersonGanhador(p);
 		r.save(resultado);
 	}
 
-	public void atualizaPersonGanhador(PersonagemHIB p){
+	public void atualizaPersonGanhador( PersonagemHIB p){
 		//ATUALIZANDO AQUI OS DADOS DO PERSONAGEM
 
 		Double cash = personagem.getCash();
 		Integer experiencia = personagem.getExperiencia();
-		cash += desafio.getAposta();
+		cash += selectDesafio.getAposta();
 		experiencia += resultado.getPontosGanhos();
-
-		personagem = new Personagem();
 		personagem = p.findTById(resultado.getIdGanhador());
 		personagem.setCash(cash);
 		personagem.setExperiencia(experiencia);
@@ -162,6 +180,22 @@ public class DueloManagedBean {
 	public void setPersonagensDuelo(List<Personagem> personagensDuelo) {
 		this.personagensDuelo = personagensDuelo;
 	}
-	
+
+	public Desafio getSelectDesafio() {
+		return selectDesafio;
+	}
+
+	public void setSelectDesafio(Desafio selectDesafio) {
+		this.selectDesafio = selectDesafio;
+	}
+
+	public List<Desafio> getDesafios() {
+		return desafios;
+	}
+
+	public void setDesafios(List<Desafio> desafios) {
+		this.desafios = desafios;
+	}
+
 
 }
