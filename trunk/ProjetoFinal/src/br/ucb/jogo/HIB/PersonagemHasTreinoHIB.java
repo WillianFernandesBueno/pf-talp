@@ -10,15 +10,13 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import br.ucb.jogo.bean.PersonagenHasTreino;
-import br.ucb.jogo.bean.Treino;
+import br.ucb.jogo.bean.Usuario;
 import br.ucb.jogo.interfaces.HIB;
 
-
-
-public class TreinoHIB implements HIB<Treino>{
+public class PersonagemHasTreinoHIB implements HIB<PersonagenHasTreino>{
 
 	@Override
-	public boolean save(Treino t) {
+	public boolean save(PersonagenHasTreino t) {
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = session.beginTransaction();
 		session.saveOrUpdate(t);
@@ -29,17 +27,17 @@ public class TreinoHIB implements HIB<Treino>{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Treino> list() {
+	public List<PersonagenHasTreino> list() {
 		Session session = HibernateUtil.getSession();
 		try {
-			return session.createCriteria(Treino.class).list();
+			return session.createCriteria(PersonagenHasTreino.class).list();
 		} finally {
 			session.close();
 		}
 	}
 
 	@Override
-	public boolean excluir(Treino t) {
+	public boolean excluir(PersonagenHasTreino t) {
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = session.beginTransaction();
 		session.delete(t);
@@ -49,36 +47,35 @@ public class TreinoHIB implements HIB<Treino>{
 	}
 
 	@Override
-	public Treino findTById(Integer id) {
+	public PersonagenHasTreino findTById(Integer id) {
 		Session session = HibernateUtil.getSession();
 		try {
-			Treino u = (Treino) session.get(Treino.class, id);
+			PersonagenHasTreino u = (PersonagenHasTreino) session.get(PersonagenHasTreino.class, id);
 			return u;
 		} finally {
 			session.close();
 		}
 	}
 
-	public int findByIdMax(int idPerson){
-
-
+	public PersonagenHasTreino findByMaxCadastro(int idPerson, int idTreino){
+		
+		
 		Session session = HibernateUtil.getSession();
 		Criteria criteria;
 		try {
-			criteria = session.createCriteria(Treino.class);
-			criteria.setProjection(Projections.projectionList().add(Projections.max("idTreino"))
-					).list();
-			criteria.add(Restrictions.eq("personagens.get(idPerson-1).idPersonagens",idPerson));
+			criteria = session.createCriteria(PersonagenHasTreino.class);
+			criteria.add(Restrictions.eq("pk.personagem.idPersonagens",idPerson));
+			criteria.add(Restrictions.eq("pk.treino.idTreino",idPerson));
 			@SuppressWarnings("unchecked")
-			ArrayList<Treino> a = (ArrayList<Treino>) criteria.list();
-			for (Treino treino : a) {
-				return treino.getIdTreino();
+			ArrayList<PersonagenHasTreino> a = (ArrayList<PersonagenHasTreino>) criteria.list();
+			for (PersonagenHasTreino personagenHasTreino : a) {
+				return personagenHasTreino;
 			}
+			 
 		} finally {
 			session.close();
 		}
-		return 0;
+		return null;
+
 	}
-
-
 }
