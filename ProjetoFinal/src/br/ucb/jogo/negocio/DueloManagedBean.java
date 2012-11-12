@@ -20,7 +20,7 @@ import br.ucb.jogo.service.Util;
 @ManagedBean (name = "dueloManagedBean")
 @SessionScoped
 public class DueloManagedBean {
-	
+
 	private Personagem personagem;
 	private Desafio desafio;
 	private Resultado resultado;
@@ -34,7 +34,7 @@ public class DueloManagedBean {
 		this.personHib = new PersonagemHIB();
 		setPersonagensDuelo(personHib.listaDisponiveisDuelo(personHib.findTByIdUser(new UsuarioHIB().findTByLogin(Util.getUserSession()).getIdUsuarios())));
 	}
-	
+
 	public PersonagemHIB getPersonHib() {
 		return personHib;
 	}
@@ -44,39 +44,37 @@ public class DueloManagedBean {
 	}
 
 	public String saveDuelo() {
+
 		UsuarioHIB u = new UsuarioHIB();
 		PersonagemHIB p = new PersonagemHIB();
-		
+		DesafioHIB d = new DesafioHIB();
 		Usuario userLogado = u.findTByLogin(Util.getUserSession());
 		Personagem desafiante = p.findTByIdUser(userLogado.getIdUsuarios());
 		Personagem desafiado  = this.personagem;
+		Desafio desafioTemp = d.findByDesafio(desafiado.getIdPersonagens(), desafiante.getIdPersonagens());
 
-		desafio.setIdDesafiado(desafiado.getIdPersonagens());
-		desafio.setIdDesafiante(desafiante.getIdPersonagens());
-		desafio.setAposta(Float.parseFloat("100"));
-		DesafioHIB d = new DesafioHIB();
-		d.save(desafio);
-		
-		obtemResultado(desafiante, desafiado);
-		
-		//ATUALIZANDO AQUI OS DADOS DO PERSONAGEM
-		
-		Double cash = personagem.getCash();
-		Integer experiencia = personagem.getExperiencia();
-		cash += desafio.getAposta();
-		experiencia += resultado.getPontosGanhos();
-		
-		personagem = new Personagem();
-		personagem = p.findTById(resultado.getIdGanhador());
-		personagem.setCash(cash);
-		personagem.setExperiencia(experiencia);
-		
-		p.save(personagem);
-		
+
+		if(desafioTemp == null || !desafioTemp.getDueloAtivo()){
+			desafio.setIdDesafiado(desafiado.getIdPersonagens());
+			desafio.setIdDesafiante(desafiante.getIdPersonagens());
+			desafio.setAposta(Float.parseFloat("100"));
+			desafio.setDueloAtivo(true);
+			d.save(desafio);
+			return "IndexUsuario";
+		}else{
+			desafiante = p.findTById(desafioTemp.getIdDesafiante());
+			desafiado  = p.findTById(desafioTemp.getIdDesafiado());
+			desafio.setDueloAtivo(false);
+			d.save(desafio);
+			obtemResultado(desafiante, desafiado);
+			atualizaPersonGanhador(p);
+			
+		}
+
 		return "IndexUsuario";
 	}
-	
-	
+
+
 	private void obtemResultado(Personagem desafiante, Personagem desafiado) {
 		int totalDesafiante, totalDesafiado;
 		totalDesafiante = desafiante.getForca() + desafiante.getMana();
@@ -94,6 +92,24 @@ public class DueloManagedBean {
 		ResultadoHIB r = new ResultadoHIB();
 		r.save(resultado);
 		
+
+	}
+
+	public void atualizaPersonGanhador(PersonagemHIB p){
+		//ATUALIZANDO AQUI OS DADOS DO PERSONAGEM
+
+		Double cash = personagem.getCash();
+		Integer experiencia = personagem.getExperiencia();
+		cash += desafio.getAposta();
+		experiencia += resultado.getPontosGanhos();
+
+		personagem = new Personagem();
+		personagem = p.findTById(resultado.getIdGanhador());
+		personagem.setCash(cash);
+		personagem.setExperiencia(experiencia);
+
+		p.save(personagem);
+
 	}
 
 	public Personagem getPersonagem() {
@@ -119,14 +135,13 @@ public class DueloManagedBean {
 	public void setDesafio(Desafio desafio) {
 		this.desafio = desafio;
 	}
-	
+
 	public String url(){
-    	UsuarioHIB userHib = new UsuarioHIB();
+		UsuarioHIB userHib = new UsuarioHIB();
 		PersonagemHIB personHib = new PersonagemHIB();
 		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
-		if(personagem.getAtivo()==false)
-		{
-			return "Trabalhando?faces-redirect=true";
+		if(!personagem.getAtivo()){
+			return "Treino?faces-redirect=true";
 		}
     	return "Duelo?faces-redirect=true";
     }
