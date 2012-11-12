@@ -1,9 +1,15 @@
 package br.ucb.jogo.HIB;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
+import br.ucb.jogo.bean.Desafio;
 import br.ucb.jogo.bean.Desafio;
 import br.ucb.jogo.interfaces.HIB;
 
@@ -50,6 +56,50 @@ public class DesafioHIB implements HIB<Desafio>{
 			session.close();
 		}
 	}
+	
+	public Desafio findByDesafio(int idDesafiado, int idDesafiante){
+		
+		Session session = HibernateUtil.getSession();
+		Criteria criteria;
+		try {
+			criteria = session.createCriteria(Desafio.class);
 
+			criteria.add(Restrictions.eq("idDesafiado",idDesafiado));
+			criteria.add(Restrictions.eq("idDesafiante",idDesafiante));
+			criteria.setProjection(Projections.projectionList().add(Projections.max("idDesafios"))).list();
+			@SuppressWarnings("unchecked")
+			ArrayList<Desafio> a = (ArrayList<Desafio>) criteria.setProjection(Projections.projectionList().add(Projections.max("idDesafios"))).list();
+			for (Desafio desafio : a) {
+				return findTById(desafio.getIdDesafios());
+			}
+			 
+		} finally {
+			session.close();
+		}
+		return null;
+
+	}
+	
+	public Desafio findByDesafio(int idDesafiado){
+		
+		Session session = HibernateUtil.getSession();
+		Criteria criteria;
+		try {
+			criteria = session.createCriteria(Desafio.class);
+
+			criteria.add(Restrictions.eq("idDesafiado",idDesafiado));
+			criteria.add(Restrictions.eq("dueloAtivo",true));
+			@SuppressWarnings("unchecked")
+			ArrayList<Desafio> a = (ArrayList<Desafio>) criteria.setProjection(Projections.projectionList().add(Projections.max("idDesafios"))).list();
+			for (Desafio desafio : a) {
+				return findTById(desafio.getIdDesafios());
+			}
+			 
+		} finally {
+			session.close();
+		}
+		return null;
+
+	}
 	
 }
