@@ -46,6 +46,8 @@ public class DueloManagedBean {
 		
 		obtemResultado(desafiante, desafiado);
 		
+		//ATUALIZANDO AQUI OS DADOS DO PERSONAGEM
+		
 		Double cash = personagem.getCash();
 		Integer experiencia = personagem.getExperiencia();
 		cash += desafio.getAposta();
