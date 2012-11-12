@@ -19,37 +19,37 @@
 						<h:messages errorClass="error" />
 						<h:panelGrid columns="2" columnClasses="label, value"
 							styleClass="grid">
-							<h:outputText value="Nome" disabled = "#{loginManagedBean.isUserInRole('admin')}"/>
+							<h:outputText value="#{msg.NOME}" disabled = "#{loginManagedBean.isUserInRole('admin')}"/>
 							<p:inputText required="true" label="Nome"
 								value="#{usuarioManagedBean.user.nome}" disabled = "#{loginManagedBean.isUserInRole('admin')}"/>
-							<h:outputText value="Email" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
+							<h:outputText value="#{msg.EMAIL}" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
 							<p:inputText required="true" label="Email"
 								value="#{usuarioManagedBean.user.email}" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
-							<h:outputText value="Login " disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
+							<h:outputText value="#{msg.LOGIN} " disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
 							<p:inputText required="true" label="Login"
 								value="#{usuarioManagedBean.user.login}" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
-							<h:outputText value="Senha" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
+							<h:outputText value="#{msg.SENHA}" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
 							<p:password required="true"	
 								value="#{usuarioManagedBean.user.senha}" feedback="true" promptLabel="Digite uma senha segura" goodLabel="Boa" weakLabel="Razoável" strongLabel="Excelente" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
-							<h:outputLabel value="Tipo de Acesso" for="tipo"  rendered="#{loginManagedBean.isUserInRole('admin')}"/>
+							<h:outputLabel value="#{msg.TIPO_DE_ACESSO}" for="tipo"  rendered="#{loginManagedBean.isUserInRole('admin')}"/>
 							<h:selectOneRadio id="tipo" value="#{usuarioManagedBean.user.tipo}" label="tipo" required="true" rendered="#{loginManagedBean.isUserInRole('admin')}">
-								<f:selectItem itemValue="1" itemLabel="usuario"  />
-								<f:selectItem itemValue="2" itemLabel="admin" />
+								<f:selectItem itemValue="1" itemLabel="#{msg.USUARIO}"  />
+								<f:selectItem itemValue="2" itemLabel="#{msg.ADMIN}" />
 							</h:selectOneRadio>	
-							<h:outputText value="Cidade " disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
+							<h:outputText value="#{msg.CIDADE}" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
 							<p:inputText required="false" label="cidade"
 								value="#{usuarioManagedBean.user.cidade}" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
-							<h:outputText value="Estado " disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
+							<h:outputText value="#{msg.ESTADO} " disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
 							<p:inputText required="false" label="estado"
 								value="#{usuarioManagedBean.user.estado}" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
-							<h:outputText value="Bairro " disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
+							<h:outputText value="#{msg.BAIRRO}" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
 							<p:inputText required="false" label="bairro"
 								value="#{usuarioManagedBean.user.bairro}" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
-							<h:outputText value="Rua " disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
+							<h:outputText value="#{msg.RUA}" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
 							<p:inputText required="false" label="rua"
 								value="#{usuarioManagedBean.user.rua}" disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
 
-							<p:commandButton value="Enviar" update="growl"
+							<p:commandButton value="#{msg.ENVIAR}" update="growl"
 								action="#{usuarioManagedBean.save}" />
 
 						</h:panelGrid>
