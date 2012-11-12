@@ -105,4 +105,23 @@ public class DesafioHIB implements HIB<Desafio>{
 
 	}
 	
+	
+	@SuppressWarnings("unchecked")
+	public List<Desafio> findByDesafios(int idDesafiado){
+		
+		Session session = HibernateUtil.getSession();
+		Criteria criteria;
+		try {
+			criteria = session.createCriteria(Desafio.class);
+
+			criteria.add(Restrictions.eq("idDesafiado",idDesafiado));
+			criteria.add(Restrictions.eq("dueloAtivo",true));
+			return criteria.list();
+			 
+		} finally {
+			session.close();
+		}
+
+	}
+	
 }

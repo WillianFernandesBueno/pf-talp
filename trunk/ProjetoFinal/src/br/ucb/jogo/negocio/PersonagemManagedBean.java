@@ -1,6 +1,6 @@
 package br.ucb.jogo.negocio;
 
-  
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,21 +28,21 @@ public class PersonagemManagedBean implements Serializable{
 	private List<Personagem> personagens;
 	private List<Personagem> filtroPersonagens;
 	private String imagem;
-    private String nome;
-    private Classe classe;
+	private String nome;
+	private Classe classe;
 	private Item itensSelect;
-	
+
 	private Desafio desafio;
-    
-    public PersonagemManagedBean() {
-    	setPersonagem(new Personagem());
-    	setFiltroPersonagens(new ArrayList<Personagem>());
-    	PersonagemHIB p = new PersonagemHIB();
-    	setPersonagens(p.list());
-    	this.classe = new Classe();
-    	
+
+	public PersonagemManagedBean() {
+		setPersonagem(new Personagem());
+		setFiltroPersonagens(new ArrayList<Personagem>());
+		PersonagemHIB p = new PersonagemHIB();
+		setPersonagens(p.list());
+		this.classe = new Classe();
+
 	}
-    
+
 
 	public List<Personagem> getFiltroPersonagens() {
 		return filtroPersonagens;
@@ -59,7 +59,7 @@ public class PersonagemManagedBean implements Serializable{
 	public void setClasse(Classe classe) {
 		this.classe = classe;
 	}
-	
+
 	public Personagem getPersonagem() {
 		return personagem;
 	}
@@ -86,11 +86,11 @@ public class PersonagemManagedBean implements Serializable{
 
 	public String escolheClass(){
 		return "CriaPersonagem?faces-redirect=true";
-    	
-    }
-	
+
+	}
+
 	public String saveClass(){
-	
+
 		UsuarioHIB userHib = new UsuarioHIB();
 		PersonagemHIB personHib = new PersonagemHIB();
 		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
@@ -99,13 +99,13 @@ public class PersonagemManagedBean implements Serializable{
 		}
 		System.out.println("Personagem: "+personagem+" Usuario: "+userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
 		personagem.setClasse(classe);
-		
+
 		return "CriaPersonagem2?faces-redirect=true";
-    	
-    }
-	
+
+	}
+
 	public String savePersonagem() {
-		
+
 		UsuarioHIB userHib = new UsuarioHIB();
 		PersonagemHIB person = new PersonagemHIB();
 		personagem.setLevel(1);
@@ -122,13 +122,12 @@ public class PersonagemManagedBean implements Serializable{
 		personagem.setSituacaoDuel(1);
 		person.save(personagem);
 		return "IndexUsuario?faces-redirect=true";
-    	
-    }
-	
-	
 
-	public String encaminha()
-    {
+	}
+
+
+
+	public String encaminha(){
 		UsuarioHIB userHib = new UsuarioHIB();
 		DesafioHIB desafioHIB = new DesafioHIB();
 		personagem = userHib.findTByLogin(Util.getUserSession()).getPersonagem();		
@@ -136,12 +135,12 @@ public class PersonagemManagedBean implements Serializable{
 			return "/usuario/CriaPersonagem?faces-redirect=true";
 		}
 		desafio = desafioHIB.findByDesafio(personagem.getIdPersonagens());
-		
+
 		System.out.println(desafio);
 		return "/usuario/PerfilPersonagem?faces-redirect=true";
-		
-		
-    }
+
+
+	}
 	public List<Personagem> getPersonagens() {
 		return personagens;
 	}
@@ -157,9 +156,9 @@ public class PersonagemManagedBean implements Serializable{
 	public void setItensSelect(Item itens) {
 		this.itensSelect = itens;
 	}
-		
+
 	public String compraItem(){
-	 
+
 		UsuarioHIB userHib = new UsuarioHIB();
 		PersonagemHIB personHib = new PersonagemHIB();
 		Usuario user = userHib.findTByLogin(Util.getUserSession());
@@ -173,7 +172,7 @@ public class PersonagemManagedBean implements Serializable{
 			personHib.save(personagem);
 		}return "CompraItem";
 	}	
-	
+
 	public void atualiItem(){
 		personagem.setCash(personagem.getCash() - itensSelect.getPreco());
 		personagem.setAgilidade(personagem.getAgilidade() + itensSelect.getAgilidade());
@@ -181,9 +180,9 @@ public class PersonagemManagedBean implements Serializable{
 		personagem.setDefesa(personagem.getDefesa() + itensSelect.getDefesa());
 		personagem.setMana(personagem.getMana() + itensSelect.getMana());
 	}
-	
+
 	public String getCriaPersonagem(){
-		
+
 		Usuario user = new UsuarioHIB().findTByLogin(Util.getUserSession());
 		if(user.getPersonagem() == null)
 			return "true";
@@ -194,7 +193,7 @@ public class PersonagemManagedBean implements Serializable{
 		PersonagemHIB personHib = new PersonagemHIB();
 		UsuarioHIB userHib = new UsuarioHIB();
 		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
-		
+
 		if(user.getPersonagem() != null)
 		{
 			if(personagem.getForca() > personagem.getDefesa() && personagem.getForca() > personagem.getAgilidade() && personagem.getForca() > personagem.getMana())
@@ -215,17 +214,20 @@ public class PersonagemManagedBean implements Serializable{
 		return "false";
 	}
 
-	
-	 public String url(){
-	    	UsuarioHIB userHib = new UsuarioHIB();
-			PersonagemHIB personHib = new PersonagemHIB();
-			personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
-			if(personagem.getAtivo()==false)
-			{
-				return "Trabalhando?faces-redirect=true";
-			}
-	    	return "PerfilPersonagem?faces-redirect=true";
-	    }
+
+	public String url(){
+		UsuarioHIB userHib = new UsuarioHIB();
+		PersonagemHIB personHib = new PersonagemHIB();
+		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
+		if(personagem.getAtivo()==false){
+			return "Trabalhando?faces-redirect=true";
+		}
+		DesafioHIB desafioHIB = new DesafioHIB();
+		
+		desafio = desafioHIB.findByDesafio(personagem.getIdPersonagens());
+		
+		return "/usuario/PerfilPersonagem?faces-redirect=true";
+	}
 
 
 	public Desafio getDesafio() {
@@ -236,5 +238,5 @@ public class PersonagemManagedBean implements Serializable{
 	public void setDesafio(Desafio desafio) {
 		this.desafio = desafio;
 	}
-	
+
 }  

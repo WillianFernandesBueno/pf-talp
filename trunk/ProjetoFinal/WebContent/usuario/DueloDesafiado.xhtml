@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="IndexUsuario.xhtml">
+	<ui:define name="conteudo">
+		<p:panel styleClass="FundoPaginaUsuario" >
+			<h:form id="form">
+				<center>  
+				    <p:dataTable emptyMessage="Não existem personagens para o duelo..." 
+				    			 var="desafio" value="#{dueloManagedBean.desafios}">  
+				  
+				        <f:facet name="header">  
+				        	<h:outputText value="Listagem de Duelos"/>  
+				        </f:facet>  
+				  
+				        <p:column headerText="Numero do Desafio"  id="idDesafio">  
+				            <h:outputText value="#{desafio.idDesafios}"/>
+				        </p:column>
+				        
+				        <p:column headerText="Valor do Desafio "  id="aposta">  
+				            <h:outputText value="#{desafio.aposta}"/>
+				        </p:column>
+				        
+				  		<p:column headerText="Selecionar" id="selecionar">
+				  			<h:commandLink action="#{dueloManagedBean.resultado}">
+					  			<f:setPropertyActionListener target="#{dueloManagedBean.selectDesafio}" value="#{desafio}"/>
+					  			<h:graphicImage url="/imagens/select.png" title="Selecionar" alt="Selecionar"/>
+				  			</h:commandLink>
+				        </p:column>
+				        
+				    </p:dataTable>  
+				</center>  
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
