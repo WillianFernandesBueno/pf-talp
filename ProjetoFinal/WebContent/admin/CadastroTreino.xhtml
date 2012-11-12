@@ -11,16 +11,16 @@
 <ui:composition template="IndexAdmin.xhtml">
 	<ui:define name="conteudo">
 		<h:form>
+			<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 			<center>
-				<p:panel header="Cadastro de Treinos">
+				<p:panel header="#{msg.CADASTRO_DE_TREINOS}">
 					<p:panelGrid columns="2" id="painelCadastroTreino" style="width:500px">
-						<h:outputLabel value="Nome: "/><p:inputText id="nome" required="true" value="#{treinoManagedBean.treino.nome}" style="width:500px"/>
-						<h:outputLabel value="Pontos: "/><p:inputText id="pontos" required="true" value="#{treinoManagedBean.treino.pontos}" style="width:500px"/>
-						<h:outputLabel value="Tempo Necessário: "/><p:inputText id="tempoNecessario" required="true" value="#{treinoManagedBean.treino.tempoNecessario}" style="width:500px"/>
-						<h:outputLabel value="Cash: "/><p:inputText id="cash" required="true" value="#{treinoManagedBean.treino.cash}" style="width:500px"/>
-
+						<h:outputLabel value="#{msg.NOME}: "/><p:inputText id="nome" required="true" value="#{treinoManagedBean.treino.nome}" style="width:500px"/>
+						<h:outputLabel value="#{msg.PONTOS}: "/><p:inputText id="pontos" required="true" value="#{treinoManagedBean.treino.pontos}" style="width:500px"/>
+						<h:outputLabel value="#{msg.TEMPO_NECESSARIO}: "/><p:inputText id="tempoNecessario" required="true" value="#{treinoManagedBean.treino.tempoNecessario}" style="width:500px"/>
+						<h:outputLabel value="#{msg.CASH}: "/><p:inputText id="cash" required="true" value="#{treinoManagedBean.treino.cash}" style="width:500px"/>
 					</p:panelGrid>
-					<p:commandButton value="Enviar" action="#{treinoManagedBean.save}"/>	 
+					<p:commandButton value="#{msg.ENVIAR}" action="#{treinoManagedBean.save}"/>	 
 				</p:panel>	
 			</center>
 		</h:form>

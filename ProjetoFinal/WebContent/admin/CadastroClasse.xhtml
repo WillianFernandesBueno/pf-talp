@@ -9,18 +9,20 @@
 
 
 <ui:composition template="IndexAdmin.xhtml">
+	
 	<ui:define name="conteudo">
+		<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 		<h:form>
 			<center>
-				<p:panel header="Cadastro de Classes">
+				<p:panel header="#{msg.CADASTRO_DE_CLASSE}">
 					<p:panelGrid columns="2" id="painelCadastroClasse" style="width:500px">
-						<h:outputLabel value="Nome: "/><p:inputText id="descricao" value="#{classeManagedBean.classe.nome}" style="width:500px"/>
-						<h:outputLabel value="Força: "/><p:inputText id="forca" value="#{classeManagedBean.classe.forca}" style="width:500px"/>
-						<h:outputLabel value="Agilidade: "/><p:inputText id="agilidade" value="#{classeManagedBean.classe.agilidade}" style="width:500px"/>
-						<h:outputLabel value="Defesa: "/><p:inputText id="defesa" value="#{classeManagedBean.classe.defesa}" style="width:500px"/>
-						<h:outputLabel value="Mana: "/><p:inputText id="mana" value="#{classeManagedBean.classe.mana}" style="width:500px"/>
+						<h:outputLabel value="#{msg.NOME}: "/><p:inputText id="descricao" value="#{classeManagedBean.classe.nome}" style="width:500px"/>
+						<h:outputLabel value="#{msg.FORCA}: "/><p:inputText id="forca" value="#{classeManagedBean.classe.forca}" style="width:500px"/>
+						<h:outputLabel value="#{msg.AGILIDADE}: "/><p:inputText id="agilidade" value="#{classeManagedBean.classe.agilidade}" style="width:500px"/>
+						<h:outputLabel value="#{msg.DEFESA}: "/><p:inputText id="defesa" value="#{classeManagedBean.classe.defesa}" style="width:500px"/>
+						<h:outputLabel value="#{msg.MANA}: "/><p:inputText id="mana" value="#{classeManagedBean.classe.mana}" style="width:500px"/>
 					</p:panelGrid>
-					<p:commandButton value="Enviar" action="#{classeManagedBean.save}"/> 
+					<p:commandButton value="#{msg.ENVIAR}" action="#{classeManagedBean.save}"/> 
 				</p:panel>		      
 			</center>
 		</h:form>
