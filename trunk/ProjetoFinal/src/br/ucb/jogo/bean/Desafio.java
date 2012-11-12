@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name="desafios")
 public class Desafio {
 	
-	
+	private boolean dueloAtivo;
 	private Integer idDesafios;
 	private Integer idDesafiante;
 	private Integer idDesafiado;
@@ -54,14 +54,13 @@ public class Desafio {
 		this.aposta = aposta;
 	}
 	
-//	@ManyToOne
-//	@JoinColumn(name="Personagens_idPersonagens")
-//	public Personagem getPersonagem() {
-//		return personagem;
-//	}
-//	public void setPersonagem(Personagem personagem) {
-//		this.personagem = personagem;
-//	}
+	@Column
+	public boolean getDueloAtivo() {
+		return dueloAtivo;
+	}
+	public void setDueloAtivo(boolean dueloAtivo) {
+		this.dueloAtivo = dueloAtivo;
+	}
 	
 	
 
