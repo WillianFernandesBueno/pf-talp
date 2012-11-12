@@ -51,29 +51,40 @@ public class DueloManagedBean {
 		Usuario userLogado = u.findTByLogin(Util.getUserSession());
 		Personagem desafiante = p.findTByIdUser(userLogado.getIdUsuarios());
 		Personagem desafiado  = this.personagem;
-		Desafio desafioTemp = d.findByDesafio(desafiado.getIdPersonagens(), desafiante.getIdPersonagens());
+		desafio = d.findByDesafio(desafiado.getIdPersonagens(), desafiante.getIdPersonagens());
+		if(desafio == null){
+			desafio = new Desafio();
+			desafio.setDueloAtivo(false);
+		}else{
+			desafiante = p.findTById(desafio.getIdDesafiante());
+			desafiado  = p.findTById(desafio.getIdDesafiado());
+		}
 
-
-		if(desafioTemp == null || !desafioTemp.getDueloAtivo()){
+		if(desafio != null && !desafio.getDueloAtivo()){
 			desafio.setIdDesafiado(desafiado.getIdPersonagens());
 			desafio.setIdDesafiante(desafiante.getIdPersonagens());
 			desafio.setAposta(Float.parseFloat("100"));
 			desafio.setDueloAtivo(true);
 			d.save(desafio);
-			return "IndexUsuario";
-		}else{
-			desafiante = p.findTById(desafioTemp.getIdDesafiante());
-			desafiado  = p.findTById(desafioTemp.getIdDesafiado());
-			desafio.setDueloAtivo(false);
-			d.save(desafio);
-			obtemResultado(desafiante, desafiado);
-			atualizaPersonGanhador(p);
-			
+			return "PerfilPersonagem?faces-redirect=true";
+		}else{ 
+			if (desafiante.getIdPersonagens() != new PersonagemHIB().findTByIdUser(new UsuarioHIB().findTByLogin(Util.getUserSession()).getIdUsuarios()).getIdPersonagens()) {
+				desafio.setDueloAtivo(false);
+				d.save(desafio);
+				obtemResultado(desafiante, desafiado);
+				atualizaPersonGanhador(p);
+			}
 		}
 
 		return "IndexUsuario";
 	}
-
+	
+	public String resultado(){
+		
+		
+		return "";
+	}
+	
 
 	private void obtemResultado(Personagem desafiante, Personagem desafiado) {
 		int totalDesafiante, totalDesafiado;
@@ -91,8 +102,6 @@ public class DueloManagedBean {
 		resultado.setPontosGanhos(100);
 		ResultadoHIB r = new ResultadoHIB();
 		r.save(resultado);
-		
-
 	}
 
 	public void atualizaPersonGanhador(PersonagemHIB p){
@@ -143,8 +152,8 @@ public class DueloManagedBean {
 		if(!personagem.getAtivo()){
 			return "Treino?faces-redirect=true";
 		}
-    	return "Duelo?faces-redirect=true";
-    }
+		return "Duelo?faces-redirect=true";
+	}
 
 	public List<Personagem> getPersonagensDuelo() {
 		return personagensDuelo;
@@ -154,4 +163,5 @@ public class DueloManagedBean {
 		this.personagensDuelo = personagensDuelo;
 	}
 	
+
 }

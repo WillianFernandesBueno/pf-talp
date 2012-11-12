@@ -66,8 +66,7 @@
 						</p:panelGrid>
 						
 						
-						
-						<p:outputLabel value="desafiadoo" rendered="#{personagemManagedBean.desafio != null}"/>
+						<p:commandButton value="desafiadoo" rendered="#{personagemManagedBean.desafio != null}" action="#{desafioManagedBean.resultado}"/>
 					</center>
 				</p:panel>
 				</center>

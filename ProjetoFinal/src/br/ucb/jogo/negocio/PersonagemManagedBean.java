@@ -119,6 +119,7 @@ public class PersonagemManagedBean implements Serializable{
 		personagem.setAgilidade(getClasse().getAgilidade());
 		personagem.setAtivo(true);
 		personagem.setExperiencia(1);
+		personagem.setSituacaoDuel(1);
 		person.save(personagem);
 		return "IndexUsuario?faces-redirect=true";
     	
@@ -130,12 +131,13 @@ public class PersonagemManagedBean implements Serializable{
     {
 		UsuarioHIB userHib = new UsuarioHIB();
 		DesafioHIB desafioHIB = new DesafioHIB();
-		personagem = userHib.findTByLogin(Util.getUserSession()).getPersonagem();
-		
+		personagem = userHib.findTByLogin(Util.getUserSession()).getPersonagem();		
 		if(personagem == null){
 			return "/usuario/CriaPersonagem?faces-redirect=true";
 		}
 		desafio = desafioHIB.findByDesafio(personagem.getIdPersonagens());
+		
+		System.out.println(desafio);
 		return "/usuario/PerfilPersonagem?faces-redirect=true";
 		
 		
