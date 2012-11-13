@@ -83,6 +83,9 @@ public class ItensManagedBean {
     public String saveCompra() throws IOException {
     	
     	PersonagemHIB userHib = new PersonagemHIB();
+    	
+    	
+    	
     	System.out.println(userHib.findTById(1));
     	
         return "ListarItens?faces-redirect=true";
