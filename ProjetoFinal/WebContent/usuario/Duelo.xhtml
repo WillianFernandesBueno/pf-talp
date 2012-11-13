@@ -9,28 +9,29 @@
 
 <ui:composition template="IndexUsuario.xhtml">
 	<ui:define name="conteudo">
+		<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 		<p:panel styleClass="FundoPaginaUsuario" >
 			<h:form id="form">
 				<center>  
-				    <p:dataTable emptyMessage="Não existem personagens para o duelo..." 
+				    <p:dataTable emptyMessage="#{msg.NENHUM_PERSONAGEM}" 
 				    			 var="personagem" value="#{dueloManagedBean.personagensDuelo}" 
 				    			 rowKey="#{personagem.nick}" paginator="true" rows="10" 
 				    			 filteredValue="#{personagemManagedBean.filtroPersonagens}" 
 				    			 id="TablePersonagens" styleClass="painelTrabalho">  
 				  
 				        <f:facet name="header">  
-				        	<h:outputText value="Listagem de Personagens"/>  
+				        	<h:outputText value="#{msg.LISTAR_PERSONAGEM}"/>  
 				        </f:facet>  
 				  
-				        <p:column headerText="Nick" sortBy="#{personagem.nick}" filterBy="#{personagem.nick}" id="nick">  
+				        <p:column headerText="#{msg.NICK}" sortBy="#{personagem.nick}" filterBy="#{personagem.nick}" id="nick">  
 				            <h:outputText value="#{personagem.nick}"/>
 				        </p:column>
 				        
-				        <p:column headerText="Classe" sortBy="#{personagem.classe.nome}" filterBy="#{personagem.classe.nome}" id="classe">  
+				        <p:column headerText="#{msg.CLASSE}" sortBy="#{personagem.classe.nome}" filterBy="#{personagem.classe.nome}" id="classe">  
 				            <h:outputText value="#{personagem.classe.nome}"/>
 				        </p:column>
 				        
-				  		<p:column headerText="Selecionar" id="selecionar">
+				  		<p:column headerText="#{msg.SELECIONAR}" id="selecionar">
 				  			<h:commandLink action="#{dueloManagedBean.saveDuelo}">
 					  			<f:setPropertyActionListener target="#{dueloManagedBean.personagem}" value="#{personagem}"/>
 					  			<h:graphicImage url="/imagens/select.png" title="Selecionar" alt="Selecionar"/>

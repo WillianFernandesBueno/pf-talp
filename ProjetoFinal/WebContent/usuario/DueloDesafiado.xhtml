@@ -9,33 +9,43 @@
 
 <ui:composition template="IndexUsuario.xhtml">
 	<ui:define name="conteudo">
-		<p:panel styleClass="FundoPaginaUsuario" >
+		<p:panel styleClass="FundoPaginaUsuario">
 			<h:form id="form">
-				<center>  
-				    <p:dataTable emptyMessage="Não existem personagens para o duelo..." 
-				    			 var="desafio" value="#{dueloManagedBean.desafios}">  
-				  
-				        <f:facet name="header">  
-				        	<h:outputText value="Listagem de Duelos"/>  
-				        </f:facet>  
-				  
-				        <p:column headerText="Numero do Desafio"  id="idDesafio">  
-				            <h:outputText value="#{desafio.idDesafios}"/>
-				        </p:column>
-				        
-				        <p:column headerText="Valor do Desafio "  id="aposta">  
-				            <h:outputText value="#{desafio.aposta}"/>
-				        </p:column>
-				        
-				  		<p:column headerText="Selecionar" id="selecionar">
-				  			<h:commandLink action="#{dueloManagedBean.resultado}">
-					  			<f:setPropertyActionListener target="#{dueloManagedBean.selectDesafio}" value="#{desafio}"/>
-					  			<h:graphicImage url="/imagens/select.png" title="Selecionar" alt="Selecionar"/>
-				  			</h:commandLink>
-				        </p:column>
-				        
-				    </p:dataTable>  
-				</center>  
+				<center>
+					<p:dataTable emptyMessage="Não existe Desafios para voce..."
+						var="desafio" value="#{dueloManagedBean.desafios}">
+
+						<f:facet name="header">
+							<h:outputText value="Listagem de Duelos" />
+						</f:facet>
+
+						<p:column headerText="Numero do Desafio" id="idDesafio">
+							<h:outputText value="#{desafio.idDesafios}" />
+						</p:column>
+
+						<p:column headerText="Valor do Desafio " id="aposta">
+							<h:outputText value="#{desafio.aposta}" />
+						</p:column>
+
+						<p:column headerText="Aceitar Desafio" id="selecionar">
+							<h:commandLink action="#{dueloManagedBean.resultado}">
+								<f:setPropertyActionListener
+									target="#{dueloManagedBean.selectDesafio}" value="#{desafio}" />
+								<h:graphicImage url="/imagens/select.png" title="Selecionar"
+									alt="Selecionar" />
+							</h:commandLink>
+						</p:column>
+
+						<p:column headerText="Não aceitar Desafio" id="excluir">
+							<h:commandLink actionListener="#{dueloManagedBean.excluir}" disabled="#{dueloManagedBean.personagem.situacaoDuel > 2}">
+								<f:attribute name="desafio" value="#{desafio}" />
+								<h:graphicImage url="/imagens/excluir.png" title="excluir"
+									alt="excluir" />
+							</h:commandLink>
+						</p:column>
+
+					</p:dataTable>
+				</center>
 			</h:form>
 		</p:panel>
 	</ui:define>

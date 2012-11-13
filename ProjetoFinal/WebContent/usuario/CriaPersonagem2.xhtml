@@ -10,18 +10,19 @@
 <ui:composition template="IndexUsuario.xhtml">
 
 	<ui:define name="conteudo">
+	<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 	<h:form>
 			<p:growl id="growl" sticky="true" showDetail="true" />
 			<p:tab id="pessoal" title="personagem">
 				<p:panel styleClass="FundoPaginaUsuario">
 				<br/><br/><br/>
 				<center>
-					<p:panel header="Personagem" styleClass="PainelTrabalho">
+					<p:panel header="#{msg.PERSONAGEM}" styleClass="PainelTrabalho">
 							<h:messages errorClass="error" />
 							<h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">
-								<h:outputText value="Nick: " />
+								<h:outputText value="#{msg.NICK} " />
 								<p:inputText required="true" label="nick" value="#{personagemManagedBean.personagem.nick}" />
-								<p:commandButton value="Enviar" update="growl" action="#{personagemManagedBean.savePersonagem}" />
+								<p:commandButton value="#{msg.ENVIAR}" update="growl" action="#{personagemManagedBean.savePersonagem}" />
 							</h:panelGrid>
 					</p:panel>
 				</center>

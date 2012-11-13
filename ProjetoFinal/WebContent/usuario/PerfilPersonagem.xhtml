@@ -10,25 +10,26 @@
 <ui:composition template="IndexUsuario.xhtml">
 
 	<ui:define name="conteudo">
+		<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 		<h:form id="form" rendered="true">
 			<p:panel styleClass="FundoPaginaUsuario">
 				<center>
 				<br/><br/><br/><br/>
 				<p:panel rendered="#{personagemManagedBean.criaPersonagem}" styleClass="PainelTrabalho">
 					<center>
-						<p:commandButton value="criar personagem" label="Criar personagem" action="CriaPersonagem.jsf" rendered="#{personagemManagedBean.criaPersonagem}"/>
+						<p:commandButton value="#{msg.CRIAR_PERSONAGEM}" label="#{msg.CRIAR_PERSONAGEM}" action="CriaPersonagem.jsf" rendered="#{personagemManagedBean.criaPersonagem}"/>
 					</center>
 				</p:panel>
 				<p:panel rendered="#{personagemManagedBean.criaPersonagem2}" style="width:500px;">
 					<center>
 						<p:panelGrid columns="2" style="width:460px;">
 									<p:panel>
-										<h:outputLabel value="Level:" />
+										<h:outputLabel value="#{msg.LEVEL}:" />
 											<h:outputText value="#{personagemManagedBean.personagem.level}" />	
 									</p:panel>
 									
 									<p:panel>
-										<h:outputLabel value="Nome:" />
+										<h:outputLabel value="#{msg.NOME}:" />
 										<h:outputText value="#{personagemManagedBean.personagem.nick}" />
 									</p:panel>
 						</p:panelGrid>
@@ -38,24 +39,24 @@
 							</p:panel>
 							<p:panelGrid columns="1">
 								<p:panel>
-									<h:outputLabel value="Forca:" />
+									<h:outputLabel value="#{msg.FORCA}:" />
 									<h:outputText value="#{personagemManagedBean.personagem.forca}" />	
 								</p:panel>
 								
 								<p:panel>
-									<h:outputLabel value="Defesa:" />
+									<h:outputLabel value="#{msg.DEFESA}" />
 									<h:outputText value="#{personagemManagedBean.personagem.defesa}" />	
 								</p:panel>
 								<p:panel>
-									<h:outputLabel value="Agilidade:" />
+									<h:outputLabel value="#{msg.AGILIDADE}" />
 									<h:outputText value="#{personagemManagedBean.personagem.agilidade}" />	
 								</p:panel>
 								<p:panel>
-									<h:outputLabel value="Mana:" />
+									<h:outputLabel value="#{msg.MANA}" />
 									<h:outputText value="#{personagemManagedBean.personagem.mana}" />	
 								</p:panel>	
 								<p:panel>
-									<h:outputLabel value="cash:" />
+									<h:outputLabel value="#{msg.CASH}" />
 									<h:outputText value="#{personagemManagedBean.personagem.cash}" />	
 								</p:panel>
 								<p:panel>

@@ -10,6 +10,7 @@
 <ui:composition template="IndexUsuario.xhtml">
 
 	<ui:define name="conteudo">
+		<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 		<h:form id="form">
 			<p:panel styleClass="FundoPaginaUsuario">
 				<br />
@@ -18,32 +19,30 @@
 				<center>
 					<p:panel styleClass="PainelTrabalho">
 						<h:outputText
-							value="Magistratus, o laboratório, situa-se na sombra do edifício vizinho. Pode escolher diferentes trabalhos aqui - nenhum deles é 
-					particularmente divertido, mas não são tão perigosos como a arena. 
-					Alguns dos trabalhos não pagam muito mas, pelo menos você recebe o que restou no fim do dia de trocas." />
+							value="#{msg.TREINO_PERSONAGEM_2}" />
 
 					</p:panel>
-					<p:dataTable emptyMessage="Nenhuma treino encontrada... " var="treino" value="#{treinoManagedBean.treinos}" 
+					<p:dataTable emptyMessage="#{msg.TREINO}" var="treino" value="#{treinoManagedBean.treinos}" 
 					rowKey="#{treino.nome}" paginator="true" rows="10" filteredValue="#{treinoManagedBean.filtroTreinos}" id="TableTreinos"
 					styleClass="PainelTrabalho">  
 				  
-			        <p:column headerText="Nome" sortBy="#{treino.nome}" filterBy="#{treino.nome}" id="nome">  
+			        <p:column headerText="#{msg.NOME}" sortBy="#{treino.nome}" filterBy="#{treino.nome}" id="nome">  
 			            <h:outputText value="#{treino.nome}"/>
 			        </p:column>
 			        
-			        <p:column headerText="dinheiro" sortBy="#{treino.cash}" id="cash">  
+			        <p:column headerText="#{msg.DINHEIRO}" sortBy="#{treino.cash}" id="cash">  
 			             <h:outputText value="#{treino.cash}"/>
 			        </p:column>
 			        
-			        <p:column headerText="expereciencia" sortBy="#{treino.pontos}" id="pontos">  
+			        <p:column headerText="#{msg.EXPERIENCIA}" sortBy="#{treino.pontos}" id="pontos">  
 			             <h:outputText value="#{treino.pontos}"/>
 			        </p:column>
 			        
-			        <p:column headerText="tempo nescessario" sortBy="#{treino.tempoNecessario}" id="tempoNecessario">  
+			        <p:column headerText="#{msg.TEMPO_NECESSARIO}" sortBy="#{treino.tempoNecessario}" id="tempoNecessario">  
 			             <h:outputText value="#{treino.tempoNecessario}"/>
 			        </p:column>
 			       			        
-			        <p:column headerText="treinar" id="treinar">
+			        <p:column headerText="#{msg.TREINO}" id="treinar">
 			  			<h:commandLink action="#{treinoManagedBean.teste}">
 				  			<f:setPropertyActionListener target="#{treinoManagedBean.treino}" value="#{treino}"/>
 				  			<h:graphicImage url="/imagens/select.png" title="Selecionar" alt="Selecionar"/>
@@ -54,8 +53,7 @@
 			</p:panel>
 		</h:form>
 	</ui:define>
-
-
+	
 </ui:composition>
 </html>
 
