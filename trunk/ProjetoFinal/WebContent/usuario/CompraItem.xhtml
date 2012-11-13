@@ -55,8 +55,8 @@
 								<h:outputText value="#{item.mana}" />
 							</p:column>
 		
-							<p:column headerText="#{msg.COMPRAR}" id="compra">
-								<p:commandButton action="#{personagemManagedBean.compraItem}" label="Comprar" value="comprar" immediate="true">
+							<p:column headerText="#{msg.COMPRAR_ITEM}" id="compra">
+								<p:commandButton action="#{personagemManagedBean.compraItem}" label="#{msg.COMPRAR}" value="#{msg.COMPRAR}" immediate="true">
 									<f:setPropertyActionListener target="#{personagemManagedBean.itensSelect}"	value="#{item}" />
 								</p:commandButton>
 							</p:column>
