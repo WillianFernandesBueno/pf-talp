@@ -58,7 +58,7 @@
 							<h:message for="cidade" showSummary="true" showDetail="false" errorStyle="color:red"/>
 							
 							<h:outputText value="#{msg.ESTADO} " disabled= "#{loginManagedBean.isUserInRole('admin')}"/>
-							<p:inputText id="estado" required="false" label="estado"value="#{usuarioManagedBean.user.estado}" disabled= "#{loginManagedBean.isUserInRole('admin')}">
+							<p:inputText id="estado" required="false" label="estado" value="#{usuarioManagedBean.user.estado}" disabled= "#{loginManagedBean.isUserInRole('admin')}">
 								<f:validateLength  minimum="0"/> 
 							</p:inputText>
 							<h:message for="estado" showSummary="true" showDetail="false" errorStyle="color:red"/>
