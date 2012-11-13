@@ -1,19 +1,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich">
-<h:head>
-	<title>JAAS</title>
-</h:head>
-<h:body>
-	<h:form>
-		<rich:panel header="Painel">
-			<h:outputText value="Teste JAAS" style="font: 18px Arial; font-weight: bold;" /><p />
-			<h:outputText value="Usuario ou senha nao conferem!" /><p />
-			<h:commandLink action="login" value="Login" />
-		</rich:panel>
-	</h:form>
-</h:body>
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="Index.xhtml">
+
+	<ui:define name="conteudo">
+		<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg"/>
+		<h:form>
+			<h:outputText value="#{msg.SENHA_USER_INVALID}" /><p />
+			<p />
+			<h:commandButton action="#{loginManagedBean.logOut}" value="#{msg.PAGINA_PRINCIPAL}" />
+		</h:form>
+	</ui:define>
+
+</ui:composition>
 </html>
+

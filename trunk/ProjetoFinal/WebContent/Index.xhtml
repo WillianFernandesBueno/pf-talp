@@ -16,61 +16,59 @@
 	<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 	<p:layout fullPage="true">
 
-		<p:layoutUnit position="north" size="350" resizable="true" closable="true" collapsible="true">
+		<p:layoutUnit position="north" size="350" resizable="true"
+			closable="true" collapsible="true">
 			<div id="topo">
 				<ui:insert name="topo">
-					<p:messages id="messages" showDetail="false" autoUpdate="true" closable="true" globalOnly="true" layout="table" showSummary="true"/>
-					<h:graphicImage url="/imagens/topo.jpg" height="99%" width="99%"/>
+					<p:messages id="messages" showDetail="false" autoUpdate="true"
+						closable="true" globalOnly="true" layout="table"
+						showSummary="true" />
+					<h:graphicImage url="/imagens/topo.jpg" height="99%" width="99%" />
 				</ui:insert>
 			</div>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="west" header="#{msg.ocultar}"
-			resizable="true" closable="true" collapsible="true">
+		<p:layoutUnit position="west" header="#{msg.OCULTAR}" resizable="true"
+			closable="true" collapsible="true">
 			<ui:insert name="menu">
 				<h:form>
 					<p:growl id="messages" />
 					<p:slideMenu styleClass="menuNormal" style="width:300px;">
-						<p:menuitem value="Home" url="Index.jsf" update="messages" />
-						<p:submenu label="Usuario">
 
-							<p:menuitem value="Cadastro"
+						<p:menuitem value="#{msg.HOME}" url="Index.jsf" update="messages" />
+						<p:submenu label="#{msg.USUARIO}">
+
+							<p:menuitem value="#{msg.CADASTRAR}"
 								action="#{usuarioManagedBean.cadastro}" update="messages"
 								icon="ui-icon-disk" />
-							<p:menuitem value="#{msg.login}" url="/usuario/PerfilPersonagem.jsf"
+							<p:menuitem value="#{msg.LOGIN}"
+								url="/usuario/PerfilPersonagem.jsf" update="messages"
+								icon="ui-icon-arrowrefresh-1-w" />
+
+						</p:submenu>
+						<p:submenu label="#{msg.ADMIN}">
+							<p:menuitem value="#{msg.LOGIN}" url="/admin/IndexAdmin.jsf"
 								update="messages" icon="ui-icon-arrowrefresh-1-w" />
-								
-						</p:submenu>
-						<p:submenu label="Administrador">
-							<p:menuitem value="#{msg.login}" url="/admin/IndexAdmin.jsf"
-								update="messages" icon="ui-icon-arrowrefresh-1-w" />
-
 						</p:submenu>
 
-						<p:submenu label="Tutorial">
-							<p:menuitem value="Item" outcome="/mobile/index" />
-							<p:menuitem value="Class" outcome="/mobile/index" />
+						<p:submenu label="#{msg.TUTORIAL}">
+							<p:menuitem value="#{msg.ITENS}" outcome="/mobile/index" />
+							<p:menuitem value="#{msg.CLASSE}" outcome="/mobile/index" />
 						</p:submenu>
 
 
-						<p:submenu label="Contato">
-							<p:menuitem value="Email" outcome="/Index" />
-							<p:menuitem value="Suporte" outcome="/mobile/index" />
+						<p:submenu label="#{msg.CONTATO}">
+							<p:menuitem value="#{msg.EMAIL}" outcome="/Index" />
+							<p:menuitem value="#{msg.SUPORTE}" outcome="/mobile/index" />
 						</p:submenu>
-
-						<p:menuitem value="Imagens" actionListener="#{menuBean.delete}"
-							ajax="false" />
-
-						<p:menuitem value="Videos" actionListener="#{menuBean.delete}"
-							ajax="false" />
 
 					</p:slideMenu>
 				</h:form>
-				 <p:calendar mode="inline" id="inlineCal"/>    
+				<p:calendar mode="inline" id="inlineCal" />
 			</ui:insert>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="center" header="#{msg.jogo}"
+		<p:layoutUnit position="center" header="#{msg.JOGO}"
 			style="background:#cbcbcb;">
 			<div id="conteudo">
 				<ui:insert name="conteudo">
