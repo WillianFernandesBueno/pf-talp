@@ -97,6 +97,8 @@ public class UsuarioManagedBean implements Serializable {
 	
 
 	public void insertAutorizacao() {
+		log.info("Criando autorização para o usuario");
+		
 		Autorizacao auto;
 		if(getUser().getIdUsuarios() == 0){
 			auto = new Autorizacao();

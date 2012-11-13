@@ -12,6 +12,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import org.apache.log4j.Logger;
+
 import br.ucb.jogo.HIB.PersonagemHIB;
 import br.ucb.jogo.HIB.PersonagemHasTreinoHIB;
 import br.ucb.jogo.HIB.TreinoHIB;
@@ -40,6 +42,8 @@ public class TreinoManagedBean {
 
 	private PersonagenHasTreino personHasTreino;
 
+	private static final Logger log = Logger.getLogger(PersonagemManagedBean.class);
+	
 	public TreinoManagedBean() {
 		populaTreino();
 		treino = new Treino();
@@ -91,8 +95,7 @@ public class TreinoManagedBean {
 		UsuarioHIB userHib = new UsuarioHIB();		
 		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
 		
-		
-		System.out.println(personHasTreino);
+		log.info("iniciando treinamento do personagem");
 		
 		if(personHasTreino == null){
 
@@ -125,6 +128,8 @@ public class TreinoManagedBean {
 	}
 
 	public String finalizaTreino() {
+		
+		log.info("Finalizando o treino do personagem");
 		UsuarioHIB userHib = new UsuarioHIB();
 		personagem = personHib.findTByIdUser(userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
 		Double cash = personagem.getCash();
@@ -184,14 +189,13 @@ public class TreinoManagedBean {
 	}
 
 	public void excluir(ActionEvent evento) throws SQLException{
-		System.out.println("ENTROU NO EXCLUIR!!!");
 		FacesMessage msg = new FacesMessage("Sucesso", "Treino excluido com sucesso");  
 		FacesContext.getCurrentInstance().addMessage(null, msg); 
 		this.treino = (Treino) evento.getComponent().getAttributes().get("treino");
-		System.out.println("TREINO = "+this.treino.getNome());
 		TreinoHIB c = new TreinoHIB();
 		c.excluir(getTreino());
 		this.treinos = c.list();
+		
 	}
 
 

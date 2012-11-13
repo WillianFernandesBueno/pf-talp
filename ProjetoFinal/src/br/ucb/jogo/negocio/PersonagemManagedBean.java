@@ -8,6 +8,8 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.apache.log4j.Logger;
+
 import br.ucb.jogo.HIB.DesafioHIB;
 import br.ucb.jogo.HIB.PersonagemHIB;
 import br.ucb.jogo.HIB.UsuarioHIB;
@@ -33,6 +35,8 @@ public class PersonagemManagedBean implements Serializable{
 	private Item itensSelect;
 
 	private Desafio desafio;
+	
+	private static final Logger log = Logger.getLogger(PersonagemManagedBean.class);
 
 	public PersonagemManagedBean() {
 		setPersonagem(new Personagem());
@@ -97,9 +101,10 @@ public class PersonagemManagedBean implements Serializable{
 		if(personagem == null){
 			personagem = new Personagem();
 		}
-		System.out.println("Personagem: "+personagem+" Usuario: "+userHib.findTByLogin(Util.getUserSession()).getIdUsuarios());
 		personagem.setClasse(classe);
-
+		
+		log.info("Criando Personagem para o Usuario");
+		
 		return "CriaPersonagem2?faces-redirect=true";
 
 	}
@@ -121,6 +126,8 @@ public class PersonagemManagedBean implements Serializable{
 		personagem.setExperiencia(1);
 		personagem.setSituacaoDuel(1);
 		person.save(personagem);
+		
+		log.info("salvando o personagem para o usuario");
 		return "IndexUsuario?faces-redirect=true";
 
 	}
@@ -170,7 +177,9 @@ public class PersonagemManagedBean implements Serializable{
 			personagem.getItens().add(itensSelect);	
 			atualiItem();
 			personHib.save(personagem);
-		}return "PerfilPersonagem?faces-redirect=true";
+		}
+		log.info("COmpra de Item para o personagem");
+		return "PerfilPersonagem?faces-redirect=true";
 	}	
 
 	public void atualiItem(){
@@ -179,6 +188,7 @@ public class PersonagemManagedBean implements Serializable{
 		personagem.setForca(personagem.getForca() + itensSelect.getForca());
 		personagem.setDefesa(personagem.getDefesa() + itensSelect.getDefesa());
 		personagem.setMana(personagem.getMana() + itensSelect.getMana());
+		log.info("Atualizando caracteristicas para o personagem");
 	}
 
 	public String getCriaPersonagem(){

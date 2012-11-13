@@ -11,9 +11,13 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import org.apache.catalina.tribes.util.Logs;
+import org.apache.log4j.Logger;
+
 
 import br.ucb.jogo.HIB.ClasseHIB;
 import br.ucb.jogo.bean.Classe;
+import br.ucb.jogo.service.Util;
 
 
 
@@ -23,6 +27,8 @@ public class ClasseManagedBean {
 	private Classe classe;
 	private List<Classe> classes;
 	private List<Classe> filtroClasses;
+	
+	private static final Logger log = Logger.getLogger(ClasseManagedBean.class);
 	
     public ClasseManagedBean() {
     	classe = new Classe();
@@ -75,6 +81,7 @@ public class ClasseManagedBean {
 		c.save(getClasse());
 		this.classe = new Classe();
 		this.classes = c.list();
+		log.info(Util.getMsgLogger("A classe foi cadastrada"));
         return "ListarClasse?faces-redirect=true";
     }
     
@@ -85,6 +92,7 @@ public class ClasseManagedBean {
     	ClasseHIB c = new ClasseHIB();
     	c.excluir(getClasse());
     	this.classes = c.list();
+    	log.info(Util.getMsgLogger("A classe foi excluida"));
 	}
     
    

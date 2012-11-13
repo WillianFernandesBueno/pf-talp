@@ -10,6 +10,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import org.apache.log4j.Logger;
+
 import br.ucb.jogo.HIB.ClasseHIB;
 import br.ucb.jogo.HIB.DesafioHIB;
 import br.ucb.jogo.HIB.PersonagemHIB;
@@ -35,7 +37,9 @@ public class DueloManagedBean {
 	private Desafio selectDesafio;
 	private DesafioHIB d;
 	private List<Desafio> desafios; 
-
+	
+	private static final Logger log = Logger.getLogger(DueloManagedBean.class);
+	
 	PersonagemHIB p;
 	public DueloManagedBean() {
 		this.personagem = new Personagem();
@@ -80,6 +84,7 @@ public class DueloManagedBean {
 			desafio.setAposta(Float.parseFloat("100"));
 			desafio.setDueloAtivo(true);
 			d.save(desafio);
+			log.info("duelo cadastrado! Desafiante: " +desafiante.getNick()+", Desafiado: "+desafiado.getNick() );
 			return "PerfilPersonagem?faces-redirect=true";
 		}else{ 
 			if (desafiante.getIdPersonagens() != new PersonagemHIB().findTByIdUser(new UsuarioHIB().findTByLogin(Util.getUserSession()).getIdUsuarios()).getIdPersonagens()) {
@@ -110,7 +115,8 @@ public class DueloManagedBean {
 		Personagem desafiante = p.findTById(selectDesafio.getIdDesafiante());
 		Personagem desafiado  = p.findTById(selectDesafio.getIdDesafiado());
 		obtemResultado(desafiante, desafiado);
-
+		
+		log.info("duelo finalizado! Desafiante: " +desafiante.getNick()+", Desafiado: "+desafiado.getNick() );
 		return "IndexUsuario?faces-redirect=true";
 	}
 

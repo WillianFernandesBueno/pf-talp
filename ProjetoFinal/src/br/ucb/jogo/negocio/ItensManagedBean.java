@@ -11,6 +11,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import org.apache.log4j.Logger;
+
 import br.ucb.jogo.HIB.ItemHIB;
 import br.ucb.jogo.HIB.PersonagemHIB;
 import br.ucb.jogo.HIB.UsuarioHIB;
@@ -21,10 +23,14 @@ import br.ucb.jogo.service.Util;
 @ManagedBean (name = "itensManagedBean")
 @SessionScoped
 public class ItensManagedBean {
+	
 	private Item item;
 	private List<Item> itens;
 	private List<Item> filtroItens;
 	private Personagem personagem;
+	
+	private static final Logger log = Logger.getLogger(ItensManagedBean.class);
+	
     public ItensManagedBean() {
     	populaItem();
     	item = new Item();
@@ -77,7 +83,9 @@ public class ItensManagedBean {
 		c.save(getItem());
 		this.item = new Item();
 		this.itens = c.list();
+		log.info(Util.getMsgLogger("Item cadastrado com sucesso"));
         return "ListarItens?faces-redirect=true";
+        
     }
     
     public String saveCompra() throws IOException {
@@ -92,12 +100,16 @@ public class ItensManagedBean {
     }
     
     public void excluir(ActionEvent evento) throws SQLException{
+    	
+    
     	FacesMessage msg = new FacesMessage("Sucesso", "Item "+getItem().getNome()+" excluido com sucesso");  
         FacesContext.getCurrentInstance().addMessage(null, msg); 
         this.item = (Item) evento.getComponent().getAttributes().get("item");
     	ItemHIB c = new ItemHIB();
-    
+    	
+   	
     	c.excluir(getItem());
+    	log.info(Util.getMsgLogger("Item excuido com sucesso"));
     	this.itens = c.list();
 	}
     
