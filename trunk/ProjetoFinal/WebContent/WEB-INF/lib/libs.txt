@@ -1,0 +1,25 @@
+ O volume na unidade C ‚ OS
+ O N£mero de S‚rie do Volume ‚ 0C12-B1E9
+
+ Pasta de C:\Users\willian\Desktop\projeto Final Talp\ProjetoFinal\WebContent\WEB-INF\lib
+
+13/11/2012  11:34    <DIR>          .
+13/11/2012  11:34    <DIR>          ..
+30/10/2012  10:57           445.288 antlr-2.7.7.jar
+30/10/2012  10:57            57.963 classmate-0.5.4.jar
+30/10/2012  10:57           575.389 commons-collections-3.2.1.jar
+30/10/2012  10:57           313.898 dom4j-1.6.1.jar
+30/10/2012  10:57            81.271 hibernate-commons-annotations-4.0.1.Final.jar
+30/10/2012  10:57         4.317.092 hibernate-core-4.1.0.Final.jar
+30/10/2012  10:57           102.661 hibernate-jpa-2.0-api-1.0.1.Final.jar
+30/10/2012  10:57            70.928 jandex-1.0.3.Final.jar
+30/10/2012  10:57           648.253 javassist-3.15.0-GA.jar
+30/10/2012  10:57         2.591.670 javax.faces-2.1.7.jar
+30/10/2012  10:57            60.539 jboss-logging-3.1.0.CR2.jar
+30/10/2012  10:57            11.209 jboss-transaction-api_1.1_spec-1.0.0.Final.jar
+30/10/2012  10:57            20.682 jstl.jar
+13/11/2012  11:34                 0 libs.txt
+06/11/2012  10:11           481.534 log4j-1.2.16.jar
+30/10/2012  10:57         1.671.583 primefaces-3.3.1.jar
+              16 arquivo(s)     11.449.960 bytes
+               2 pasta(s)   370.652.131.328 bytes dispon¡veis
