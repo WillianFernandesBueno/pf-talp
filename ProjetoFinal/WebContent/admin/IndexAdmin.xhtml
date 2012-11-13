@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 </h:head>
 <h:body>
-<!-- ^^ -->
+	<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 	<p:layout fullPage="true">
 
 		<p:layoutUnit position="north" size="250" resizable="true"
@@ -30,32 +30,32 @@
 					<h:form>
 						<p:slideMenu styleClass="menuAdmin" style="width:300px;">
 							<p:menuitem value="Home" url="IndexAdmin.jsf"   />
-							<p:submenu label="Classe">
-								<p:menuitem value="Cadastrar" action="#{classeManagedBean.incluir}"   />
-								<p:menuitem value="Apresentar" url="ListarClasse.jsf"   />
+							<p:submenu label="#{msg.CLASSE}">
+								<p:menuitem value="#{msg.CADASTRAR}" action="#{classeManagedBean.incluir}"   />
+								<p:menuitem value="#{msg.APRESENTAR}" url="ListarClasse.jsf"   />
 							</p:submenu>
-							<p:submenu label="Itens">
-								<p:menuitem value="Cadastrar" action="#{itensManagedBean.incluir}"   />
-								<p:menuitem value="Apresentar" url="ListarItens.jsf"   />
+							<p:submenu label="#{msg.ITENS}">
+								<p:menuitem value="#{msg.CADASTRAR}" action="#{itensManagedBean.incluir}"   />
+								<p:menuitem value="#{msg.APRESENTAR}" url="ListarItens.jsf"   />
 							</p:submenu>
-							<p:submenu label="Treino">
-								<p:menuitem value="Cadastrar" action="#{treinoManagedBean.incluir}"   />
-								<p:menuitem value="Apresentar" url="ListarTreino.jsf"   />
+							<p:submenu label="#{msg.TREINO}">
+								<p:menuitem value="#{msg.CADASTRAR}" action="#{treinoManagedBean.incluir}"   />
+								<p:menuitem value="#{msg.APRESENTAR}" url="ListarTreino.jsf"   />
 							</p:submenu>
-							<p:submenu label="Aliança">
-								<p:menuitem value="Apresentar" url="ListarAlianca.jsf"   />
+							<p:submenu label="#{msg.ALIANÇA}">
+								<p:menuitem value="#{msg.APRESENTAR}" url="ListarAlianca.jsf"   />
 							</p:submenu>
-							<p:submenu label="Usuários">
-								<p:menuitem value="Cadastrar" action="#{usuarioManagedBean.cadastro}"   />
-								<p:menuitem value="Apresentar" url="ListarUsuario.jsf" />
+							<p:submenu label="#{msg.USUARIO}">
+								<p:menuitem value="#{msg.CADASTRAR}" action="#{usuarioManagedBean.cadastro}"   />
+								<p:menuitem value="#{msg.APRESENTAR}" url="ListarUsuario.jsf" />
 							</p:submenu>
-							<p:menuitem value="Sair" action="#{loginManagedBean.logOut}"   />
+							<p:menuitem value="#{msg.SAIR}" action="#{loginManagedBean.logOut}"   />
 						</p:slideMenu>
 					</h:form>
 		</p:layoutUnit>
 
 		<p:layoutUnit position="center"
-			header="Seja bem vindo ao Jogo War of the Worlds"
+			header="#{msg.JOGO}"
 			style="background:#cbcbcb;">
 			<div id="conteudo">
 				<ui:insert name="conteudo">

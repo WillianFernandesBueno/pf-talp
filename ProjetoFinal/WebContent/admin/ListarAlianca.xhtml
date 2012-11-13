@@ -10,36 +10,37 @@
 
 <ui:composition template="IndexAdmin.xhtml">
 	<ui:define name="conteudo">
+		<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 		<h:form id="form">
 			<center>  
-			    <p:dataTable emptyMessage="Nenhuma aliança encontrada... " var="alianca" value="#{aliancaManagedBean.aliancas}" rowKey="#{alianca.nome}" paginator="true" rows="10" filteredValue="#{aliancaManagedBean.filtroAliancas}" id="TableAliancas">  
+			    <p:dataTable emptyMessage="#{msg.NENHUMA_ALIANCA}" var="alianca" value="#{aliancaManagedBean.aliancas}" rowKey="#{alianca.nome}" paginator="true" rows="10" filteredValue="#{aliancaManagedBean.filtroAliancas}" id="TableAliancas">  
 			  
 			        <f:facet name="header">  
-			        	<h:outputText value="Listagem de Aliancas"/>  
+			        	<h:outputText value="#{msg.LISTAR_ALIANCA}"/>  
 			        </f:facet>  
 			  
-			        <p:column headerText="Nome" sortBy="#{alianca.nome}" filterBy="#{alianca.nome}" id="nome" width="550">  
+			        <p:column headerText="#{msg.NOME}" sortBy="#{alianca.nome}" filterBy="#{alianca.nome}" id="nome" width="550">  
 			            <h:outputText value="#{alianca.nome}"/>
 			        </p:column>
 			        
-			        <p:column headerText="Data de Criação" sortBy="#{alianca.dataCriacao}" id="dataCriacao" width="250">  
+			        <p:column headerText="#{msg.DATA_DE_CRIACAO}" sortBy="#{alianca.dataCriacao}" id="dataCriacao" width="250">  
 			            <h:outputText value="#{alianca.dataCriacao}">
 			            	<f:convertDateTime pattern="dd/MM/yyyy"/>
 			            </h:outputText>
 			        </p:column>
 			        
-			        <p:column headerText="Mensagem" id="agilidade" width="150">  
+			        <p:column headerText="#{msg.MENSAGEM}" id="agilidade" width="150">  
 			            <h:outputText value="#{alianca.mensagem}"/>
 			        </p:column>
 			        
-			  		<p:column headerText="Alterar" id="alterar">
+			  		<p:column headerText="#{msg.ALTERAR}" id="alterar">
 			  			<h:commandLink action="#{aliancaManagedBean.encaminhar}">
 				  			<f:setPropertyActionListener target="#{aliancaManagedBean.alianca}" value="#{alianca}"/>
 				  			<h:graphicImage url="/imagens/editar.png" title="editar" alt="editar"/>
 			  			</h:commandLink>
 			        </p:column>
 			        
-			        <p:column headerText="Excluir" id="excluir">
+			        <p:column headerText="#{msg.EXCLUIR}" id="excluir">
 			  			<h:commandLink actionListener="#{aliancaManagedBean.excluir}">
 				  			<f:attribute name="alianca" value="#{alianca}"/>
 				  			<h:graphicImage url="/imagens/excluir.png" title="excluir" alt="excluir"/>

@@ -10,42 +10,44 @@
 
 <ui:composition template="IndexAdmin.xhtml">
 	<ui:define name="conteudo">
+		<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 		<h:form id="form">
+			
 			<center>  
-			    <p:dataTable emptyMessage="Nenhuma classe encontrada..." var="classe" value="#{classeManagedBean.classes}" rowKey="#{classe.nome}" paginator="true" rows="10" filteredValue="#{classeManagedBean.filtroClasses}" id="TableClasses">  
+			    <p:dataTable emptyMessage="#{msg.NENHUMA_CLASSE}" var="classe" value="#{classeManagedBean.classes}" rowKey="#{classe.nome}" paginator="true" rows="10" filteredValue="#{classeManagedBean.filtroClasses}" id="TableClasses">  
 			  
 			        <f:facet name="header">  
-			        	<h:outputText value="Listagem de Classes"/>  
+			        	<h:outputText value="#{msg.LISTAR_CLASSE}"/>  
 			        </f:facet>  
 			  
-			        <p:column headerText="Nome" sortBy="#{classe.nome}" filterBy="#{classe.nome}" id="nome" width="550">  
+			        <p:column headerText="#{msg.NOME}" sortBy="#{classe.nome}" filterBy="#{classe.nome}" id="nome" width="550">  
 			            <h:outputText value="#{classe.nome}"/>
 			        </p:column>
 			        
-			        <p:column headerText="Força" sortBy="#{classe.forca}" id="forca" width="150">  
+			        <p:column headerText="#{msg.FORCA}" sortBy="#{classe.forca}" id="forca" width="150">  
 			            <h:outputText value="#{classe.forca}"/>
 			        </p:column>
 			        
-			        <p:column headerText="Agilidade" sortBy="#{classe.agilidade}" id="agilidade" width="150">  
+			        <p:column headerText="#{msg.AGILIDADE}" sortBy="#{classe.agilidade}" id="agilidade" width="150">  
 			            <h:outputText value="#{classe.agilidade}"/>
 			        </p:column>
 			        
-			        <p:column headerText="Defesa" sortBy="#{classe.defesa}" id="defesa" width="150">  
+			        <p:column headerText="#{msg.DEFESA}" sortBy="#{classe.defesa}" id="defesa" width="150">  
 			            <h:outputText value="#{classe.defesa}"/>
 			        </p:column>
 			        
-			        <p:column headerText="Mana" sortBy="#{classe.mana}" id="mana" width="150">  
+			        <p:column headerText="#{msg.MANA}" sortBy="#{classe.mana}" id="mana" width="150">  
 			            <h:outputText value="#{classe.mana}"/>
 			        </p:column>
 			  		
-			  		<p:column headerText="Alterar" id="alterar">
+			  		<p:column headerText="#{msg.ALTERAR}" id="alterar">
 			  			<h:commandLink action="CadastroClasse.xhtml">
 				  			<f:setPropertyActionListener target="#{classeManagedBean.classe}" value="#{classe}"/>
 				  			<h:graphicImage url="/imagens/editar.png" title="editar" alt="editar"/>
 			  			</h:commandLink>
 			        </p:column>
 			        
-			        <p:column headerText="Excluir" id="excluir">
+			        <p:column headerText="#{msg.EXCLUIR}" id="excluir">
 			  			<h:commandLink actionListener="#{classeManagedBean.excluir}">
 				  			<f:attribute name="classe" value="#{classe}"/>
 				  			<h:graphicImage url="/imagens/excluir.png" title="excluir" alt="excluir"/>

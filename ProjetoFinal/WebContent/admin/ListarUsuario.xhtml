@@ -10,38 +10,39 @@
 
 <ui:composition template="IndexAdmin.xhtml">
 	<ui:define name="conteudo">
+		<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 		<h:form id="form">
 			<center>  
-			    <p:dataTable emptyMessage="Nenhum usuario encontrado..." var="user" value="#{usuarioManagedBean.usuarios}" rowKey="#{classe.nome}" paginator="true" rows="10" filteredValue="#{usuarioManagedBean.filtroUser}" id="TableClasses">  
+			    <p:dataTable emptyMessage="#{msg.NENHUM_USUARIO}" var="user" value="#{usuarioManagedBean.usuarios}" rowKey="#{classe.nome}" paginator="true" rows="10" filteredValue="#{usuarioManagedBean.filtroUser}" id="TableClasses">  
 			  
 			        <f:facet name="header">  
-			        	<h:outputText value="Listagem dos Usuarios"/>  
+			        	<h:outputText value="#{msg.LISTAR_USUARIO}"/>  
 			        </f:facet>  
 			  
-			        <p:column headerText="Nome" sortBy="#{user.nome}" filterBy="#{user.nome}" id="nome" width="300">  
+			        <p:column headerText="#{msg.NOME}" sortBy="#{user.nome}" filterBy="#{user.nome}" id="nome" width="300">  
 			            <h:outputText value="#{user.nome}"/>
 			        </p:column>  
 			  		
-			  		<p:column headerText="Email" sortBy="#{user.email}" filterBy="#{user.email}" id="email" width="300">  
+			  		<p:column headerText="#{msg.EMAIL}" sortBy="#{user.email}" filterBy="#{user.email}" id="email" width="300">  
 			            <h:outputText value="#{user.email}"/>
 			        </p:column>  
 			  		
-			  		<p:column headerText="Login" sortBy="#{user.login}" filterBy="#{user.login}" id="login" width="200">  
+			  		<p:column headerText="#{msg.LOGIN}" sortBy="#{user.login}" filterBy="#{user.login}" id="login" width="200">  
 			            <h:outputText value="#{user.login}"/>
 			        </p:column>  
 			  		
-			  		<p:column headerText="Tipo" sortBy="#{user.tipo}" filterBy="#{user.tipo == 1 ? 'Usuario' : 'Administrador'}" id="tipo" width="200">  
+			  		<p:column headerText="#{msg.TIPO_DE_ACESSO}" sortBy="#{user.tipo}" filterBy="#{user.tipo == 1 ? 'Usuario' : 'Administrador'}" id="tipo" width="200">  
 			            <h:outputText value="#{user.tipo == 1 ? 'Usuario' : 'Administrador'}"/>
 			        </p:column>  
 			  		
-			  		<p:column headerText="Alterar" id="alterar">
+			  		<p:column headerText="#{msg.ALTERAR}" id="alterar">
 			  			<h:commandLink action="#{usuarioManagedBean.alterar}">
 				  			<f:setPropertyActionListener target="#{usuarioManagedBean.user}" value="#{user}"/>
 				  			<h:graphicImage url="/imagens/editar.png" title="editar" alt="editar"/>
 			  			</h:commandLink>
 			        </p:column>
 			        
-			        <p:column headerText="Excluir" id="excluir">
+			        <p:column headerText="#{msg.EXCLUIR}" id="excluir">
 			  			<h:commandLink actionListener="#{usuarioManagedBean.excluir}">
 				  			<f:attribute name="user" value="#{user}"/>
 				  			<h:graphicImage url="/imagens/excluir.png" title="excluir" alt="excluir"/>
