@@ -30,7 +30,7 @@ public class UsuarioManagedBean implements Serializable {
 	private List<Usuario> filtroUsers;
 	
 	
-	private static final Logger log = Logger.getLogger(UsuarioManagedBean.class.getName());
+	private static final Logger log = Logger.getLogger(UsuarioManagedBean.class);
 
 	public UsuarioManagedBean() {
 		setUser(null);

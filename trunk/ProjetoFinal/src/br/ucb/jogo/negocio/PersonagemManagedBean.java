@@ -170,7 +170,7 @@ public class PersonagemManagedBean implements Serializable{
 			personagem.getItens().add(itensSelect);	
 			atualiItem();
 			personHib.save(personagem);
-		}return "CompraItem";
+		}return "PerfilPersonagem?faces-redirect=true";
 	}	
 
 	public void atualiItem(){

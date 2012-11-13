@@ -1,9 +1,13 @@
 package br.ucb.jogo.HIB;
 
 import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
+import br.ucb.jogo.bean.Desafio;
 import br.ucb.jogo.bean.Resultado;
 import br.ucb.jogo.interfaces.HIB;
 
@@ -50,6 +54,20 @@ public class ResultadoHIB implements HIB<Resultado>{
 			session.close();
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Resultado> findByResultados(int idDesafio){
+		
+		Session session = HibernateUtil.getSession();
+		Criteria criteria;
+		try {
+			criteria = session.createCriteria(Resultado.class);
+			criteria.add(Restrictions.eq("desafio.idDesafios",idDesafio));
+			return criteria.list();
+		} finally {
+			session.close();
+		}
 
+	}
 	
 }

@@ -1,15 +1,21 @@
 package br.ucb.jogo.negocio;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
+import br.ucb.jogo.HIB.ClasseHIB;
 import br.ucb.jogo.HIB.DesafioHIB;
 import br.ucb.jogo.HIB.PersonagemHIB;
 import br.ucb.jogo.HIB.ResultadoHIB;
 import br.ucb.jogo.HIB.UsuarioHIB;
+import br.ucb.jogo.bean.Classe;
 import br.ucb.jogo.bean.Desafio;
 import br.ucb.jogo.bean.Personagem;
 import br.ucb.jogo.bean.Resultado;
@@ -29,7 +35,7 @@ public class DueloManagedBean {
 	private Desafio selectDesafio;
 	private DesafioHIB d;
 	private List<Desafio> desafios; 
-	
+
 	PersonagemHIB p;
 	public DueloManagedBean() {
 		this.personagem = new Personagem();
@@ -39,8 +45,8 @@ public class DueloManagedBean {
 		this.d = new DesafioHIB();
 		this.p = new PersonagemHIB();
 		setPersonagensDuelo(personHib.listaDisponiveisDuelo(personHib.findTByIdUser(new UsuarioHIB().findTByLogin(Util.getUserSession()).getIdUsuarios())));
-		
-		
+
+
 	}
 
 	public PersonagemHIB getPersonHib() {
@@ -54,8 +60,8 @@ public class DueloManagedBean {
 	public String saveDuelo() {
 
 		UsuarioHIB u = new UsuarioHIB();
-		
-		
+
+
 		Usuario userLogado = u.findTByLogin(Util.getUserSession());
 		Personagem desafiante = p.findTByIdUser(userLogado.getIdUsuarios());
 		Personagem desafiado  = this.personagem;
@@ -86,12 +92,17 @@ public class DueloManagedBean {
 
 		return "IndexUsuario";
 	}
-	
+
 	public String carregaDesafios(){
-		setDesafios(d.findByDesafios(new PersonagemHIB().findTByIdUser(new UsuarioHIB().findTByLogin(Util.getUserSession()).getIdUsuarios()).getIdPersonagens()));
+
+		personagem = new PersonagemHIB().findTByIdUser(new UsuarioHIB().findTByLogin(Util.getUserSession()).getIdUsuarios()); 
+
+		setDesafios(d.findByDesafios(personagem.getIdPersonagens()));
+
+
 		return "DueloDesafiado?faces-redirect=true";
 	}
-	
+
 
 	public String resultado(){		
 		selectDesafio.setDueloAtivo(false);
@@ -99,9 +110,9 @@ public class DueloManagedBean {
 		Personagem desafiante = p.findTById(selectDesafio.getIdDesafiante());
 		Personagem desafiado  = p.findTById(selectDesafio.getIdDesafiado());
 		obtemResultado(desafiante, desafiado);
+
 		return "IndexUsuario?faces-redirect=true";
 	}
-
 
 	private void obtemResultado(Personagem desafiante, Personagem desafiado) {
 		int totalDesafiante, totalDesafiado;
@@ -114,18 +125,19 @@ public class DueloManagedBean {
 			resultado.setIdGanhador(desafiado.getIdPersonagens());
 			resultado.setIdPerdedor(desafiante.getIdPersonagens());
 		}
-		
+
 		resultado.setDesafio(selectDesafio);
 		resultado.setDataDuelo(new Date());
 		resultado.setPontosGanhos(100);
 		personagem = p.findTById(resultado.getIdGanhador());
 		ResultadoHIB r = new ResultadoHIB();
 		atualizaPersonGanhador(p);
+		desafiado.setSituacaoDuel(1);
+		p.save(desafiado);
 		r.save(resultado);
 	}
 
-	public void atualizaPersonGanhador( PersonagemHIB p){
-		//ATUALIZANDO AQUI OS DADOS DO PERSONAGEM
+	public void atualizaPersonGanhador(PersonagemHIB p){
 
 		Double cash = personagem.getCash();
 		Integer experiencia = personagem.getExperiencia();
@@ -197,5 +209,26 @@ public class DueloManagedBean {
 		this.desafios = desafios;
 	}
 
+	public void excluir(ActionEvent evento) throws SQLException{
+		this.selectDesafio = (Desafio) evento.getComponent().getAttributes().get("desafio");
+		Personagem desafiado = p.findTById(selectDesafio.getIdDesafiado());
+		desafiado.setSituacaoDuel(desafiado.getSituacaoDuel()+1);
+		p.save(desafiado);
+		excluiResultado(selectDesafio);
+		d.excluir(selectDesafio);
+		this.desafios = d.findByDesafios(selectDesafio.getIdDesafiado());
+	}
+
+	public void excluiResultado(Desafio desafio){
+		ResultadoHIB resulHib = new ResultadoHIB();
+
+		List<Resultado> resultados = resulHib.findByResultados(desafio.getIdDesafios());
+		if(resultados != null){
+			for (Resultado resultado : resultados) {
+				resulHib.excluir(resultado);
+			}
+		}
+
+	}
 
 }
