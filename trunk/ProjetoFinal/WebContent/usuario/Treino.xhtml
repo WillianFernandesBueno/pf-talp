@@ -22,7 +22,7 @@
 							value="#{msg.TREINO_PERSONAGEM_2}" />
 
 					</p:panel>
-					<p:dataTable emptyMessage="#{msg.TREINO}" var="treino" value="#{treinoManagedBean.treinos}" 
+					<p:dataTable emptyMessage="#{msg.NENHUM_TREINO}" var="treino" value="#{treinoManagedBean.treinos}" 
 					rowKey="#{treino.nome}" paginator="true" rows="10" filteredValue="#{treinoManagedBean.filtroTreinos}" id="TableTreinos"
 					styleClass="PainelTrabalho">  
 				  

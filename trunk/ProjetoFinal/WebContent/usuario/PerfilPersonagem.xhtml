@@ -17,19 +17,19 @@
 				<br/><br/><br/><br/>
 				<p:panel rendered="#{personagemManagedBean.criaPersonagem}" styleClass="PainelTrabalho">
 					<center>
-						<p:commandButton value="#{msg.CRIAR_PERSONAGEM}" label="#{msg.CRIAR_PERSONAGEM}" action="CriaPersonagem.jsf" rendered="#{personagemManagedBean.criaPersonagem}"/>
+						<p:commandButton value="#{msg.CRIAR_PERSONAGEM} " label="#{msg.CRIAR_PERSONAGEM}" action="CriaPersonagem.jsf" rendered="#{personagemManagedBean.criaPersonagem}"/>
 					</center>
 				</p:panel>
 				<p:panel rendered="#{personagemManagedBean.criaPersonagem2}" style="width:500px;">
 					<center>
 						<p:panelGrid columns="2" style="width:460px;">
 									<p:panel>
-										<h:outputLabel value="#{msg.LEVEL}:" />
+										<h:outputLabel value="#{msg.LEVEL}: " />
 											<h:outputText value="#{personagemManagedBean.personagem.level}" />	
 									</p:panel>
 									
 									<p:panel>
-										<h:outputLabel value="#{msg.NOME}:" />
+										<h:outputLabel value="#{msg.NOME}: " />
 										<h:outputText value="#{personagemManagedBean.personagem.nick}" />
 									</p:panel>
 						</p:panelGrid>
@@ -39,28 +39,28 @@
 							</p:panel>
 							<p:panelGrid columns="1">
 								<p:panel>
-									<h:outputLabel value="#{msg.FORCA}:" />
+									<h:outputLabel value="#{msg.FORCA}: " />
 									<h:outputText value="#{personagemManagedBean.personagem.forca}" />	
 								</p:panel>
 								
 								<p:panel>
-									<h:outputLabel value="#{msg.DEFESA}" />
+									<h:outputLabel value="#{msg.DEFESA}: " />
 									<h:outputText value="#{personagemManagedBean.personagem.defesa}" />	
 								</p:panel>
 								<p:panel>
-									<h:outputLabel value="#{msg.AGILIDADE}" />
+									<h:outputLabel value="#{msg.AGILIDADE}: " />
 									<h:outputText value="#{personagemManagedBean.personagem.agilidade}" />	
 								</p:panel>
 								<p:panel>
-									<h:outputLabel value="#{msg.MANA}" />
+									<h:outputLabel value="#{msg.MANA}: " />
 									<h:outputText value="#{personagemManagedBean.personagem.mana}" />	
 								</p:panel>	
 								<p:panel>
-									<h:outputLabel value="#{msg.CASH}" />
+									<h:outputLabel value="#{msg.CASH}: " />
 									<h:outputText value="#{personagemManagedBean.personagem.cash}" />	
 								</p:panel>
 								<p:panel>
-									<h:outputLabel value="XP:" />
+									<h:outputLabel value="XP: " />
 									<h:outputText value="#{personagemManagedBean.personagem.experiencia}" />
 								</p:panel>					
 							</p:panelGrid>
