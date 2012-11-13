@@ -13,6 +13,7 @@
 	<ui:define name="conteudo">
 		<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 		<h:form id="form">
+		<br/><br/><br/>
 			<center>  
 			    <p:dataTable emptyMessage="#{msg.NENHUM_ITEM}" var="item" value="#{itensManagedBean.itens}" rowKey="#{item.nome}" paginator="true" rows="10" filteredValue="#{itensManagedBean.filtroItens}" id="TableItens">  
 			  
