@@ -16,16 +16,51 @@
 		<h:form>
 			<center>
 				<p:panel header="#{msg.CADASTRO_DE_ITEM}">
-					<p:panelGrid columns="2" id="painelCadastroItens" style="width:500px">
-						<h:outputLabel value="#{msg.NOME}: "/><p:inputText id="nome" required="true" value="#{itensManagedBean.item.nome}" style="width:500px"/>
-						<h:outputLabel value="#{msg.PRECO}: "/><p:inputText id="preco" required="true" value="#{itensManagedBean.item.preco}" style="width:500px"/>
-						<h:outputLabel value="#{msg.LEVEL_NECESSARIO}: "/><p:inputText id="levelNecessario" required="true" value="#{itensManagedBean.item.levelNecessario}" style="width:500px"/>
-						<h:outputLabel value="#{msg.FORCA}: "/><p:inputText id="forca" value="#{itensManagedBean.item.forca}" style="width:500px"/>
-						<h:outputLabel value="#{msg.AGILIDADE}: "/><p:inputText id="agilidade" value="#{itensManagedBean.item.agilidade}" style="width:500px"/>
-						<h:outputLabel value="#{msg.DEFESA}: "/><p:inputText id="defesa" value="#{itensManagedBean.item.defesa}" style="width:500px"/>
-						<h:outputLabel value="#{msg.MANA}: "/><p:inputText id="mana" value="#{itensManagedBean.item.mana}" style="width:500px"/>
+					<p:panelGrid columns="3" id="painelCadastroItens" style="width:500px">
+						<h:outputLabel value="#{msg.NOME}: "/>
+						<p:inputText id="nome" required="true" value="#{itensManagedBean.item.nome}" style="width:500px">
+							<f:validateLength minimum="3" maximum="35"/>
+						</p:inputText>
+						<h:message for="nome" showSummary="true" showDetail="false" errorStyle="color:red"/>
+						
+						<h:outputLabel value="#{msg.PRECO}: "/>
+						<p:inputText id="preco" required="true" value="#{itensManagedBean.item.preco}" style="width:500px">
+							<f:validateDoubleRange minimum="0"/>
+						</p:inputText>
+						<h:message for="preco" showSummary="true" showDetail="false" errorStyle="color:red"/>
+						
+						<h:outputLabel value="#{msg.LEVEL_NECESSARIO}: "/>
+						<p:inputText id="levelNecessario" required="true" value="#{itensManagedBean.item.levelNecessario}" style="width:500px">
+							<f:validateLongRange  minimum="0"/> 
+						</p:inputText>
+						<h:message for="levelNecessario" showSummary="true" showDetail="false" errorStyle="color:red"/>
+						
+						<h:outputLabel value="#{msg.FORCA}: "/>
+						<p:inputText id="forca" value="#{itensManagedBean.item.forca}" style="width:500px">
+							<f:validateLongRange  minimum="0"/> 
+						</p:inputText>
+						<h:message for="forca" showSummary="true" showDetail="false" errorStyle="color:red"/>
+						
+						<h:outputLabel value="#{msg.AGILIDADE}: "/>
+						<p:inputText id="agilidade" value="#{itensManagedBean.item.agilidade}" style="width:500px">
+							<f:validateLongRange  minimum="0"/> 
+						</p:inputText>
+						<h:message for="agilidade" showSummary="true" showDetail="false" errorStyle="color:red"/>
+						
+						<h:outputLabel value="#{msg.DEFESA}: "/>
+						<p:inputText id="defesa" value="#{itensManagedBean.item.defesa}" style="width:500px">
+							<f:validateLongRange  minimum="0"/> 
+						</p:inputText>
+						<h:message for="defesa" showSummary="true" showDetail="false" errorStyle="color:red"/>
+						
+						<h:outputLabel value="#{msg.MANA}: "/>
+						<p:inputText id="mana" value="#{itensManagedBean.item.mana}" style="width:500px">
+							<f:validateLongRange  minimum="0"/> 
+						</p:inputText>
+						<h:message for="mana" showSummary="true" showDetail="false" errorStyle="color:red"/>
+						
 					</p:panelGrid>
-					<p:commandButton value="#{msg.ENVIAR}" action="#{itensManagedBean.save}"/> 
+					<p:commandButton value="#{msg.ENVIAR}" action="#{itensManagedBean.save}" ajax="false"/> 
 				</p:panel>		      
 			</center>
 		</h:form>
