@@ -10,6 +10,7 @@
 <ui:composition template="Index.xhtml">
 	
 	<ui:define name="conteudo">	
+	<f:loadBundle basename="br.ucb.jogo.recursos.messages" var="msg" />
 	<p:panel styleClass="FundoPaginaUsuario">
 		<br/><br/><br/><br/>
 		<center>
@@ -17,9 +18,9 @@
 				 <form action="j_security_check" method="post">
 					<center>
 						<p:panelGrid columns="2">
-							<h:outputLabel value="Login"/>
+							<h:outputLabel value="#{msg.LOGIN}"/>
 							<input type="text" name="j_username" />
-							<h:outputLabel value="Senha" />
+							<h:outputLabel value="#{msg.SENHA}" />
 							<input type="password" name="j_password" />
 							<input type="submit" value="entrar" />
 						</p:panelGrid>
