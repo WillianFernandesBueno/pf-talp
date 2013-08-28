@@ -154,7 +154,7 @@ CREATE  TABLE IF NOT EXISTS `jogo`.`Resultado` (
   `idResultado` INT NOT NULL AUTO_INCREMENT ,
   `idGanhador` INT(11) NOT NULL ,
   `idPerdedor` INT(11) NOT NULL ,
-  `dataDuelo` DATE NOT NULL ,
+  `dataDuelo` TIMESTAMP NOT NULL ,
   `pontosGanhos` INT(11) NOT NULL ,
   `Desafios_idDesafios` INT NOT NULL ,
   PRIMARY KEY (`idResultado`, `Desafios_idDesafios`) ,
