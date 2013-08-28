@@ -104,7 +104,4 @@ public class Usuario extends Pessoa implements Serializable{
 	public void setPersonagem(Personagem personagem) {
 		this.personagem = personagem;
 	}
-	
-	
-	
 }

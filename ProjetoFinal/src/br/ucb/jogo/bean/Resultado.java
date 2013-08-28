@@ -61,7 +61,7 @@ public class Resultado {
 	}
 	
 	@Column
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getDataDuelo() {
 		return dataDuelo;
 	}
